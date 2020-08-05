@@ -8,6 +8,15 @@ use App\Comment;
 class CommentController extends Controller
 {
     public function createComment(Request $request){
+        $validator = Validator::make($request->all(),[
+        'text' => 'required|string',
+        'date' => 'date_format:d/m/Y',
+    ]);
+
+        if($validator->fails()){
+        return response()->json($validator->errors());
+        }
+        
         $comment = new Comment;
         $comment->text = $request->text;
         $comment->date = $request->date;

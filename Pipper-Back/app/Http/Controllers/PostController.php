@@ -10,10 +10,11 @@ class PostController extends Controller
     public function createPost(Request $request){
         $post = new Post;
         $post->title = $request->title;
-        $post->originalComment = $request->nickname;
+        $post->originalComment = $request->originalComment;
         $post->like = $request->like;
         $post->rating = $request->rating;
         $post->date = $request->date;
+        $post->tags = $request->tags;
         $post->save();
         return response()->json($post);
     }
