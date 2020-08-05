@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comment;
+use Illuminate\Support\Facades\Validator;
+
 
 class CommentController extends Controller
 {
     public function createComment(Request $request){
         $validator = Validator::make($request->all(),[
         'text' => 'required|string',
-        'date' => 'date_format:d/m/Y',
+        'date' => 'date',
     ]);
 
         if($validator->fails()){
@@ -19,9 +21,9 @@ class CommentController extends Controller
         
         $comment = new Comment;
         $comment->text = $request->text;
-        $comment->date = $request->date;
+        $comment->date = date('Y/m/d');
         $comment->save();
-        return response()->json($post);
+        return response()->json($comment);
     }
 
     public function showComment($id){
