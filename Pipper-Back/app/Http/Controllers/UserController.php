@@ -64,4 +64,16 @@ class UserController extends Controller
         return response()->json(['Usuário deletado!']);
     }
 
+    public function makePost($user_id,$post_id){
+        $post = App\Post::findOrFail($post_id);
+        $post->setUser($user_id);
+        return response()->json($post);
+    }
+
+    public function makeComment($user_id,$comment_id){
+        $comment = App\Comment::findOrFail($comment_id);
+        $comment->setUser($user_id);
+        return response()->json($comment);
+    }
+
 }

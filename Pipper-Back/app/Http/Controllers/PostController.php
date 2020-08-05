@@ -59,5 +59,16 @@ class PostController extends Controller
         return response()->json(['Post deletado!']);
     }
 
-    public function ratePost($id){}
+    public function getUserId($id){
+        $post = App\Post::findOrFail($id);
+        return $post->user_id;
+    }
+
+    public function attachComment($post_id,$comment_id){
+        $comment = App\Comment::findOrFail($comment_id);
+        $comment->setPost($post_id);
+        return response()->json($comment);
+    }
+
+    
 }

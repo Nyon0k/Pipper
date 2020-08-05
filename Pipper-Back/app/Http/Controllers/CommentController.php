@@ -49,4 +49,14 @@ class CommentController extends Controller
         Comment::destroy($id);
         return response()->json(['Comentário deletado!']);
     }
+
+    public function getUserId($id){
+        $comment = App\Comment::findOrfail($id);
+        return response()->json($comment->user_id);
+    }
+
+    public function getPostId($id){
+        $comment = App\Comment::findOrFail($id);
+        return response()->json($comment->post_id);
+    }
 }
