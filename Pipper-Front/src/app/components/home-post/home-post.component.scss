@@ -1,0 +1,117 @@
+
+
+.homePost {
+    display: flex;
+    justify-content: space-around;
+}
+
+.imgAndTags {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 3%;
+}
+
+.imgAndTags img {
+    border-radius: 10%;
+}
+
+.imgPost {
+    width: 90%;
+    height: auto;
+}
+
+.imgMask {
+    width: 110%;
+    display: inline-block;
+    height: auto;
+    border-radius: 10%;
+    overflow: hidden;
+}
+
+.imgMask img {
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+    background-size: cover;
+}
+
+.tagsPost {
+    align-self: center;
+}
+
+.textUserAndButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.photoAndUser {
+    display: flex;
+}
+
+.photoAndUser img {
+    width: 100%;
+    border-radius: 50%;
+    height: auto;
+    object-fit: cover;
+    background-size: cover;
+}
+
+.userPhotoAndFollow {
+    display: flex;
+}
+
+ion-button {
+    --border-radius: 30px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+
+.button {
+    --background: #C4FB6D;
+    color: black;
+}
+
+.star {
+    color: darkorange;
+
+}
+
+ion-icon {
+    margin-right: 5%;
+}
+
+h4 {
+    margin-left: 5%;
+}
+
+h6 {
+    margin-left: 5%;
+}
+
+.text {
+    margin-bottom: 5%;
+}
+
+.text h2 {
+    color: #FFE9E9;
+    margin-top: 5%;
+}
+
+ion-card {
+    border-radius: 10px;
+}
+
+.mask {
+    width: 30%;
+    display: inline-block;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}

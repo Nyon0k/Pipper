@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HomePostComponent } from '../components/home-post/home-post.component';
 
 @Component({
   selector: 'app-tab1',
@@ -10,3 +11,5 @@ export class Tab1Page {
   constructor() {}
 
 }
+
+

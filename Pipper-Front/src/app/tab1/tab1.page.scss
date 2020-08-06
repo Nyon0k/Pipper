@@ -1,6 +1,37 @@
-body{
-    background-color: #006A71;
+ion-content {
+    --background: #006A71;
+    margin-top: 20%;
 }
-ion-title{
 
+ion-header {
+    margin-top: 4%;
+    padding-bottom: 2%;
+}
+
+.searchbuttons {
+    display: flex;
+    margin-left: 3%;
+    margin-right: 3%;
+    justify-content: space-around;
+}
+
+ion-button {
+    width: 25%;
+    --border-radius: 15px;
+    --background: #272727;
+    color: #EFFFFB;
+}
+
+ion-button:hover {
+    --background: #EFFFFB;
+    color: #272727;
+    transition: 1s;
+}
+
+ion-header::after {
+    background-image: none;
+    }
+
+.buttonclass {
+    height: 45px;
 }
