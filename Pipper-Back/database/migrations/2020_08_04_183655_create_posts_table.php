@@ -22,6 +22,9 @@ class CreatePostsTable extends Migration
             $table->string('tags');
             $table->date('date');
             $table->timestamps();
+            
+            $table->unsignedBigInteger("user_id")->nullable();
+            $table->foreign("user_id")->references('id')->on('users')->onDelete('cascade');
         });
     }
 
