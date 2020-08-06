@@ -1,0 +1,43 @@
+
+  <ion-header>
+      <ion-icon name="chevron-back-circle-outline" (click)="ClosePopover()" size="large"></ion-icon>
+      <img src="../../assets/chameleonpog.png">
+  </ion-header>
+
+  <ion-content>
+    <div class="ion-padding">
+      <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input type="name" formControlName="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Nickname</ion-label>
+          <ion-input type="nickname" formControlName="nickname"></ion-input>
+        </ion-item>
+      </ion-list>
+      </form>
+      <div class="linha"></div>
+      <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">E-mail</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Senha</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Confirmar Senha</ion-label>
+            <ion-input type="con_password" formControlName="con_password"></ion-input>
+          </ion-item>
+        </ion-list>
+        </form>
+        <ion-content>Já tem uma conta?</ion-content>
+        <ion-content class="entrar">Entrar</ion-content>
+    <ion-buttton class="botao" expand="block" color="danger">Salve</ion-buttton>
+    </div>
+  </ion-content>
+

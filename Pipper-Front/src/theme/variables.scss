@@ -3,6 +3,13 @@
 
 /** Ionic CSS Variables **/
 :root {
+  ion-popover {
+    margin-bottom: 40%;
+    --width: 100%;
+    --height: 150%;
+    --ion-background-color: #272727;
+    margin-right: 7%;
+  }
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
