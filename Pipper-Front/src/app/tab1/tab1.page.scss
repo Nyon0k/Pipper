@@ -5,16 +5,15 @@ ion-content {
 }
 
 .logoName {
+    display: flex;
     margin-top: 2%;
+    justify-content: center;
 
 }
 
 .logoName img {
     width: 10%;
     height: auto;
-    margin-left: 45%;
-    margin-right: 50%;
-
 }
 
 .searchbuttons {
@@ -23,7 +22,7 @@ ion-content {
     padding-bottom: 2%;
     margin-left: 3%;
     margin-right: 3%;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 ion-button {
@@ -43,10 +42,10 @@ ion-button:hover {
     transition: 2s;
 }
 
-ion-header::after {
-    background-image: none;
-    }
-
 .buttonclass {
-    height: 45px;
+    height: 42px;
+}
+
+app-home-post {
+    outline: none;
 }
