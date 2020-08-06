@@ -14,7 +14,8 @@
         "fzaninotto/faker": "^1.9",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "laravellegends/pt-br-validator": "7.*" //garantir que isso aqui não está dando bug, caso dê bug em alguma coisa, provavel que tenha sido por causa disso.
     },
     "require-dev": {
         "facade/ignition": "^2.0",
