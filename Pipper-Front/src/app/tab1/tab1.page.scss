@@ -1,15 +1,26 @@
+
 ion-content {
     --background: #006A71;
     margin-top: 20%;
 }
 
-ion-header {
-    margin-top: 4%;
-    padding-bottom: 2%;
+.logoName {
+    margin-top: 2%;
+
+}
+
+.logoName img {
+    width: 10%;
+    height: auto;
+    margin-left: 45%;
+    margin-right: 50%;
+
 }
 
 .searchbuttons {
     display: flex;
+    margin-top: 2%;
+    padding-bottom: 2%;
     margin-left: 3%;
     margin-right: 3%;
     justify-content: space-around;
@@ -20,12 +31,16 @@ ion-button {
     --border-radius: 15px;
     --background: #272727;
     color: #EFFFFB;
+    font-family: 'Poiret One', cursive;
+    -webkit-text-stroke: 0.3px #EFFFFB;
+    letter-spacing: 1px;
 }
 
 ion-button:hover {
     --background: #EFFFFB;
     color: #272727;
-    transition: 1s;
+    -webkit-text-stroke: 1px #272727;
+    transition: 2s;
 }
 
 ion-header::after {
