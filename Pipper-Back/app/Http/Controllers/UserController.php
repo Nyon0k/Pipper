@@ -35,6 +35,8 @@ class UserController extends Controller
         return response()->json(['Usuário deletado!']);
     }
 
+    //public function
+
     public function makePost($user_id,$post_id){
         $post = App\Post::findOrFail($post_id);
         $post->setUser($user_id);
@@ -45,6 +47,20 @@ class UserController extends Controller
         $comment = App\Comment::findOrFail($comment_id);
         $comment->setUser($user_id);
         return response()->json($comment);
+    }
+
+    public function followUser($userFollower, $userFollowed){
+        $user1 = User::findOrFail($userFollower);
+        $user2 = User::findOrFail($userFollowed);
+        $user1->followUserFollower()->attach($user2);
+        return response()->json("Seguindo!");
+    }
+
+    public function unfollowUser($userFollower, $userFollowed){
+        $user1 = User::findOrFail($userFollower);
+        $user2 = User::findOrFail($userFollowed);
+        $user1->followUserFollower()->detach($user2);
+        return response()->json("Deixou de seguir!");
     }
 
 }
