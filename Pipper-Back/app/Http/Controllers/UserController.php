@@ -22,12 +22,7 @@ class UserController extends Controller
         }
         
         $user = new User;
-        $user->name = $request->name;
-        $user->nickname = $request->nickname;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->type = $request->type;
-        $user->save();
+        $user->createUser($request);
         return response()->json($user);
     }
 
@@ -43,19 +38,7 @@ class UserController extends Controller
 
     public function updateUser(Request $request, $id){
         $user = User::findOrFail($id);
-        if($request->name){
-            $this->name = $request->name;
-        }
-        if($request->nickname){
-            $this->nickname = $request->nickname;
-        }
-        if($request->email){
-            $this->email = $request->email;
-        }
-        if($request->password){
-            $this->password = $request->password;
-        }
-        $this->save();
+        $user->updateUser($request);
         return response()->json($user);
     }
 

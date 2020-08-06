@@ -19,16 +19,10 @@ class PostController extends Controller
         ]);
     
         if($validator->fails()){
-        return response()->json($validator->errors());
+            return response()->json($validator->errors());
         }
         $post = new Post;
-        $post->title = $request->title;
-        $post->originalComment = $request->originalComment;
-        $post->like = $request->like;
-        $post->rating = $request->rating;
-        $post->date = date('Y/m/d');
-        $post->tags = $request->tags;
-        $post->save();
+        $post = createPost($request);
         return response()->json($post);
     }
 
@@ -44,13 +38,7 @@ class PostController extends Controller
 
     public function updatePost(Request $request, $id){
         $post = Post::findOrFail($id);
-        if($request->title){
-            $this->title = $request->title;
-        }
-        if($request->originalComment){
-            $this->originalComment = $request->originalComment;
-        }
-        $this->save();
+        $post = updatePost($request);
         return response()->json($post);
     }
 

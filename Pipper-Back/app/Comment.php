@@ -6,6 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    public function createComment(Request $request){
+        $comment->text = $request->text;
+        $comment->date = date('Y/m/d');
+        $comment->save();
+    }
+
+    public function updateComment(Request $request, $id){
+        if($request->text){
+            $this->text = $request->text;
+        }
+        $this->save();
+    }
+
     public function user(){
         return $this->belongsTo('App\User');
     }
