@@ -8,19 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function createUser(Request $request){
-        $validator = Validator::make($request->all(),[
-            'name' => 'required|string',
-            'nickname' => 'string',
-            'email' => 'required|unique:Users,email|email',
-            'password' => 'required',            
-            'type' => 'required'
-        ]);
-
-        if($validator->fails()){
-            return response()->json($validator->errors());
-        }
-        
+    public function createUser(UserRequest $request){   
         $user = new User;
         $user->createUser($request);
         return response()->json($user);
@@ -36,7 +24,7 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function updateUser(Request $request, $id){
+    public function updateUser(UserRequest $request, $id){
         $user = User::findOrFail($id);
         $user->updateUser($request);
         return response()->json($user);

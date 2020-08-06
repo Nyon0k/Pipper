@@ -3,9 +3,12 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class PostRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -13,7 +16,7 @@ class PostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +26,37 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
+        if($this->isMethod('post')){
+            return [
+                'title' => 'required|alpha|string',
+                'originalComment' => 'required|string',
+                'like' => 'required|boolean',
+                'rating' => 'required',
+                'date' => 'required|date',
+                'tags' => 'required|string',
+            ];
+        }
+        if($this->isMethod('put')){
+            return [
+                'title' => 'string',
+                'originalComment' => 'string',
+                'like' => 'boolean',
+                'rating' => 'float',
+                'date' => 'date',
+                'tags' => 'string',
+            ];
+        }
+    }
+
+    public function message(){
         return [
-            //
+            'title.alpha' => 'Apenas caracteres alfabeticos!',
         ];
     }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json($validator->errors(),422));
+    }
+
 }
