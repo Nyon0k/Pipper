@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
+
 @Component({
   selector: 'app-cadastro-imagem',
   templateUrl: './cadastro-imagem.page.html',
@@ -22,7 +23,7 @@ export class CadastroImagemPage implements OnInit {
       allowEditing: true,
       saveToGallery: true,
       resultType: CameraResultType.DataUrl,
-      source: CameraSource.Camera
+      source: CameraSource.Camera,
     });
 
     this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));

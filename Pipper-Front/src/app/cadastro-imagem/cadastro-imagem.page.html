@@ -4,34 +4,33 @@
 </style>
 
 
-<ion-header mode="md">
+<ion-header class="ion-no-border" mode="md">
   <ion-icon class="header" name="chevron-back-circle-outline"size="large" routerLink="/cadastro"></ion-icon>
 </ion-header>
 
-<div class="imagem">
-<img src="../../assets/chameleonpog.png">
-</div>
-
 <ion-content mode="md">
-  <div class="conteudo">
-  <ion-fab  class="foto" vertical="center" horizontal="center" slot="fixed">
-    <img
-        [src]="photo"
-        vertical="center"
-        horizontal="center"
-        class="addFoto"
+  <div class="corpo">
+    <div class="imagem">
+      <img class="logo" src="../../assets/chameleonpog.png">
+    </div>    
+    <div class="conteudo">
+      <img
+          class="foto-perfil"
+          [src]="photo"
+          vertical="center"
+          horizontal="center"
       />
-      <h3>Escolha sua Foto</h3>
+    <h3>Escolha sua Foto</h3>
     <ion-fab-button (click)="takePicture()">
       <ion-icon name="camera"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
-</div>
+    </div>
+    <div class="fim">
+      <div class="pular">Pular</div>
+      <ion-button class="botao" expand="block" size="Secondary" type="submit" shape="round" color ="success">Continuar</ion-button>
+    </div>
+  </div>
 </ion-content>
-<div class="fim">
-<div class="pular">Pular</div>
-<ion-button class="botao" expand="block" size="Secondary" type="submit" shape="round" color ="success">Continuar</ion-button>
-</div>
 
 
 

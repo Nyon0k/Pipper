@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'cadastro-imagem',
     loadChildren: () => import('./cadastro-imagem/cadastro-imagem.module').then( m => m.CadastroImagemPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   }
 ];
 @NgModule({
