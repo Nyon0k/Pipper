@@ -1,0 +1,37 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+</style>
+
+
+<ion-header mode="md">
+  <ion-icon class="header" name="chevron-back-circle-outline"size="large" routerLink="/cadastro"></ion-icon>
+</ion-header>
+
+<div class="imagem">
+<img src="../../assets/chameleonpog.png">
+</div>
+
+<ion-content mode="md">
+  <div class="conteudo">
+  <ion-fab  class="foto" vertical="center" horizontal="center" slot="fixed">
+    <img
+        [src]="photo"
+        vertical="center"
+        horizontal="center"
+        class="addFoto"
+      />
+      <h3>Escolha sua Foto</h3>
+    <ion-fab-button (click)="takePicture()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</div>
+</ion-content>
+<div class="fim">
+<div class="pular">Pular</div>
+<ion-button class="botao" expand="block" size="Secondary" type="submit" shape="round" color ="success">Continuar</ion-button>
+</div>
+
+
+

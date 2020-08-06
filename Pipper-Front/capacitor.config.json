@@ -1,0 +1,13 @@
+{
+  "appId": "com.io.ionic.starter.PipperApp",
+  "appName": "PipperApp",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "src",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
