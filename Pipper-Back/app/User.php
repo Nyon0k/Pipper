@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use App\Http\Requests\UserRequest;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
         $this->name = $request->name;
         $this->nickname = $request->nickname;
         $this->email =$request->email;
-        $this->password = $request->password;
+        $this->password = bcrypt($request->password);
         $this->type = $request->type;
         $this->save();
     }

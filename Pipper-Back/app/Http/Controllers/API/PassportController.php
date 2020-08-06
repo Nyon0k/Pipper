@@ -4,6 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use App\User;
+use Auth;
+use DB;
 
 class PassportController extends Controller
 {
@@ -21,7 +25,7 @@ class PassportController extends Controller
             $success['token'] = $user->createToken('MyApp')->accessToken;
             return response()->json(['success' => $success, 'user' => $user], 200);
         } else {
-            return response()->json(['error' => 'Unauthorized', 'status' => 401]);
+            return response()->json(['error' => 'Usuário não cadastrado!', 'status' => 401]);
         }
     }
     public function getDetails(){

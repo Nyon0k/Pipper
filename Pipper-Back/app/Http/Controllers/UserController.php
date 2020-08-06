@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
     public function createUser(UserRequest $request){   
         $user = new User;
         $user->createUser($request);

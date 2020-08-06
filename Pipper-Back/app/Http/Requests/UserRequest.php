@@ -32,7 +32,7 @@ class UserRequest extends FormRequest
                 'nickname' => 'required|unique:Users,nickname|string',
                 'email' => 'required|unique:Users,email|email',
                 'password' => 'required|string',            
-                'type' => 'required',
+                'type' => 'boolean',
             ];
         }
         if ($this->isMethod('put')){
