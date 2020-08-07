@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 })
 export class PostPage implements OnInit {
 
+  showComment = false;
+  
   constructor() { }
 
   ngOnInit() {

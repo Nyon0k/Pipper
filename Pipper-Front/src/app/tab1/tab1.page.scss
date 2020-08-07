@@ -1,7 +1,15 @@
+ion-app {
+    background-color: #006A71;
+}
+
+ion-header {
+    background-color: #006A71;
+}
 
 ion-content {
     --background: #006A71;
     margin-top: 20%;
+    background-color: #006A71;
 }
 
 .logoName {
@@ -23,6 +31,7 @@ ion-content {
     margin-left: 3%;
     margin-right: 3%;
     justify-content: space-between;
+    background-color: #006A71;
 }
 
 ion-button {
