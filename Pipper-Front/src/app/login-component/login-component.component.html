@@ -1,0 +1,29 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+</style>
+
+<div class="imagem">
+<img src="../../assets/chameleonpog.png">
+</div>
+
+<ion-content mode="md">
+<div class="ion-padding">
+  <form [formGroup]="registerForm" (ngSubmit) = "submitForm(registerForm)">
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nickname</ion-label>
+      <ion-input type="nickname" formControlName="nickname"></ion-input>
+    </ion-item>
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="login">
+      <ion-button class="botao" expand="block" size="Secondary" type="submit" shape="round" [disabled]="registerForm.invalid" color ="success">Entrar</ion-button>
+      <div class="entrar" routerLink="/cadastro" (click)="close()">Cadastrar-se</div>
+    </div>
+    </form>
+</div>
+</ion-content>

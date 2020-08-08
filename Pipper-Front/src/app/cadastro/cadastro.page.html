@@ -38,7 +38,7 @@
       </ion-item>
     </ion-list>
     <div class="login">
-      <div class="entrar">Já tem uma conta? Entrar</div>
+      <div class="entrar" (click)="presentPopover($event)">Já tem uma conta? Entrar</div>
       <ion-button class="botao" expand="block" size="Secondary" type="submit" shape="round" [disabled]="registerForm.invalid" color ="success">Continuar</ion-button>
       </div>
     </form>

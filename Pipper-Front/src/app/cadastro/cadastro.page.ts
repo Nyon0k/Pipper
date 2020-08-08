@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Routes, RouterModule, Router } from "@angular/router";
+import { PopoverController } from '@ionic/angular';
+import { LoginComponentComponent } from '../login-component/login-component.component';
 
 @Component({
   selector: 'app-cadastro',
@@ -10,7 +12,7 @@ import { Routes, RouterModule, Router } from "@angular/router";
 export class CadastroPage implements OnInit {
   registerForm: FormGroup;
 
-  constructor(public formbuilder: FormBuilder, private router: Router) {
+  constructor(public formbuilder: FormBuilder, private router: Router, public popoverController: PopoverController) {
     this.registerForm = this.formbuilder.group({
       name: [null,[Validators.required]],
       nickname: [null, [Validators.required]],
@@ -20,12 +22,25 @@ export class CadastroPage implements OnInit {
     });
    }
 
+   
+
   ngOnInit() {
   }
 
   submitForm(form){
     console.log(form);
     console.log(form.value);
+  }
+
+  async presentPopover(event){
+    const popover = await this.popoverController.create({
+      component: LoginComponentComponent,
+      cssClass: 'popovercss',
+      event,
+      translucent: true
+    });
+    return await popover.present();
+
   }
 
 }

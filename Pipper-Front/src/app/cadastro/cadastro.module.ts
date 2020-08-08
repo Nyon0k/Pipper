@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CadastroPageRoutingModule } from './cadastro-routing.module';
 
 import { CadastroPage } from './cadastro.page';
+import { LoginComponentComponent } from '../login-component/login-component.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { CadastroPage } from './cadastro.page';
     CadastroPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [CadastroPage]
+  entryComponents: [LoginComponentComponent],
+  declarations: [CadastroPage, LoginComponentComponent]
 })
 export class CadastroPageModule {}

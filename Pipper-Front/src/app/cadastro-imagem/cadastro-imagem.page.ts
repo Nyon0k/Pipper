@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Routes, RouterModule, Router } from "@angular/router";
 
 
 @Component({
@@ -12,7 +13,7 @@ export class CadastroImagemPage implements OnInit {
 
   photo: SafeResourceUrl;
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer, private router: Router) { }
 
   ngOnInit() {
   }
