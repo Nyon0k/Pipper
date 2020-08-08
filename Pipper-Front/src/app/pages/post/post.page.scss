@@ -1,0 +1,203 @@
+
+ion-header {
+    margin-left: 4%;
+    margin-top: 2%;
+    height: 40px;
+    background-color: #006A71;
+    
+}
+
+ion-header::after {
+    background-image: none;
+}
+
+.backIcon {
+    color: #C4FB6D;
+    outline: none;
+    
+}
+
+.headerDec {
+    display: flex;
+    height: 40px;
+}
+
+ion-card {
+    margin-top: 1%;
+}
+
+ion-card-header img {
+    border-radius: 10px;
+}
+
+h1 {
+    font-family: 'Poiret One', cursive;
+    margin-top: 0px;
+}
+
+.userMask {
+    width: 30%;
+    display: inline-block;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.userMask img {
+    width: 100%;
+    border-radius: 50%;
+    height: auto;
+    object-fit: cover;
+    background-size: cover;
+}
+
+.userPart {
+    display: flex;
+}
+
+h3 {
+    color: #FFE9E9;
+}
+h4 {
+    font-style: italic;
+    font-size: 70%;
+}
+
+.upperContentPart {
+    display: flex;
+    justify-content: space-around;
+}
+
+.followAndTagPart {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+
+}
+
+.nameAndTime {
+    margin-left: 5%;
+}
+
+ion-button {
+    --border-radius: 40px;
+    --background: #C4FB6D;
+    --color: black;
+}
+
+.buttonTag {
+    width: 45%;
+}
+
+h2 {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: #FFE9E9;
+}
+
+.quoteIconLeft {
+    width: 30%;
+    margin-right: 2%;
+}
+
+.quoteIconRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 30%;
+    margin-left: 2%;
+}
+
+.leftRightAndText {
+    display: flex;
+}
+
+ion-subtitle {
+    font-size: 85%;
+    font-style: oblique;
+    text-align: justify;
+}
+
+ion-icon {
+    margin-right: 5%;
+}
+
+.interactionButtons {
+    margin-top: 2%;
+}
+
+.interactionButton {
+    --background: #272727;
+    color: #C4FB6D;
+    border: 1px solid #272727;
+}
+
+.interactionButton:hover {
+    border: 1px solid #C4FB6D;
+    border-radius: 20px;
+}
+
+.ionIcon {
+    color: #C4FB6D;
+}
+
+.iconMask {
+    width: 40%;
+    display: inline-block;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.iconMask img {
+    width: 100%;
+    border-radius: 50%;
+    height: auto;
+    object-fit: cover;
+    background-size: cover;
+}
+
+.imgAndText {
+    display: flex;
+}
+
+.commentText {
+    margin-left: 3%;
+}
+
+.commentText h6 {
+    font-style: italic;
+    font-size: 70%;
+    margin-bottom: 2%;
+}
+
+.hr {
+    background-color: #C4FB6D;
+    height: 0.1px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.input {
+    background-color: #FFE9E9;
+    border-radius: 30px;
+    ::placeholder {
+        margin-left: 30%;
+    }
+}
+
+.inputAndSubmit {
+    display: flex;
+    justify-content: space-between;
+}
+
+.submitButton {
+    --background: #C4FB6D;
+    width: 20%;
+    margin-left: 3%;
+}
+
+.submitIcon {
+    color: #272727;
+}
+
