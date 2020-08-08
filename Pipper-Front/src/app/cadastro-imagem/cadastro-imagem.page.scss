@@ -1,0 +1,89 @@
+*{
+    --ion-background-color: #272727;
+    font-family: 'Poiret One';
+    --color: #50D890;
+}
+
+ion-header{
+    background-color: #272727;
+    color: #E2D25D;
+    padding: 3%;
+}
+ion-icon{
+    margin-top: 2%;
+    margin-left: 2%;
+}
+.foto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3{
+    color: #50D890;
+    width: 100%;
+}
+.imagem{
+    background-color: #272727;
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+}
+.logo{
+    height: auto;
+    width: 15%;
+}
+.botao{
+    padding: 1%;
+    width: 75%;
+    height: 35%;
+    color: #000000;
+    font-size: 1.0em;
+    -webkit-text-stroke: 0.5px (black);
+    --ion-background-color: #272727;
+    
+}
+.fim{
+    background-color: #272727;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2em;
+}
+.pular{
+    color: #C4FB6D;
+    text-decoration: underline;
+
+}
+.foto-perfil {
+    width: 30vw;
+    height: 30vw;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #272727;
+    object-fit: cover;
+}
+.foto-perfil img{
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+    background-size: cover;
+
+}
+.conteudo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.corpo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    
+}

@@ -1,0 +1,47 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+</style>
+
+<ion-header class="ion-no-border" mode="md">
+  <ion-icon class="header" routerLink="/tabs/tab1" name="chevron-back-circle-outline"size="large"></ion-icon>
+</ion-header>
+
+<div class="imagem">
+<img src="../../assets/chameleonpog.png">
+</div>
+
+<ion-content mode="md">
+<div class="ion-padding">
+  <form [formGroup]="registerForm" (ngSubmit) = "submitForm(registerForm)">
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input type="name" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nickname</ion-label>
+      <ion-input type="nickname" formControlName="nickname"></ion-input>
+    </ion-item>
+    <div class="linha"></div>
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Confirmar Senha</ion-label>
+        <ion-input type="confirm_password" formControlName="confirm_password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="login">
+      <div class="entrar" (click)="presentPopover($event)">Já tem uma conta? Entrar</div>
+      <ion-button class="botao" expand="block" size="Secondary" type="submit" shape="round" [disabled]="registerForm.invalid" color ="success">Continuar</ion-button>
+      </div>
+    </form>
+
+</div>
+</ion-content>
