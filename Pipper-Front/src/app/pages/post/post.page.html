@@ -19,7 +19,7 @@
 
         <div class="userPart"> <!--row-->
           <div class="userMask">
-            <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
+            <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg" routerLink="/profile">
           </div>
           <div class="nameAndTime"> <!--collumn-->
             <div class="userNameAndNickname">
@@ -68,71 +68,7 @@
   <div class="commentPart" *ngIf="showComment">
     <ion-card>
       <ion-card-content>
-        <div class="imgAndText">
-
-          <div class="iconMask">
-            <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
-          </div>
-
-          <div class="commentText">
-            <h3>Fulano (@fulano)</h3>
-            <h6>Há 3 minutos atrás</h6>
-            <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
-          </div>
-        </div>
-        <div class="hr"></div>
-
-
-        <div class="imgAndText">
-
-          <div class="iconMask">
-            <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
-          </div>
-
-          <div class="commentText">
-            <h3>Fulano (@fulano)</h3>
-            <h6>Há 3 minutos atrás</h6>
-            <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
-          </div>
-        </div>
-        <div class="hr"></div>
-
-
-
-
-
-
-        <div class="imgAndText">
-
-          <div class="iconMask">
-            <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
-          </div>
-
-          <div class="commentText">
-            <h3>Fulano (@fulano)</h3>
-            <h6>Há 3 minutos atrás</h6>
-            <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
-          </div>
-        </div>
-        <div class="hr"></div>
-
-
-
-
-
-        <div class="imgAndText">
-
-          <div class="iconMask">
-            <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
-          </div>
-
-          <div class="commentText">
-            <h3>Fulano (@fulano)</h3>
-            <h6>Há 3 minutos atrás</h6>
-            <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
-          </div>
-        </div>
-        <div class="hr"></div>
+        <app-comment></app-comment>
       </ion-card-content>
     </ion-card>
   </div>

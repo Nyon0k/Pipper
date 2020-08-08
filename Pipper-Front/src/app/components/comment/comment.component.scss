@@ -1,0 +1,36 @@
+.iconMask {
+    width: 40%;
+    display: inline-block;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.iconMask img {
+    width: 100%;
+    border-radius: 50%;
+    height: auto;
+    object-fit: cover;
+    background-size: cover;
+}
+
+.imgAndText {
+    display: flex;
+}
+
+.commentText {
+    margin-left: 3%;
+}
+
+.commentText h6 {
+    font-style: italic;
+    font-size: 70%;
+    margin-bottom: 2%;
+}
+
+.hr {
+    background-color: #C4FB6D;
+    height: 0.1px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}

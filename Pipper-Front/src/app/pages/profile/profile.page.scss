@@ -1,0 +1,98 @@
+
+ion-header {
+    margin-left: 4%;
+    margin-top: 2%;
+    height: 40px;
+    background-color: #006A71;
+    
+}
+
+ion-header::after {
+    background-image: none;
+}
+
+.backIcon {
+    color: #C4FB6D;
+    outline: none;
+    
+}
+
+.headerDec {
+    display: flex;
+    height: 40px;
+}
+
+h1 {
+    font-family: 'Poiret One', cursive;
+    margin-top: 0px;
+}
+
+ion-icon {
+    margin-right: 5%;
+}
+
+.profileMask {
+    width: 30%;
+    display: inline-block;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profileMask img {
+    width: 100%;
+    border-radius: 50%;
+    height: auto;
+    object-fit: cover;
+    background-size: cover;
+}
+
+h2 {
+    color: #FFE9E9;
+}
+
+.number {
+    display: flex;
+}
+
+.profileContent {
+    display: flex;
+}
+
+.profileMask {
+    margin-right: 5%;
+}
+
+.userInfo {
+    width: 50%;
+}
+
+.number {
+    margin-top: 5%;
+}
+
+.leaf {
+    color: #C4FB6D;
+}
+
+.hr {
+    background-color: #C4FB6D;
+    height: 0.1px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.followOrEdit {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonClass {
+    width: 100%;
+    font-family: 'Poiret One', cursive;
+    color: black;
+    -webkit-text-stroke: 1px black;
+    letter-spacing: 2px;
+    border: 1px solid #50D890;
+    border-radius: 10px;
+}

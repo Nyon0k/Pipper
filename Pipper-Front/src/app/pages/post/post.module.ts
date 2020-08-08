@@ -8,13 +8,15 @@ import { PostPageRoutingModule } from './post-routing.module';
 
 import { PostPage } from './post.page';
 
+import { CommentComponent } from '../../components/comment/comment.component';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PostPageRoutingModule
+    PostPageRoutingModule,
   ],
-  declarations: [PostPage]
+  declarations: [PostPage, CommentComponent]
 })
 export class PostPageModule {}
