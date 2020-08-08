@@ -2,23 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\CommentRequest;
 use App\Comment;
 use Illuminate\Support\Facades\Validator;
 
 
 class CommentController extends Controller
 {
-    public function createComment(Request $request){
-        $validator = Validator::make($request->all(),[
-        'text' => 'required|string',
-        'date' => 'date',
-    ]);
-
-        if($validator->fails()){
-        return response()->json($validator->errors());
-        }
-        
+    public function createComment(CommentRequest $request){
         $comment = new Comment;
         $comment->createdComment($request);
         return response()->json($comment);
@@ -34,7 +25,7 @@ class CommentController extends Controller
         return response()->json($post);
     }
 
-    public function updateComment(Request $request, $id){
+    public function updateComment(CommentRequest $request, $id){
         $comment = Comment::findOrFail($id);
         $comment = updateComment($request);
         return response()->json($comment);

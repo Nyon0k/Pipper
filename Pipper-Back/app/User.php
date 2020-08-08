@@ -5,16 +5,19 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
+use App\Http\Requests\UserRequest;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasApiTokens;
 
     public function createUser(UserRequest $request){
         $this->name = $request->name;
         $this->nickname = $request->nickname;
         $this->email =$request->email;
-        $this->password = $request->password;
+        $this->password = bcrypt($request->password);
         $this->type = $request->type;
         $this->save();
     }
@@ -62,6 +65,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function followUserFollower(){
+        return $this->belongsToMany('App\User', 'follow', 'userFollower', 'userFollowed');
+    }
+
+    public function followUserFollowed(){
+        return $this->belongsToMany('App\User', 'follow', 'userFollowed', 'userFollower');
+    }
 
     public function posts(){
         return $this->hasMany('App\Post');

@@ -21,20 +21,36 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Rotas de User
 Route::POST('createUser', 'UserController@createUser');
 Route::GET('showUser/{id}', 'UserController@showUser');
-Route::POST('listUsers', 'UserController@listUsers');
-Route::POST('updateUser/{id}', 'UserController@updateUser');
-Route::POST('deleteUser/{id}', 'UserController@deleteUser');
+Route::GET('listUsers', 'UserController@listUsers');
+Route::PUT('updateUser/{id}', 'UserController@updateUser');
+Route::DELETE('deleteUser/{id}', 'UserController@deleteUser');
+Route::POST('makePost/{user_id}/{post_id}', 'UserController@makePost');
+Route::POST('makeComment/{user_id}/{post_id}', 'UserController@makeComment');
+Route::PUT('followUser/{user_id1}/{user_id2}', 'UserController@followUser');
+Route::PUT('unfollowUser/{user_id1}/{user_id2}', 'UserController@unfollowUser');
 
 //Rotas de Post
 Route::POST('createPost', 'PostController@createPost');
 Route::GET('showPost/{id}', 'PostController@showPost');
-Route::POST('listPosts', 'PostController@listPost');
-Route::POST('updatePost/{id}', 'PostController@updatePost');
-Route::POST('deletePost/{id}', 'PostController@deletePost');
+Route::GET('listPosts', 'PostController@listPost');
+Route::PUT('updatePost/{id}', 'PostController@updatePost');
+Route::DELETE('deletePost/{id}', 'PostController@deletePost');
+//Route::GET('getUserId/{id}', 'PostController@getUserId');
+Route::PUT('attachComment/{post_id}/{comment_id}', 'PostController@attachComment');
 
 //Rotas de Comment
 Route::POST('createComment', 'CommentController@createComment');
 Route::GET('showComment/{id}', 'CommentController@showComment');
-Route::POST('listComments', 'CommentController@listComment');
-Route::POST('updateComment/{id}', 'CommentController@updateComment');
-Route::POST('deleteComment/{id}', 'CommentController@deleteComment');
+Route::GET('listComments', 'CommentController@listComment');
+Route::PUT('updateComment/{id}', 'CommentController@updateComment');
+Route::DELETE('deleteComment/{id}', 'CommentController@deleteComment');
+//Route::GET('getUserId/{id}', 'CommentController@getUserId');
+Route::GET('getPostId/{id}', 'CommentController@getPostId');
+
+//Rotas de Passport
+Route::POST('register', 'API\PassportController@register');
+Route::POST('login', 'API\PassportController@login');
+Route::group(['middleware'=>'auth:api'], function(){
+    Route::GET('logout', 'API\PassportController@logout');
+    Route::POST('getDetails', 'API\PassportController@getDetails');
+});
