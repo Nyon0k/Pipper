@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Validator;
-
+use App\Comment;
+use App\Post;
 class UserController extends Controller
 {
 
@@ -62,6 +63,17 @@ class UserController extends Controller
         $user2 = User::findOrFail($userFollowed);
         $user1->followUserFollower()->detach($user2);
         return response()->json("Deixou de seguir!");
+    }
+
+    public function listFollowerUsers($id){
+        $user = User::findOrFail($id);
+        return response()->json($user->followUserFollower()->get());
+    }
+
+    public function listFollowerPosts($id){
+
+        return response()->json(Post::whereIn('user_id',User::find(1)->followUserFollower()->pluck('users.id'))->get());
+
     }
 
 }

@@ -46,5 +46,9 @@ class PostController extends Controller
         return response()->json($comment);
     }
 
+    public function listPostComments($id){
+        $post = Post::findOrFail($id);
+        return response()->json($post->comments()->get());
+    }
     
 }

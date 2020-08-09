@@ -22,5 +22,13 @@ class UserTableSeeder extends Seeder
         foreach($comments as $comment){
             App\User::find(rand(1,10))->comments()->save($comment);
         }
+
+        for($i=0;$i<10;$i++){
+            for($j=0;$j<10;$j++){
+                if($i!=$j){
+                    $users->values()->get($i)->followUserFollower()->attach( $users->values()->get($j));
+                }
+            }
+        }
     }
 }

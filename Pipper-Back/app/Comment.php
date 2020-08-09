@@ -30,6 +30,7 @@ class Comment extends Model
         $this->user_id = $user_id;
         $this->save();
     }
+    
     public function setPost($post_id){
         $this->post_id = $post_id;
         $this->save();
