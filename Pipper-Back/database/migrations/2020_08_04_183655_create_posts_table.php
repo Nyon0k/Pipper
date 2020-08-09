@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('originalComment');
-            $table->boolean('like');
+            $table->integer('like');
             $table->float('rating');
             $table->string('tags');
             $table->date('date');

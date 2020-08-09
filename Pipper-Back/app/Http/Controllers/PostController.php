@@ -50,5 +50,16 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         return response()->json($post->comments()->get());
     }
+
+    public function listPostsByLike(){
+        return response()->json(Post::orderBy('like','desc')->get());
+    }
     
+    public function listPostsByRating(){
+        return response()->json(Post::orderBy('rating','desc')->get());
+    }
+
+    public function listPostsByCreationDate(){
+        return response()->json(Post::orderBy('created_at','desc')->get());
+    }
 }

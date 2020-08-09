@@ -30,7 +30,7 @@ class PostRequest extends FormRequest
             return [
                 'title' => 'required|alpha|string',
                 'originalComment' => 'required|string',
-                'like' => 'required|boolean',
+                'like' => 'required|number',
                 'rating' => 'required',
                 'date' => 'required|date',
                 'tags' => 'required|string',
