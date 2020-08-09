@@ -26,7 +26,11 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 .popovercss .popover-content{
-    --height: 45%;
     --width: 85%;
     border-radius: 10px;
+    background: #272727;
+    position: relative !important;
+    margin: 0 auto !important;
+    left: auto !important;
+    top: auto !important;
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+class Button {
+  follow: string;
+}
 
 @Component({
   selector: 'app-home-post',
@@ -8,8 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePostComponent implements OnInit {
 
+  followButton: Button;
+  
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.followButton = {
+      follow: "Seguir"
+    }
+  }
 
 }
