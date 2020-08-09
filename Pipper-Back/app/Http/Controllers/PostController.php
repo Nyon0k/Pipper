@@ -62,4 +62,16 @@ class PostController extends Controller
     public function listPostsByCreationDate(){
         return response()->json(Post::orderBy('created_at','desc')->get());
     }
+
+    public function like($id){
+        $post = Post::findOrFail($id);
+        $post->like();
+        return response()->json("+1 like");
+    }
+
+    public function dislike($id){
+        $post = Post::findOrFail($id);
+        $post->dislike();
+        return response()->json("-1 like");
+    }
 }

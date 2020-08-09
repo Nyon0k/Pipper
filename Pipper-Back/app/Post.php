@@ -38,4 +38,13 @@ class Post extends Model
         $this->user_id = $user_id;
         $this->save();
     }
+
+    public function like(){
+        $this->like++;
+        $this->save();
+    }
+    public function dislike(){
+        $this->like--;
+        $this->save();
+    }
 }

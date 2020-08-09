@@ -39,6 +39,8 @@ Route::GET('listPostsByLike', 'PostController@listPostsByLike');
 Route::GET('listPostsByRating', 'PostController@listPostsByRating');
 Route::GET('listPostsByCreationDate', 'PostController@listPostsByCreationDate');
 Route::PUT('updatePost/{id}', 'PostController@updatePost');
+Route::PUT('like/{id}', 'PostController@like');
+Route::PUT('dislike/{id}', 'PostController@dislike');
 Route::DELETE('deletePost/{id}', 'PostController@deletePost');
 //Route::GET('getUserId/{id}', 'PostController@getUserId');
 Route::PUT('attachComment/{post_id}/{comment_id}', 'PostController@attachComment');
