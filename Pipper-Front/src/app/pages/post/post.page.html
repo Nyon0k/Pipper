@@ -30,7 +30,7 @@
         </div>
 
         <div class="followAndTagPart"> <!--row-->
-          <ion-button size="small" class="button" strong="true" mode="ios">Seguir</ion-button>
+          <ion-button size="small" class="buttonFollow" strong="true" mode="ios" (click)="changeFollow()">{{followButton.follow}}</ion-button>
           <ion-button size="small" class="buttonTag" strong="true" mode="ios">Tags</ion-button>
         </div>
       </div>
@@ -49,9 +49,9 @@
       </div>
 
       <div class="interactionButtons">
-        <ion-button class="interactionButton" size="small"><ion-icon name="thumbs-up-outline" class="ionIcon"></ion-icon>10</ion-button>
-        <ion-button class="interactionButton" size="small" (click)="show()"><ion-icon name="chatbubble-outline" class="ionIcon"></ion-icon>6</ion-button>
-        <ion-button class="interactionButton" size="small"><ion-icon name="arrow-redo-outline" class="ionIcon"></ion-icon><span style="text-transform:none!important;">Compartilhe</span></ion-button>
+        <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="thumbs-up-outline"></ion-icon>10</ion-button>
+        <ion-button class="interactionButton" size="small" mode="md" (click)="show()"><ion-icon name="chatbubble-outline"></ion-icon>6</ion-button>
+        <ion-button class="interactionButton" size="small" mode="md" (click)="presentCopy()"><ion-icon name="arrow-redo-outline"></ion-icon><span style="text-transform:none!important;">Compartilhe</span></ion-button>
       </div>
     </ion-card-content>
   </ion-card>
@@ -59,7 +59,7 @@
   <ion-card><ion-card-content>
     <div class="inputAndSubmit">
       <ion-input position="floating" placeholder="Deixe sua mensagem" class="input" mode="md"></ion-input>
-      <ion-button class="submitButton" mode="ios">
+      <ion-button class="submitButton" mode="ios" (click)="presentToast()">
         <ion-icon name="paper-plane-outline" size="large" class="submitIcon"></ion-icon>
       </ion-button>
     </div>

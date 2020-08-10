@@ -2,10 +2,12 @@
 
 .homePost {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    
 }
 
 .imgAndTags {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -17,16 +19,18 @@
 }
 
 .imgPost {
-    width: 90%;
+    width: 100%;
     height: auto;
 }
 
 .imgMask {
-    width: 110%;
+    display: flex;
+    width: 100%;
     display: inline-block;
     height: auto;
-    border-radius: 10%;
+    border-radius: 10px;
     overflow: hidden;
+
 }
 
 .imgMask img {
@@ -114,4 +118,16 @@ ion-card {
     height: auto;
     border-radius: 50%;
     overflow: hidden;
+}
+
+@media screen and (max-width: 350px) {
+    .homePost {
+        flex-direction: column;
+    }
+    .imgAndTags {
+        margin-right: 0%;
+    }
+    .tagsPost {
+        margin-bottom: 5%;
+    }
 }

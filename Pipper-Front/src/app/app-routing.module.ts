@@ -21,7 +21,11 @@ const routes: Routes = [
   {
     path: 'cadastro-imagem',
     loadChildren: () => import('./cadastro-imagem/cadastro-imagem.module').then( m => m.CadastroImagemPageModule)
+  },  {
+    path: 'editar-perfil',
+    loadChildren: () => import('./pages/editar-perfil/editar-perfil.module').then( m => m.EditarPerfilPageModule)
   }
+
 ];
 @NgModule({
   imports: [

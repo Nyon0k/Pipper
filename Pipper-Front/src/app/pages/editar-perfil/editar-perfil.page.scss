@@ -1,0 +1,158 @@
+*{
+    font-family: 'Poiret One';
+    --color: #50D890;
+}
+
+ion-header {
+    height: 50px;
+    background-color: #006A71;
+    position: static;
+}
+
+.headerDec {
+    display: flex;
+    height: 40px;
+    margin-left: 4%;
+    margin-top: 2%;
+}
+
+ion-header::after {
+    background-image: none;
+}
+
+.backIcon {
+    color: #C4FB6D;
+    outline: none;
+}
+
+.acamera {
+    color: #EFFFFB;
+}
+
+h1 {
+    font-family: 'Poiret One', cursive;
+    margin-top: 0px;
+    margin-left: 5%;
+}
+
+ion-label {
+    --color: #50D890;
+}
+
+ion-input{
+    font-family: 'Roboto';
+    color: #EFFFFB;
+}
+
+
+.login{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2em;
+    align-items: center;
+
+}
+
+.entrar{
+    color: #C4FB6D;
+    margin-top: 10%;
+    margin-left: 5%;
+    text-decoration: underline;
+}
+
+.botao{
+    width: 50%;
+    height: 40px;
+    color: #000000;
+    font-size: 1em;
+    -webkit-text-stroke: 0.5px (black);
+    
+}
+.hr {
+    background-color: #C4FB6D;
+    height: 0.1px;
+    margin-bottom: 5%;
+}
+
+.header {
+    outline:none;
+}
+
+ion-card {
+    margin-top: 2%;
+    border-radius: 10px;
+    margin-bottom: 2%;
+}
+
+.foto-perfil {
+    width: 30vw;
+    height: 30vw;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #272727;
+    object-fit: cover;
+}
+
+.foto-perfil img{
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+    background-size: cover;
+
+}
+
+.displayForm {
+    display: flex;
+    margin-bottom: 2%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.altere {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h4 {
+    margin-top: 0px;
+    margin-bottom: 2%;
+}
+
+ion-fab-button {
+    --background: #272727;
+}
+
+ion-label {
+    -webkit-text-stroke: 0.5px (#50D890);
+}
+
+.h4change {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.h4change h4 {
+    font-size: 140%;
+    margin-bottom: 5%;
+}
+
+.ionTitle {
+    display: flex;
+    justify-content: center;
+}
+
+.ionTitle h2 {
+    font-size: 150%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+ion-item {
+    margin-bottom: 5%;
+}
+

@@ -4,12 +4,23 @@
     <img src="../assets/chameleonpog.png">
 </div>
     <div class="searchbuttons">
-        <ion-button mode="ios" class="buttonclass">Seguindo</ion-button>
-        <ion-button mode="ios" class="buttonclass">Topo</ion-button>
-        <ion-button mode="ios" class="buttonclass">Novo</ion-button>
+        <ion-button mode="ios" class="buttonclass" (click)="showFollow(showSeguindo)">Seguindo</ion-button>
+        <ion-button mode="ios" class="buttonclass" (click)="showTop(showTopo)">Topo</ion-button>
+        <ion-button mode="ios" class="buttonclass" (click)="showNew(showNovo)">Novo</ion-button>
     </div>
+
 <ion-content>
+  <div *ngIf="showNovo">
     <app-home-post routerLink="/post"></app-home-post>
-    
+  </div>
+
+  <div *ngIf="showSeguindo">
+teste seguindo
+  </div>
+
+  <div *ngIf="showTopo">
+teste topo
+  </div>
 </ion-content>
+
 </ion-app>

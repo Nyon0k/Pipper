@@ -35,7 +35,7 @@ class PostController extends Controller
         return response()->json(['Post deletado!']);
     }
 
-    public function getUserId($id){    //Descrever qual o sentido deste método, não estou enxergando. Mas tb to com maior sono hahah
+    public function getUserId($id){
         $post = App\Post::findOrFail($id);
         return $post->user_id;
     }

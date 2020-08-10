@@ -24,6 +24,7 @@ ion-header::after {
 
 ion-card {
     margin-top: 1%;
+    border-radius: 10px;
 }
 
 ion-card-header img {
@@ -38,8 +39,8 @@ h1 {
 .userMask {
     width: 30%;
     display: inline-block;
-    height: auto;
-    border-radius: 50%;
+    height: 100%;
+    border-radius: 50px;
     overflow: hidden;
 }
 
@@ -137,21 +138,16 @@ ion-icon {
     border-radius: 20px;
 }
 
-.ionIcon {
-    color: #C4FB6D;
-}
-
 .iconMask {
     width: 40%;
     display: inline-block;
-    height: auto;
-    border-radius: 50%;
+    height: 100%;
+    border-radius: 50px;
     overflow: hidden;
 }
 
 .iconMask img {
     width: 100%;
-    border-radius: 50%;
     height: auto;
     object-fit: cover;
     background-size: cover;
@@ -201,3 +197,12 @@ ion-icon {
     color: #272727;
 }
 
+@media screen and (max-width: 350px) {
+    .followAndTagPart {
+        flex-direction: column;
+    }
+
+    .buttonTag, .buttonFollow {
+        width: 100%;
+    }
+}
