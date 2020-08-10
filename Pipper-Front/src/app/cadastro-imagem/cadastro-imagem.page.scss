@@ -1,7 +1,6 @@
 *{
     --ion-background-color: #272727;
     font-family: 'Poiret One';
-    --color: #50D890;
 }
 
 ion-header{
@@ -12,6 +11,7 @@ ion-header{
 ion-icon{
     margin-top: 2%;
     margin-left: 2%;
+    outline: none;
 }
 .foto{
     display: flex;

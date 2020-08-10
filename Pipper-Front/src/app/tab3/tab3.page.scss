@@ -1,0 +1,56 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+ion-content{
+    --ion-background-color: #006A71;
+}
+ion-button{
+    color: #000000;
+    --border-radius: 500px;
+}
+ion-card{
+  overflow: hidden;
+  overflow-y: auto;
+}
+.imagem{
+    margin-left: 3%;
+}
+.usuario{
+    display: flex;
+
+}
+h4{
+    font-size: 1em;
+    color: #EFFFFB;
+}
+.user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+.tag{
+    --ion-color: #000000;
+    border-radius: 200px;
+    margin-left: 8%;
+    width: 40%;
+}
+.rosto{
+    width: 30vw;
+    height: 20vw;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #272727;
+    object-fit: cover;
+}
+.nome{
+    margin-left: 5%;
+    width: 50%;
+}
+img.foto-perfil{
+    width: 40;
+    border-radius: 10px;
+
+}

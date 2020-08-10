@@ -21,7 +21,12 @@ const routes: Routes = [
   {
     path: 'cadastro-imagem',
     loadChildren: () => import('./cadastro-imagem/cadastro-imagem.module').then( m => m.CadastroImagemPageModule)
-  }
+  },  {
+    path: 'search',
+    loadChildren: () => import('./pages/search/search.module').then( m => m.SearchPageModule)
+  },
+
+
 ];
 @NgModule({
   imports: [

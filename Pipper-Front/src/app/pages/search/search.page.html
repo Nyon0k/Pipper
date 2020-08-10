@@ -1,0 +1,41 @@
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+<div class=busca>
+  <div class="search" *ngIf="searchUser">
+    <ion-icon name="search-outline" (click)="search()"></ion-icon>
+    <form><ion-input></ion-input></form>
+  </div>
+  <div class="search2" *ngIf="searchPost">
+    <ion-icon name="search-outline" (click)="search()"></ion-icon>
+    <form>
+      <ion-button class="tag" color="tertiary" (click)="presentPopover($event)">
+        Tags
+        <ion-icon class="seta" name="chevron-down-outline" ></ion-icon>
+      </ion-button>
+      <ion-button class="tag" color="tertiary" *ngIf="servico" (click)="close(1)">serviço</ion-button>
+      <ion-button class="tag" color="tertiary" *ngIf="produto" (click)="close(2)">produto</ion-button>
+      <ion-button class="tag" color="tertiary" *ngIf="fisico" (click)="close(3)">fisico</ion-button>
+      <ion-button class="tag" color="tertiary" *ngIf="online" (click)="close(4)">online</ion-button>
+      <ion-button class="tag" color="tertiary" *ngIf="entretenimento" (click)="close(5)">entretenimento</ion-button>
+      <ion-button class="tag" color="tertiary" *ngIf="saude" (click)="close(6)">saude</ion-button>
+      <ion-button class="tag" color="tertiary" *ngIf="esporte" (click)="close(7)">esporte</ion-button>
+      <ion-button class="tag" color="tertiary" *ngIf="alimentacao" (click)="close(8)">alimentacao</ion-button>
+      <ion-button class="tag" color="tertiary" *ngIf="utilidades_domesticas" (click)="close(9)">utilizades_domesticas</ion-button>
+      <ion-button class="tag" color="tertiary" *ngIf="infantis" (click)="close(10)">infantis</ion-button>
+    </form>
+  </div>
+  <div class="botao">
+    <ion-button class="botao" (click)="searchPoste()" color="light">Posts</ion-button>
+    <ion-button class="botao" (click)="searchUsuario()" color="light">Usuários</ion-button>
+  </div>
+</div>
+<ion-content>
+
+<div *ngIf="botaoPost">
+<app-home-post></app-home-post>
+</div>
+
+<div *ngIf="botaoUser">
+  <ion-button></ion-button>
+</div>
+
+</ion-content>
