@@ -1,10 +1,17 @@
-
 ion-header {
-    margin-left: 4%;
-    margin-top: 2%;
-    height: 40px;
+    height: 50px;
     background-color: #006A71;
-    
+    position: static;
+}
+
+ion-card {
+    border-radius: 10px;
+}
+
+.sticky {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0; /* required */
 }
 
 ion-header::after {
@@ -14,12 +21,13 @@ ion-header::after {
 .backIcon {
     color: #C4FB6D;
     outline: none;
-    
 }
 
 .headerDec {
     display: flex;
     height: 40px;
+    margin-left: 4%;
+    margin-top: 2%;
 }
 
 h1 {
@@ -31,12 +39,22 @@ ion-icon {
     margin-right: 5%;
 }
 
+.profile, .posts {
+    margin-bottom: 3%;
+    overflow: scroll;
+}
+
+.profile {
+    margin-bottom: 10%;
+}
+
 .profileMask {
     width: 30%;
     display: inline-block;
     height: auto;
-    border-radius: 50%;
+    border-radius: 50px;
     overflow: hidden;
+    margin-right: 2%;
 }
 
 .profileMask img {
@@ -47,36 +65,42 @@ ion-icon {
     background-size: cover;
 }
 
-h2 {
-    color: #FFE9E9;
+.postsCard {
+    margin-top: 0%;
 }
 
-.number {
+h2 {
+    color: #FFE9E9;
+    margin-left: 2%;
+}
+
+.hrPost {
+    background-color: #50D890;
+    height: 1px;
+    margin-top: 3%;
+}
+
+.userNumbers {
     display: flex;
+    justify-content: space-between;
+    height: 70%;
 }
 
 .profileContent {
     display: flex;
 }
 
-.profileMask {
-    margin-right: 5%;
-}
-
 .userInfo {
-    width: 50%;
-}
-
-.number {
-    margin-top: 5%;
+    width: 100%;
 }
 
 .leaf {
     color: #C4FB6D;
+    margin-left: 5%;
 }
 
 .hr {
-    background-color: #C4FB6D;
+    background-color: #FFE9E9;
     height: 0.1px;
     margin-top: 5%;
     margin-bottom: 5%;
@@ -95,4 +119,56 @@ h2 {
     letter-spacing: 2px;
     border: 1px solid #50D890;
     border-radius: 10px;
+}
+
+.userPosts, .userFollowing, .userFollowers {
+    width: 100%;
+    align-self: center;
+}
+
+.number, .numberText {
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    color: #50D890;
+    font-size: 100%;
+}
+
+h6 {
+    font-size: 80%;
+}
+
+@media screen and (max-width: 350px) {
+    .profileContent {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profileMask {
+        display: flex;
+        justify-content: center;
+        width: 50%;
+        margin-right: 0%;
+        margin-bottom: 5%;
+    }
+
+    .userInfo h2 {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5%;
+    }
+
+    .userPosts, .userFollowing, .userFollowers {
+        margin-bottom: 5%;
+    }
+}
+
+.postHeader {
+    display: flex;
+}
+
+.postTitle {
+    color: grey;
 }

@@ -1,7 +1,6 @@
 *{
     --ion-background-color: #272727;
     font-family: 'Poiret One';
-    --color: #50D890;
 }
 
 ion-header{
@@ -86,4 +85,8 @@ h3{
     height: 100%;
     align-items: center;
     
+}
+
+.header {
+    outline: none;
 }

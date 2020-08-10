@@ -4,6 +4,10 @@
     --color: #50D890;
 }
 
+ion-content {
+    
+}
+
 ion-label {
     --color: #50D890;
 }
@@ -44,6 +48,7 @@ img{
     margin-top: 7%;
     text-decoration: underline;
     display: flex;
+    outline: none;
 }
 .botao{
     margin-top: 8%;
@@ -53,4 +58,5 @@ img{
     -webkit-text-stroke: 0.5px (black);
     
 }
+
 
