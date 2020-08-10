@@ -4,40 +4,61 @@
     <ion-icon routerLink=".." class="backIcon" name="chevron-back-circle-outline" size="large"></ion-icon>
     <h1>Pipper</h1>
   </div>
+  
 </ion-header>
 
 <ion-content>
 
-  <ion-card>
+  <ion-card class="profile">
     <ion-card-content>
       <div class="profileContent">
         <div class="profileMask">
           <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
         </div>
         <div class="userInfo">
-          <h2>Fulano <br>(@fulano)</h2>
-          <div class="number">
-            <ion-icon name="leaf-outline" class="leaf"></ion-icon><h5>54 Posts</h5>
+          <h2>Fulano (@fulano)<ion-icon name="leaf-outline" class="leaf"></ion-icon></h2>
+          <div class="userNumbers">
+            <div class="userPosts">
+              <div class="number"><h3>56</h3></div>
+              <div class="numberText"><h6>Publicações</h6></div>
+            </div>
+            <div class="userFollowers">
+              <div class="number"><h3>8</h3></div>
+              <div class="numberText"><h6>Seguidores</h6></div>
+            </div>
+            <div class="userFollowing">
+              <div class="number"><h3>102</h3></div>
+              <div class="numberText"><h6>Seguindo</h6></div>
+            </div>
           </div>
         </div>
       </div>
       <div class="hr"></div>
-
+  
       <div class="followOrEdit">
-        <ion-button class="buttonClass">Seguir</ion-button>
+        <ion-button class="buttonClass" (click)="changeFollow()">{{followButton.follow}}</ion-button>
         <ion-button class="buttonClass">Mensagem</ion-button>
         <!--<ion-button class="buttonClass">Editar perfil</ion-button>-->
       </div>
     </ion-card-content>
   </ion-card>
+  
+  <div class="sticky" style="z-index:10">
+    <ion-card class="posts">
+      <ion-card-content>
+        <div class="fixedHeader">
+          <div class="postHeader">
+            <h2 class="postTitle">Publicações de</h2><h2>@fulano</h2>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
-  <ion-card>
-    <ion-card-content>
-      <app-profile-post></app-profile-post>
-      <app-profile-post></app-profile-post>
-      <app-profile-post></app-profile-post>
-      <app-profile-post></app-profile-post>
-      
-    </ion-card-content>
-  </ion-card>
+  <div class="notSticky" style="z-index:1">
+    <app-profile-post></app-profile-post>
+    <app-profile-post></app-profile-post>
+    <app-profile-post></app-profile-post>
+    <app-profile-post></app-profile-post>
+  </div>
 </ion-content>
