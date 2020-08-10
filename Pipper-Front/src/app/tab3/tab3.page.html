@@ -1,17 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+  </style> 
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-card>
+  <ion-card-header *ngIf="photo">
+  <img
+      class="foto-perfil"
+      [src]="photo"
+      vertical="center"
+      horizontal="center"
+  />
+</ion-card-header>
+<div class="user">
+<ion-fab-button (click)="takePhoto()" color="tertiary">
+  <ion-icon name="camera"></ion-icon>
+</ion-fab-button>
+</div>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
-</ion-content>
+<ion-card-content>
+  <div class="usuario">
+  <div class="imagem"><img src="../../assets/rosto.jpg" class="rosto"></div>
+  <div class="nome"><h4>Fulano (@fulano)</h4></div>
+  <div class="tag"><ion-button color="tertiary"><ion-icon name="chevron-back-outline"></ion-icon>tag</ion-button></div>
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit) = "submitForm(registerForm)">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Título</ion-label>
+        <ion-input type="title" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Descrição</ion-label>
+        <ion-textarea auto-grow="true" type="form" formControlName="form" type="text" maxLength="442"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-button class="botao" expand="block" size="Secondary" type="submit" shape="round" [disabled]="registerForm.invalid" color ="success">Continuar</ion-button>
+  </form>
+</ion-card-content>
+</ion-card>

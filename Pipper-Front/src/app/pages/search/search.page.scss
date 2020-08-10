@@ -1,0 +1,55 @@
+ion-content{
+    --ion-background-color: #006A71;
+}
+ion-input{
+    --ion-background-color: #EFFFFB;
+    color: #EFFFFB;
+}
+ion-icon{
+    color: #EFFFFB;
+    margin-left: 3%;
+}
+ion-button{
+    color: #EFFFFB;
+}
+.busca{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #272727;
+    flex-direction: row;
+    border-radius: 100px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.search2{
+    display: flex;
+    align-items: center;
+    background-color: #272727;
+    flex-direction: row;
+    border-radius: 100px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 70%;
+
+}
+.tag{
+    color: #272727;
+    --border-radius: 200px;
+    font-weight: bold;
+}
+.seta{
+    color: #272727;
+}
+.botao{
+    --color: #272727;
+    --border-radius: 15px;
+    font-family: 'Poiret One', cursive;
+    -webkit-text-stroke: 0.3px #EFFFFB;
+}
