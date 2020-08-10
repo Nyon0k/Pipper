@@ -62,7 +62,7 @@ export class SearchPage implements OnInit {
         this.alimentacao = true;
       }
       if (data.utilidades_domesticas){
-        this.servico = true;
+        this.utilidades_domesticas = true;
       }
       if (data.infantis){
         this.infantis = true;

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
-import { HomePostComponent } from '../components/home-post/home-post.component';
+import { HomePostModules } from '../components/home-post/home-post.module';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 
@@ -13,9 +13,10 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
     IonicModule,
     CommonModule,
     FormsModule,
+    HomePostModules,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
   ],
-  declarations: [Tab1Page, HomePostComponent]
+  declarations: [Tab1Page]
 })
 export class Tab1PageModule {}

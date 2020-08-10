@@ -3,7 +3,7 @@
   </style> 
 
 <ion-card>
-  <ion-card-header>
+  <ion-card-header *ngIf="photo">
   <img
       class="foto-perfil"
       [src]="photo"
@@ -12,7 +12,7 @@
   />
 </ion-card-header>
 <div class="user">
-<ion-fab-button (click)="takePicture()" color="tertiary">
+<ion-fab-button (click)="takePhoto()" color="tertiary">
   <ion-icon name="camera"></ion-icon>
 </ion-fab-button>
 </div>
