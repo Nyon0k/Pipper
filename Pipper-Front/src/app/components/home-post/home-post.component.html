@@ -11,29 +11,29 @@
         </div>
         </div>
 
-    <div class="textUserAndButtons"> <!--collumn-->
-      <div class="userPhotoAndFollow"> <!--row-->
-        <div class="photoAndUser">
-          <div class="mask">
-            <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
-          </div>
-            <h4>@fulano</h4>
-          </div>
-        <ion-button size="small" class="button" strong="true" mode="ios">{{followButton.follow}}</ion-button>
-      </div>
+      <div class="textUserAndButtons"> <!--collumn-->
+        <div class="userPhotoAndFollow"> <!--row-->
+          <div class="photoAndUser">
+            <div class="mask">
+              <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
+            </div>
+              <h4>@fulano</h4>
+            </div>
+          <ion-button size="small" class="button" strong="true" mode="ios">{{followButton.follow}}</ion-button>
+        </div>
 
-      <div class="text"> <!--collumn-->
-        <h2>Lorem Ipsum</h2>
-        <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h3>
-      </div>
+        <div class="text"> <!--collumn-->
+          <h2>{{post.title}}</h2>
+          <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h3>
+        </div>
 
-      <div class="buttons"> <!--row-->
-            
-        <ion-button size="small" class="button"><ion-icon name="star" class="star"></ion-icon><h6>4.5</h6></ion-button>
-        <ion-button size="small" class="button"><ion-icon name="chatbubble-outline"></ion-icon><h6>10</h6></ion-button>
-        <ion-button size="small" class="button"><ion-icon name="thumbs-up-outline"></ion-icon><h6>10</h6></ion-button>
+        <div class="buttons"> <!--row-->
+              
+          <ion-button size="small" class="button"><ion-icon name="star" class="star"></ion-icon><h6>{{post.rating}}</h6></ion-button>
+          <ion-button size="small" class="button"><ion-icon name="chatbubble-outline"></ion-icon><h6></h6></ion-button>
+          <ion-button size="small" class="button"><ion-icon name="thumbs-up-outline"></ion-icon><h6>{{post.like}}</h6></ion-button>
+        </div>
       </div>
-    </div>
     </div>
   </ion-card-content>
 </ion-card>

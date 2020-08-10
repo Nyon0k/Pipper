@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 class Button {
   follow: string;
@@ -10,6 +10,7 @@ class Button {
   styleUrls: ['./home-post.component.scss'],
 })
 export class HomePostComponent implements OnInit {
+  @Input() post: any;
 
   followButton: Button;
   

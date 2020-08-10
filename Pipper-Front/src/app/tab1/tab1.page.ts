@@ -1,20 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { HomePostComponent } from '../components/home-post/home-post.component';
-
+import { PostService} from '../services/post/post.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
+  public posts = []
 
   showSeguindo = false;
   showTopo = false;
   showNovo = true;
   
-  constructor() {}
+  constructor(public postService: PostService) {}
 
   ngOnInit() {
+    this.getlistPost();
+  }
+
+  getlistPost(){
+    this.postService.listPost().subscribe ((res) =>{
+      this.posts = res;
+      console.log(res);
+    })
   }
 
   showFollow() {
