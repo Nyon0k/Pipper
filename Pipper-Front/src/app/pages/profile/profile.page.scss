@@ -12,6 +12,8 @@ ion-card {
     position: sticky;
     position: -webkit-sticky;
     top: 0; /* required */
+    height: 10%;
+    background-color: #006A71;
 }
 
 ion-header::after {
@@ -44,7 +46,12 @@ ion-icon {
     overflow: scroll;
 }
 
+.posts ion-card-content {
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
 .profile {
+    margin-top: 1%;
     margin-bottom: 10%;
 }
 
