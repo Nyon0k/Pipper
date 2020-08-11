@@ -2,18 +2,18 @@
 
 namespace App;
 
+use App\Http\Requests\PostRequest;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    public function createPost(){
-        $post->title = $request->title;
-        $post->originalComment = $request->originalComment;
-        $post->like = $request->like;
-        $post->rating = $request->rating;
-        $post->date = date('Y/m/d');
-        $post->tags = $request->tags;
-        $post->save();
+    public function createPost(PostRequest $request){
+        $this->title = $request->title;
+        $this->originalComment = $request->originalComment;
+        $this->like = $request->like;
+        $this->rating = $request->rating;
+        $this->tags = $request->tags;
+        $this->save();
     }
 
     public function updatePost(Request $request, $id){

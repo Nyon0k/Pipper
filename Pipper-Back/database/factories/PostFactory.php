@@ -11,7 +11,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'originalComment' => $faker->asciify('********************'),
         'like' => rand(0,1000),
         'rating' => rand(0,50)/10, // password
-        'date' => date('Y/m/d'),
         "tags" => $faker->asciify('********************')
     ];
 });

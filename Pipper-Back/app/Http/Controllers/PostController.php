@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\PostRequest;
+use App\Http\Requests\PostRequest;
 use App\Post;
 use Illuminate\Support\Facades\Validator;
 
@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function createPost(PostRequest $request){
         $post = new Post;
-        $post = createPost($request);
+        $post->createPost($request);
         return response()->json($post);
     }
 

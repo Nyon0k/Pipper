@@ -17,10 +17,9 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('originalComment');
-            $table->integer('like');
-            $table->float('rating');
-            $table->string('tags');
-            $table->date('date');
+            $table->integer('like')->nullable()->default(0);
+            $table->float('rating')->nullable()->default(0);
+            $table->string('tags')->nullable();
             $table->timestamps();
             
             $table->unsignedBigInteger("user_id")->nullable();
