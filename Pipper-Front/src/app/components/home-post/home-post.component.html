@@ -17,14 +17,14 @@
             <div class="mask">
               <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
             </div>
-              <h4>@fulano</h4>
+              <h4>{{post.user_id}}</h4>
             </div>
           <ion-button size="small" class="button" strong="true" mode="ios">{{followButton.follow}}</ion-button>
         </div>
 
         <div class="text"> <!--collumn-->
           <h2>{{post.title}}</h2>
-          <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h3>
+          <h3>{{post.originalComment}}</h3>
         </div>
 
         <div class="buttons"> <!--row-->

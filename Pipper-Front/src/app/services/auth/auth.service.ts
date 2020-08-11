@@ -26,10 +26,15 @@ export class AuthService {
     return this.http.post(this.apiUrl + 'login',  form, this.httpHeaders);
   }
 
+  public logout(): Observable<any>{
+    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
+    console.log(this.httpHeaders);
+    return this.http.get(this.apiUrl + 'logout', this.httpHeaders);
+  }
+
   public createPost(form): Observable<any> {
     this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
     console.log(this.httpHeaders);
-
     return this.http.post(this.apiUrl + 'createPost',  form, this.httpHeaders);
   }
 }
