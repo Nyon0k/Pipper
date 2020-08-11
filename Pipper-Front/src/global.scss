@@ -27,6 +27,7 @@
 
 .popovercss .popover-content{
     --width: 85%;
+    --backdrop-opacity: 0.1;
     border-radius: 10px;
     background: #272727;
     position: relative !important;
@@ -43,3 +44,4 @@
     left: auto !important;
     top: auto !important;
 }
+

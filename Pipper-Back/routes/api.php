@@ -40,7 +40,7 @@ Route::PUT('unfollowUser/{user_id1}/{user_id2}', 'UserController@unfollowUser');
 //Rotas de Post
 //Route::POST('createPost', 'PostController@createPost');
 Route::GET('showPost/{id}', 'PostController@showPost');
-Route::GET('listPosts', 'PostController@listPost');
+Route::GET('listPosts', 'PostController@listPosts');
 Route::GET('listPostsByLike', 'PostController@listPostsByLike');
 Route::GET('listPostsByRating', 'PostController@listPostsByRating');
 Route::GET('listPostsByCreationDate', 'PostController@listPostsByCreationDate');

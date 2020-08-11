@@ -9,7 +9,7 @@
       <ion-icon name="notifications-outline"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab3">
+    <ion-tab-button (click)="verify()">
       <ion-icon name="add-circle-outline"></ion-icon>
     </ion-tab-button>
 
@@ -17,7 +17,7 @@
       <ion-icon name="search"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button (click)="presentPopover($event)">
+    <ion-tab-button (click)="login($event)">
       <ion-icon name="person-circle-outline"></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Routes, RouterModule, Router } from "@angular/router";
 import { PopoverController } from '@ionic/angular';
 import { LoginComponentComponent } from '../login-component/login-component.component';
+import { AuthService } from "../services/auth/auth.service";
 
 @Component({
   selector: 'app-cadastro',
@@ -12,7 +13,7 @@ import { LoginComponentComponent } from '../login-component/login-component.comp
 export class CadastroPage implements OnInit {
   registerForm: FormGroup;
 
-  constructor(public formbuilder: FormBuilder, private router: Router, public popoverController: PopoverController) {
+  constructor(public formbuilder: FormBuilder, private router: Router, public popoverController: PopoverController, public authservice: AuthService) {
     this.registerForm = this.formbuilder.group({
       name: [null,[Validators.required]],
       nickname: [null, [Validators.required]],
@@ -28,9 +29,21 @@ export class CadastroPage implements OnInit {
   }
 
   submitForm(form){
-    console.log(form);
-    console.log(form.value);
-  }
+    form.value.type = 0;
+    console.log("Usuário Cadastrado");
+    this.authservice.register(form.value).subscribe(
+      (res)=> {
+        console.log(res);
+        localStorage.setItem('token', res.success.token);
+        localStorage.setItem('user_name', res.user.name);
+        localStorage.setItem('user_email', res.user.email);
+        this.router.navigate(['cadastro-imagem'])
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+}
 
   async presentPopover(event){
     const popover = await this.popoverController.create({
