@@ -29,10 +29,10 @@ class UserRequest extends FormRequest
         if ($this->isMethod('post')){
             return [
                 'name' => 'required|alpha|string',
-                'nickname' => 'required|unique:Users,nickname|string',
+                'nickname' => 'unique:Users,nickname|string',
                 'email' => 'required|unique:Users,email|email',
                 'password' => 'required|string',            
-                'type' => 'boolean',
+                'type' => 'integer|max:3',
             ];
         }
         if ($this->isMethod('put')){

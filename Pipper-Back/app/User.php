@@ -22,8 +22,7 @@ class User extends Authenticatable
         $this->save();
     }
 
-    public function updateUser(Request $request, $id){
-        $user = User::findOrFail($id);
+    public function updateUser(UserRequest $request){
         if($request->name){
             $this->name = $request->name;
         }
@@ -35,6 +34,9 @@ class User extends Authenticatable
         }
         if($request->password){
             $this->password = $request->password;
+        }
+        if($request->type){
+            $this->type = $request->type;
         }
         $this->save();
     }

@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Support\Facades\Validator;
 use App\Comment;
 use App\Post;
+
+use App\Http\requests\UserRequest;
 class UserController extends Controller
 {
 
@@ -71,8 +73,7 @@ class UserController extends Controller
     }
 
     public function listFollowerPosts($id){
-
-        return response()->json(Post::whereIn('user_id',User::find(1)->followUserFollower()->pluck('users.id'))->get());
+        return response()->json(Post::whereIn('user_id',User::find($id)->followUserFollower()->pluck('users.id'))->get());
 
     }
 

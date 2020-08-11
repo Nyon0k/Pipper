@@ -3,9 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
-class user
-{
+use Auth;
+use App\Comment as CommentModel;
+use App\Post as PostModel;
+use App\User as UserModel;
+class user{
     /**
      * Handle an incoming request.
      *
@@ -16,10 +18,10 @@ class user
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        $comment = Comment::with('user')->where('user_id', $user->id)->get(); //Verifica se o usuário é dono do comentário
-        $post = Post::with('user')->where('user_id', $user->id)-get(); //Verifica se o usuário é o dono do post
-        $user1 = User::where('user_id', $user->id)->get(); //Verifica se os ids dos usuários são iguais
-        $keyModerator = User::where('type', 1)->get(); //Verifica se o usuário é moderador
+        $comment = CommentModel::with('user')->where('user_id', $user->id)->get(); //Verifica se o usuário é dono do comentário
+        $post = PostModel::with('user')->where('user_id', $user->id)->get(); //Verifica se o usuário é o dono do post
+        $user1 = UserModel::where('id', $user->id)->get(); //Verifica se os ids dos usuários são iguais
+        $keyModerator = UserModel::where('type', 1)->get(); //Verifica se o usuário é moderador
         if($keyModerator){
             return $next($request);
         }

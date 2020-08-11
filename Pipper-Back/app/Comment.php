@@ -3,16 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Http\Requests\CommentRequest;
 class Comment extends Model
 {
-    public function createComment(Request $request){
-        $comment->text = $request->text;
-        $comment->date = date('Y/m/d');
-        $comment->save();
+    public function createComment(CommentRequest $request){
+        $this->text = $request->text;
+        $this->save();
     }
 
-    public function updateComment(Request $request, $id){
+    public function updateComment(CommentRequest $request){
         if($request->text){
             $this->text = $request->text;
         }

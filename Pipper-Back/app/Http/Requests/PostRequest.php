@@ -28,21 +28,19 @@ class PostRequest extends FormRequest
     {
         if($this->isMethod('post')){
             return [
-                'title' => 'required|alpha|string',
-                'originalComment' => 'required|string',
-                'like' => 'required|number',
-                'rating' => 'required',
-                'date' => 'required|date',
-                'tags' => 'required|string',
+                'title' => 'alpha|string',
+                'originalComment' => 'string',
+                'like' => 'numeric',
+                'rating' => 'numeric',
+                'tags' => 'string',
             ];
         }
         if($this->isMethod('put')){
             return [
                 'title' => 'string',
                 'originalComment' => 'string',
-                'like' => 'boolean',
+                'like' => 'number',
                 'rating' => 'float',
-                'date' => 'date',
                 'tags' => 'string',
             ];
         }

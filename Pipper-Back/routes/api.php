@@ -24,7 +24,7 @@ Route::GET('showUser/{id}', 'UserController@showUser');
 Route::GET('listUsers', 'UserController@listUsers');
 Route::GET('listFollowerUsers/{id}', 'UserController@listFollowerUsers');
 Route::GET('listFollowerPosts/{id}', 'UserController@listFollowerPosts');
-Route::PUT('updateUser/{id}', 'UserController@updateUser');
+//Route::PUT('updateUser/{id}', 'UserController@updateUser');
 Route::DELETE('deleteUser/{id}', 'UserController@deleteUser');
 Route::POST('makePost/{user_id}/{post_id}', 'UserController@makePost');
 Route::POST('makeComment/{user_id}/{post_id}', 'UserController@makeComment');
@@ -40,7 +40,7 @@ Route::PUT('unfollowUser/{user_id1}/{user_id2}', 'UserController@unfollowUser');
 //Rotas de Post
 //Route::POST('createPost', 'PostController@createPost');
 Route::GET('showPost/{id}', 'PostController@showPost');
-Route::GET('listPosts', 'PostController@listPost');
+Route::GET('listPosts', 'PostController@listPosts');
 Route::GET('listPostsByLike', 'PostController@listPostsByLike');
 Route::GET('listPostsByRating', 'PostController@listPostsByRating');
 Route::GET('listPostsByCreationDate', 'PostController@listPostsByCreationDate');

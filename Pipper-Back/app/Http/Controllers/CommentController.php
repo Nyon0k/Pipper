@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\CommentRequest;
+use App\Http\requests\CommentRequest;
 use App\Comment;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,7 +11,7 @@ class CommentController extends Controller
 {
     public function createComment(CommentRequest $request){
         $comment = new Comment;
-        $comment->createdComment($request);
+        $comment->createComment($request);
         return response()->json($comment);
     }
 
@@ -22,12 +22,12 @@ class CommentController extends Controller
 
     public function listComment(){
         $comment = Comment::all();
-        return response()->json($post);
+        return response()->json($comment);
     }
 
     public function updateComment(CommentRequest $request, $id){
         $comment = Comment::findOrFail($id);
-        $comment = updateComment($request);
+        $comment->updateComment($request);
         return response()->json($comment);
     }
 
