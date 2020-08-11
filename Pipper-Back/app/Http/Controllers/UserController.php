@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 use App\Comment;
 use App\Post;
+
 class UserController extends Controller
 {
 
@@ -71,9 +73,8 @@ class UserController extends Controller
     }
 
     public function listFollowerPosts($id){
-
-        return response()->json(Post::whereIn('user_id',User::find(1)->followUserFollower()->pluck('users.id'))->get());
-
+        return response()->json(Post::whereIn('user_id',User::find($id)->followUserFollower()->pluck('users.id'))->get());
     }
 
+    //fazer metodo de busca de usuario, post
 }

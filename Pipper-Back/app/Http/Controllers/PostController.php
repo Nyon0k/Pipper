@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\PostRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Post;
 use Illuminate\Support\Facades\Validator;
 
@@ -10,7 +11,7 @@ class PostController extends Controller
 {
     public function createPost(PostRequest $request){
         $post = new Post;
-        $post = createPost($request);
+        $post->createPost($request);
         return response()->json($post);
     }
 
@@ -26,7 +27,7 @@ class PostController extends Controller
 
     public function updatePost(PostRequest $request, $id){
         $post = Post::findOrFail($id);
-        $post = updatePost($request);
+        $post->updatePost($request);
         return response()->json($post);
     }
 
@@ -52,15 +53,18 @@ class PostController extends Controller
     }
 
     public function listPostsByLike(){
-        return response()->json(Post::orderBy('like','desc')->get());
+        $like = Post::with('user')->orderBy('like','desc')->get();
+        return response()->json($like);
     }
     
     public function listPostsByRating(){
-        return response()->json(Post::orderBy('rating','desc')->get());
+        $rating = Post::with('user')->orderBy('rating','desc')->get();
+        return response()->json($rating);
     }
 
     public function listPostsByCreationDate(){
-        return response()->json(Post::orderBy('created_at','desc')->get());
+        $creationDate = Post::with('user')->orderBy('created_at','desc')->get();
+        return response()->json($creationDate);
     }
 
     public function like($id){
@@ -73,5 +77,17 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->dislike();
         return response()->json("-1 like");
+    }
+
+    //fazer metodo do post integrado entre user e post (lista) (conferir)
+    public function listPostUser(){
+        $data = Post::with('User')->get();
+        return response()->json($data);
+    }
+
+    //fazer metodo do post integrado entre user,post,comment.user (post) (conferir)
+    public function PostUserComment($id){
+        $data = Post::with('user', 'comments.user')->where('id', $id)->get();
+        return response()->json($data);
     }
 }

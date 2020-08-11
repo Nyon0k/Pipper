@@ -30,10 +30,9 @@ class PostRequest extends FormRequest
             return [
                 'title' => 'required|alpha|string',
                 'originalComment' => 'required|string',
-                'like' => 'required|number',
-                'rating' => 'required',
-                'date' => 'required|date',
-                'tags' => 'required|string',
+                'like' => 'number',
+                'rating' => 'number',
+                'tags' => 'string',
             ];
         }
         if($this->isMethod('put')){
