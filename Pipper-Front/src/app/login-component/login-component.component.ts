@@ -24,8 +24,9 @@ export class LoginComponentComponent implements OnInit {
   login(loginForm) {
       this.authService.login(loginForm.value).subscribe((res) => {
         console.log(res);
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('user_email', res.email);
+        localStorage.setItem('token', res.success.token);
+        localStorage.setItem('user_email', res.success.email);
+        console.log('Estou Logado!')
         this.popoverController.dismiss();
         this.router.navigate(['/tabs/tab1']);
       });

@@ -23,7 +23,7 @@
   <div class="nome"><h4>Fulano (@fulano)</h4></div>
   <div class="tag"><ion-button color="tertiary"><ion-icon name="chevron-back-outline"></ion-icon>tag</ion-button></div>
   </div>
-  <form [formGroup]="registerForm" (ngSubmit) = "submitForm(registerForm)">
+  <form [formGroup]="postForm" (ngSubmit) = "submitForm(postForm)">
     <ion-list>
       <ion-item>
         <ion-label position="floating">Título</ion-label>
@@ -31,10 +31,10 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Descrição</ion-label>
-        <ion-textarea auto-grow="true" type="form" formControlName="form" type="text" maxLength="442"></ion-textarea>
+        <ion-textarea auto-grow="true" type="originalComment" formControlName="originalComment" type="text" maxLength="442"></ion-textarea>
       </ion-item>
     </ion-list>
-    <ion-button class="botao" expand="block" size="Secondary" type="submit" shape="round" [disabled]="registerForm.invalid" color ="success">Continuar</ion-button>
+    <ion-button class="botao" expand="block" size="Secondary" type="submit" shape="round" [disabled]="postForm.invalid" color ="success">Continuar</ion-button>
   </form>
 </ion-card-content>
 </ion-card>

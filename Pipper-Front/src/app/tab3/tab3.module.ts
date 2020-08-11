@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Tab3Page } from './tab3.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { AuthService } from '../services/auth/auth.service';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
 
 import { Tab3PageRoutingModule } from './tab3-routing.module'
 
@@ -16,8 +18,10 @@ import { Tab3PageRoutingModule } from './tab3-routing.module'
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: Tab3Page }]),
     Tab3PageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  declarations: [Tab3Page]
+  declarations: [Tab3Page],
+  providers: [AuthService]
 })
 export class Tab3PageModule {}

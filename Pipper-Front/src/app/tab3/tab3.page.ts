@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Plugins, CameraResultType, CameraSource, Capacitor, FilesystemDirectory } from '@capacitor/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { AuthService } from '../services/auth/auth.service';
+import { Router, Routes, RouterModule } from '@angular/router';
 const { Camera, Filesystem } = Plugins;
 
 @Component({
@@ -11,14 +13,14 @@ const { Camera, Filesystem } = Plugins;
 })
 export class Tab3Page {
   photo: SafeResourceUrl;
-  registerForm: FormGroup;
+  postForm: FormGroup;
 
 
-  constructor(private sanitizer: DomSanitizer, public formbuilder: FormBuilder) {
+  constructor(private sanitizer: DomSanitizer, public formbuilder: FormBuilder, public authservice: AuthService, public router: Router) {
 
-  this.registerForm = this.formbuilder.group({
+  this.postForm = this.formbuilder.group({
     title: [null,[Validators.required]],
-    form: [null, [Validators.required]],
+    originalComment: [null, [Validators.required]],
   });
  }
 
@@ -65,9 +67,17 @@ export class Tab3Page {
     console.log(this.photo);
   }
 
-  submitForm(form){
-    console.log(form);
-    console.log(form.value);
-  }
+  submitForm(postForm){
+    this.authservice.createPost(postForm.value).subscribe(
+      (res)=> {
+        console.log(res);
+        console.log("Post foi criado.");
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    this.router.navigate(['/tabs/tab1'])
+}
 
 }
