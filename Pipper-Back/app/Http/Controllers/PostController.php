@@ -13,8 +13,10 @@ use Auth;
 class PostController extends Controller
 {
     public function createPost(PostRequest $request){
+        $user = Auth::user();
+        $id = $user->id;
         $post = new Post;
-        $post->createPost($request);
+        $post->createPost($request, $id);
         return response()->json($post);
     }
 

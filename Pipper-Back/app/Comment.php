@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 
 class Comment extends Model
 {
-    public function createComment(Request $request){
+    public function createComment(Request $request, $id){
         $this->text = $request->text;
-        $this->user()->save(User::findOrFail($request->user_id));
+        $this->user_id = $id;
         $this->save();
     }
 

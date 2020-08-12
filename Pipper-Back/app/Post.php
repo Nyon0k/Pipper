@@ -9,13 +9,13 @@ use Illuminate\Http\Request;
 
 class Post extends Model
 {
-    public function createPost(){
+    public function createPost(Request $request, $id){
         $this->title = $request->title;
         $this->originalComment = $request->originalComment;
         $this->like = $request->like;
         $this->rating = $request->rating;
         $this->tags = $request->tags;
-        $this->user()->save(User::findOrFail($request->user_id));
+        $this->user_id = $id;
         $this->save();
     }
 
