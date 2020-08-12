@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use App\User;
+use App\Comment;
 use App\Post;
 use Illuminate\Support\Facades\Validator;
 use Auth;
@@ -10,8 +13,10 @@ use Auth;
 class PostController extends Controller
 {
     public function createPost(PostRequest $request){
+        $user = Auth::user();
+        $id = $user->id;
         $post = new Post;
-        $post->createPost($request);
+        $post->createPost($request, $id);
         return response()->json($post);
     }
 
@@ -25,10 +30,14 @@ class PostController extends Controller
         return response()->json($post);
     }
 
-    public function updatePost(PostRequest $request, $id){
+    public function updatePost(Request $request, $id){
+        $user = Auth::user();
         $post = Post::findOrFail($id);
-        $post->updatePost($request);
-        return response()->json($post);
+        if($user->id == $post->user_id){
+            $post->updatePost($request);
+            return response()->json($post);
+        }
+        return response()->json('Este post não pode ser auterado por este usuário');
     }
 
     public function deletePost($id){
@@ -53,15 +62,18 @@ class PostController extends Controller
     }
 
     public function listPostsByLike(){
-        return response()->json(Post::orderBy('like','desc')->get());
+        $like = Post::with('user')->orderBy('like','desc')->get();
+        return response()->json($like);
     }
     
     public function listPostsByRating(){
-        return response()->json(Post::orderBy('rating','desc')->get());
+        $rating = Post::with('user')->orderBy('rating','desc')->get();
+        return response()->json($rating);
     }
 
     public function listPostsByCreationDate(){
-        return response()->json(Post::orderBy('created_at','desc')->get());
+        $creationDate = Post::with('user')->orderBy('created_at','desc')->get();
+        return response()->json($creationDate);
     }
 
     public function like($id){
@@ -74,5 +86,17 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->dislike();
         return response()->json("-1 like");
+    }
+
+    //fazer metodo do post integrado entre user e post (lista) (conferir)
+    public function listPostUser(){
+        $data = Post::with('User')->get();
+        return response()->json($data);
+    }
+
+    //fazer metodo do post integrado entre user,post,comment.user (post) (conferir)
+    public function PostUserComment($id){
+        $data = Post::with('user', 'comments.user')->where('id', $id)->get();
+        return response()->json($data);
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use App\Http\Requests\UserRequest;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 
 class User extends Authenticatable
@@ -36,7 +37,7 @@ class User extends Authenticatable
         if($request->password){
             $this->password = bcrypt($request->password);
         }
-        if($request->type){
+        if($request->type){ 
             $this->type = $request->type;
         }
         $this->save();

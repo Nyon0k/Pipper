@@ -3,15 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Requests\CommentRequest;
+use App\http\Request\CommentRequest;
+use App\Http\Controllers\CommentController;
+use App\Comment;
+use Illuminate\Http\Request;
+
 class Comment extends Model
 {
-    public function createComment(CommentRequest $request){
+    public function createComment(Request $request, $id){
         $this->text = $request->text;
+        $this->user_id = $id;
         $this->save();
     }
 
-    public function updateComment(CommentRequest $request){
+    public function updateComment(Request $request){
         if($request->text){
             $this->text = $request->text;
         }

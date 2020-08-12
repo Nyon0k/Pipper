@@ -3,18 +3,22 @@
 namespace App;
 use App\Http\Requests\PostRequest;
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Controllers\PostController;
+use Illuminate\Http\Request;
+
 class Post extends Model
 {
-    public function createPost(PostRequest $request){
+    public function createPost(Request $request, $id){
         $this->title = $request->title;
         $this->originalComment = $request->originalComment;
         $this->like = $request->like;
         $this->rating = $request->rating;
         $this->tags = $request->tags;
+        $this->user_id = $id;
         $this->save();
     }
 
-    public function updatePost(PostRequest $request){
+    public function updatePost(Request $request){
         if($request->title){
             $this->title = $request->title;
         }
