@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule, HttpClient} from '@angular/common/http';
 import { IonicModule } from '@ionic/angular';
-
 import { EditarPerfilPageRoutingModule } from './editar-perfil-routing.module';
 
 import { EditarPerfilPage } from './editar-perfil.page';
@@ -14,7 +13,8 @@ import { EditarPerfilPage } from './editar-perfil.page';
     FormsModule,
     IonicModule,
     EditarPerfilPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [EditarPerfilPage]
 })

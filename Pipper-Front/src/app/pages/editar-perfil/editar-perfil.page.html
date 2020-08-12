@@ -36,7 +36,7 @@
     <ion-card-content>
       <div class="h4change"><h4>Altere suas informações</h4></div>
       <div class="forms">
-        <form [formGroup]="registerForm" (ngSubmit) = "submitForm(registerForm)">
+        <form [formGroup]="registerForm" (ngSubmit) = "editarPerfil()">
           <ion-list class="ionList">
             <ion-label>Nome</ion-label>
             <ion-item class="ionItem">
@@ -55,13 +55,9 @@
               <ion-item class="ionItem">
                 <ion-input type="password" placeholder="******" formControlName="password"></ion-input>
               </ion-item>
-              <ion-label>Confirmar senha</ion-label>
-              <ion-item class="ionItem">
-                <ion-input type="confirm_password" placeholder="******" formControlName="confirm_password"></ion-input>
-              </ion-item>
             </ion-list>
             <div class="login">
-              <ion-button class="botao" (click)="presentToast()" expand="block" size="Secondary" type="submit" shape="round" color ="success">Salvar</ion-button>
+              <ion-button class="botao" expand="block" size="Secondary" type="submit" shape="round" color ="success">Salvar</ion-button>
             </div>
             </form>
         </div>
