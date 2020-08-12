@@ -25,7 +25,8 @@ export class UserPopoverComponent implements OnInit {
     });
   }
 
-  close(){
+  perfil(){
+    this.router.navigate(['/profile'])
     this.popoverController.dismiss()
   }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Validator;
@@ -26,8 +28,8 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function updateUser(UserRequest $request, $id){
-        $user = User::findOrFail($id);
+    public function updateUser(Request $request){
+        $user = Auth::user();
         $user->updateUser($request);
         return response()->json($user);
     }

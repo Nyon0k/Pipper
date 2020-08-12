@@ -68,7 +68,7 @@ Route::POST('register', 'API\PassportController@register');
 Route::POST('login', 'API\PassportController@login');
 Route::group(['middleware'=>'auth:api'], function(){
     //Rotas de User autenticado
-    Route::PUT('updateUser/{id}', 'UserController@updateUser')->middleware('user');
+    Route::PUT('updateUser/{id}', 'UserController@updateUser');
     Route::DELETE('deleteUser/{id}', 'UserController@deleteUser')->middleware('user');
     Route::POST('makePost/{user_id}/{post_id}', 'UserController@makePost');
     Route::POST('makeComment/{user_id}/{post_id}', 'UserController@makeComment');

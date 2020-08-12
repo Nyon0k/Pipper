@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 class Button {
   follow: string;
@@ -14,7 +15,7 @@ export class ProfilePage implements OnInit {
 
   followButton: Button;
 
-  constructor() { 
+  constructor(public router: Router) { 
 
   }
 
@@ -36,4 +37,8 @@ export class ProfilePage implements OnInit {
     console.log(this.followButton.chance)
   }
   
+  editar(){
+    this.router.navigate(['/editar-perfil']);
+  }
+
 }
