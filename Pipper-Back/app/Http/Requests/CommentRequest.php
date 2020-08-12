@@ -29,13 +29,11 @@ class CommentRequest extends FormRequest
         if ($this->isMethod('post')){
             return [
                 'text' => 'required|string',
-                'date' => 'date',
             ];
         }
         if ($this->isMethod('put')){
             return [
                 'text' => 'string',
-                'date' => 'date',
             ];
         }
     }

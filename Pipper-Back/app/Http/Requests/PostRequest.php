@@ -28,10 +28,10 @@ class PostRequest extends FormRequest
     {
         if($this->isMethod('post')){
             return [
-                'title' => 'required|alpha|string',
+                'title' => 'required|string',
                 'originalComment' => 'required|string',
-                'like' => 'number',
-                'rating' => 'number',
+                'like' => 'integer',
+                'rating' => 'numeric',
                 'tags' => 'string',
             ];
         }
@@ -39,8 +39,8 @@ class PostRequest extends FormRequest
             return [
                 'title' => 'string',
                 'originalComment' => 'string',
-                'like' => 'boolean',
-                'rating' => 'float',
+                'like' => 'integer',
+                'rating' => 'numeric',
                 'tags' => 'string',
             ];
         }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Post;
 use Illuminate\Support\Facades\Validator;
+use Auth;
 
 class PostController extends Controller
 {
@@ -26,7 +27,7 @@ class PostController extends Controller
 
     public function updatePost(PostRequest $request, $id){
         $post = Post::findOrFail($id);
-        $post = updatePost($request);
+        $post->updatePost($request);
         return response()->json($post);
     }
 

@@ -3,7 +3,6 @@
 namespace App;
 use App\Http\Requests\PostRequest;
 use Illuminate\Database\Eloquent\Model;
-
 class Post extends Model
 {
     public function createPost(PostRequest $request){
@@ -15,7 +14,7 @@ class Post extends Model
         $this->save();
     }
 
-    public function updatePost(Request $request, $id){
+    public function updatePost(PostRequest $request){
         if($request->title){
             $this->title = $request->title;
         }
