@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Validator;
 use App\Comment;
 use App\Post;
-
+use Auth; 
 use App\Http\requests\UserRequest;
 class UserController extends Controller
 {
@@ -28,8 +28,8 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function updateUser(UserRequest $request, $id){
-        $user = User::findOrFail($id);
+    public function updateUser(Request $request){
+        $user = Auth::user();
         $user->updateUser($request);
         return response()->json($user);
     }
