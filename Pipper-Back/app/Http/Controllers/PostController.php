@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use App\User;
+use App\Comment;
 use App\Post;
 use Illuminate\Support\Facades\Validator;
+use Auth;
 
 class PostController extends Controller
 {
@@ -25,10 +28,14 @@ class PostController extends Controller
         return response()->json($post);
     }
 
-    public function updatePost(PostRequest $request, $id){
+    public function updatePost(Request $request, $id){
+        $user = Auth::user();
         $post = Post::findOrFail($id);
-        $post->updatePost($request);
-        return response()->json($post);
+        if($user->id == $post->user_id){
+            $post->updatePost($request);
+            return response()->json($post);
+        }
+        return response()->json('Este post não pode ser auterado por este usuário');
     }
 
     public function deletePost($id){

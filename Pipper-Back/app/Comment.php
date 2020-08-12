@@ -3,7 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\http\Request\PostRequest;
+use App\http\Request\CommentRequest;
+use App\Http\Controllers\CommentController;
+use App\Comment;
+use Illuminate\Http\Request;
 
 class Comment extends Model
 {
@@ -13,7 +16,7 @@ class Comment extends Model
         $this->save();
     }
 
-    public function updateComment(Request $request, $id){
+    public function updateComment(Request $request){
         if($request->text){
             $this->text = $request->text;
         }

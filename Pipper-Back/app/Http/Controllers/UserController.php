@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Validator;
 use App\Comment;
 use App\Post;
+use Auth;
 
 class UserController extends Controller
 {
@@ -28,8 +29,8 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function updateUser(UserRequest $request, $id){
-        $user = User::findOrFail($id);
+    public function updateUser(Request $request){
+        $user = Auth::user();
         $user->updateUser($request);
         return response()->json($user);
     }
@@ -76,5 +77,9 @@ class UserController extends Controller
         return response()->json(Post::whereIn('user_id',User::find($id)->followUserFollower()->pluck('users.id'))->get());
     }
 
+    public function search(Request $request){
+        $user = User::with('name', $request);
+        $post = Post::with('');
+    }
     //fazer metodo de busca de usuario, post
 }

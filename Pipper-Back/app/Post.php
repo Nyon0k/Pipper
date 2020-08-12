@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\http\Request\PostRequest;
+use App\Http\Controllers\PostController;
+use Illuminate\Http\Request;
 
 class Post extends Model
 {
@@ -17,7 +19,7 @@ class Post extends Model
         $this->save();
     }
 
-    public function updatePost(Request $request, $id){
+    public function updatePost(Request $request){
         if($request->title){
             $this->title = $request->title;
         }

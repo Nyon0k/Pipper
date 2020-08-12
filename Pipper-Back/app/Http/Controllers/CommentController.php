@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\CommentRequest;
+use App\http\Requests\CommentRequest;
+use App\User;
 use App\Comment;
+use App\Post;
 use Illuminate\Support\Facades\Validator;
-
+use Auth;
 
 class CommentController extends Controller
 {
@@ -26,10 +28,14 @@ class CommentController extends Controller
         return response()->json($post);
     }
 
-    public function updateComment(CommentRequest $request, $id){
-        $comment = Comment::findOrFail($id);
-        $comment->updateComment($request);
-        return response()->json($comment);
+    public function updateComment(Request $request, $id){
+        $user = Auth::user();
+        $comment = Post::findOrFail($id);
+        if($user->id == $comment->user_id){
+            $comment->updatePost($request);
+            return response()->json($comment);
+        }
+        return response()->json('Este comentário não pode ser auterado por este usuário');
     }
 
     public function deleteComment($id){
