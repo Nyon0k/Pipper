@@ -19,7 +19,7 @@ export class EditarPerfilPage implements OnInit {
     public toastController: ToastController,
     private sanitizer: DomSanitizer) { 
     this.registerForm = this.formbuilder.group({
-      image: [null, [Validators.required]],
+      image: [null],
       name: [null,[Validators.required]],
       nickname: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],

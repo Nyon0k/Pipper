@@ -4,57 +4,110 @@
     --color: #50D890;
 }
 
-ion-content {
-    
+.profileContent {
+    display: flex;
 }
 
-ion-label {
-    --color: #50D890;
-}
-ion-header{
-    background-color: #272727;
-    color: #E2D25D;
-    padding: 3%;
+.profileMask {
+    width: 30%;
+    display: inline-block;
+    height: auto;
+    border-radius: 50px;
+    overflow: hidden;
+    align-self: center;
+
 }
 
-ion-icon{
-    margin-top: 2%;
+.profileMask img {
+    width: 100%;
+    border-radius: 50%;
+    height: auto;
+    object-fit: cover;
+    background-size: cover;
+}
+
+.userNumbers {
+    display: flex;
+    justify-content: space-between;
+    height: 70%;
+}
+
+.userInfo {
+    width: 100%;
     margin-left: 2%;
 }
-ion-input{
-    font-family: 'Roboto';
-    color: #EFFFFB;
+
+.hr {
+    background-color: #C4FB6D;
+    height: 0.1px;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
-.imagem{
-    background-color: #272727;
+
+.userPosts, .userFollowing, .userFollowers {
+    width: 100%;
+    align-self: center;
+}
+
+.number, .numberText {
     display: flex;
     justify-content: center;
-    padding-top: 5%;
 }
-img{
-    background-color: #272727;
-    height: auto;
-    width: 15%;
+
+h2 {
+    font-size: 110%;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 0%;
+    margin-bottom: 2%;
+    color: #FFE9E9;
 }
-.login{
+
+.leaf {
+    color: #C4FB6D;
+    margin-left: 5%;
+}
+
+.names {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2em;
+    margin-left: 5%;
+    width: 100%;
 }
-.entrar{
-    color: #C4FB6D;
-    margin-top: 7%;
-    text-decoration: underline;
+
+.nick {
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    width: 100%;
+    -webkit-text-stroke: 0.5px #50D890;
+}
+
+h3 {
+    color: #50D890;
+    font-size: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    -webkit-text-stroke: 0.5px #50D890;
+}
+
+h5 {
+    color: #FFE9E9;
+    margin-left: 5%;
+}
+
+h6 {
+    font-size: 80%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    color: silver;
+    font-family: 'Roboto', sans-serif;
+}
+
+.logout, .myProfile {
     display: flex;
-    outline: none;
+    align-content: center;
+    align-items: center;
 }
-.botao{
-    margin-top: 8%;
-    width: 50%;
-    color: #000000;
-    font-size: 1em;
-    -webkit-text-stroke: 0.5px (black);
-    
+
+.logout {
+    margin-top: 10%;
 }
