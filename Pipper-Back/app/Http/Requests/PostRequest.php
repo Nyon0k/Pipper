@@ -30,7 +30,7 @@ class PostRequest extends FormRequest
             return [
                 'title' => 'alpha|string',
                 'originalComment' => 'string',
-                'like' => 'numeric',
+                'like' => 'integer',
                 'rating' => 'numeric',
                 'tags' => 'string',
             ];

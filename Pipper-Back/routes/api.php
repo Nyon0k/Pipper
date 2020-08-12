@@ -30,12 +30,8 @@ Route::POST('makePost/{user_id}/{post_id}', 'UserController@makePost');
 Route::POST('makeComment/{user_id}/{post_id}', 'UserController@makeComment');
 Route::PUT('followUser/{user_id1}/{user_id2}', 'UserController@followUser');
 Route::PUT('unfollowUser/{user_id1}/{user_id2}', 'UserController@unfollowUser');
-//Route::PUT('updateUser/{id}', 'UserController@updateUser');
-//Route::DELETE('deleteUser/{id}', 'UserController@deleteUser');
-//Route::POST('makePost/{user_id}/{post_id}', 'UserController@makePost');
-//Route::POST('makeComment/{user_id}/{post_id}', 'UserController@makeComment');
-//Route::PUT('followUser/{user_id1}/{user_id2}', 'UserController@followUser');
-//Route::PUT('unfollowUser/{user_id1}/{user_id2}', 'UserController@unfollowUser');
+
+
 
 //Rotas de Post
 //Route::POST('createPost', 'PostController@createPost');

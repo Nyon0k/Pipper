@@ -12,7 +12,7 @@ class Post extends Model
         $this->like = $request->like;
         $this->rating = $request->rating;
         $this->tags = $request->tags;
-        //$this->user()->save(User::findOrFail($request->user_id));
+
         $this->save();
     }
 
