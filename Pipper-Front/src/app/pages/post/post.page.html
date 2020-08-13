@@ -19,11 +19,11 @@
 
         <div class="userPart"> <!--row-->
           <div class="userMask">
-            <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg" routerLink="/profile">
+            <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg" (click)="redirectUser()">
           </div>
           <div class="nameAndTime"> <!--collumn-->
             <div class="userNameAndNickname">
-              <h3>Fulano (@fulano)</h3>
+              <h3>{{user}}</h3>
             </div>
             <div class="timePart"><h4>Hoje às 10h30</h4></div>
           </div>
@@ -35,41 +35,46 @@
         </div>
       </div>
       <div class="postTitle">
-        <h2>Lorem Ipsum</h2>
+        <h2>{{post.title}}</h2>
       </div>
       <div class="leftRightAndText">
         <div class="quoteIconLeft">
           <img src="../assets/quote.png">
         </div>
-        <ion-subtitle>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                      when an unknown printer took a galley of type and scrambled it to make a type specimen book.</ion-subtitle>
+        <ion-card-subtitle>{{post.originalComment}}</ion-card-subtitle>
         <div class="quoteIconRight">
          <img src="../assets/quote2.png">
         </div>
       </div>
 
       <div class="interactionButtons">
-        <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="thumbs-up-outline"></ion-icon>10</ion-button>
-        <ion-button class="interactionButton" size="small" mode="md" (click)="show()"><ion-icon name="chatbubble-outline"></ion-icon>6</ion-button>
+        <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="thumbs-up-outline"></ion-icon>{{post.likes}}</ion-button>
+        <ion-button class="interactionButton" size="small" mode="md" (click)="listComments()"><ion-icon name="chatbubble-outline"></ion-icon>6</ion-button>
         <ion-button class="interactionButton" size="small" mode="md" (click)="presentCopy()"><ion-icon name="arrow-redo-outline"></ion-icon><span style="text-transform:none!important;">Compartilhe</span></ion-button>
       </div>
     </ion-card-content>
   </ion-card>
 
   <ion-card><ion-card-content>
+    <form [formGroup]="commentForm" (ngSubmit)="sendComment()">
     <div class="inputAndSubmit">
-      <ion-input position="floating" placeholder="Deixe sua mensagem" class="input" mode="md"></ion-input>
-      <ion-button class="submitButton" mode="ios" (click)="presentToast()">
+      <ion-input position="floating" placeholder="Deixe sua mensagem" class="input" mode="md" type="text" formControlName="text"></ion-input>
+      <ion-button class="submitButton" mode="ios" type="submit">
         <ion-icon name="paper-plane-outline" size="large" class="submitIcon"></ion-icon>
       </ion-button>
     </div>
+  </form>
   </ion-card-content></ion-card>
 
   <div class="commentPart" *ngIf="showComment">
     <ion-card>
       <ion-card-content>
-        <app-comment></app-comment>
+        <app-comment
+        *ngFor="let comment of comments"
+        [comments]="comment"
+
+
+        ></app-comment>
       </ion-card-content>
     </ion-card>
   </div>

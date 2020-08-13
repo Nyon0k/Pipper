@@ -15,7 +15,6 @@ export class EditarPerfilPage implements OnInit {
 
   photo: SafeResourceUrl;
   registerForm: FormGroup;
-  id = localStorage.getItem('id_user');
 
   constructor(
     public formbuilder: FormBuilder,
@@ -57,7 +56,7 @@ export class EditarPerfilPage implements OnInit {
   }
 
   editarPerfil(){
-    this.userService.editUser(this.id, this.registerForm.value).subscribe((res) =>{
+    this.userService.editUser(this.registerForm.value).subscribe((res) =>{
       console.log(res)
       console.log('perfil editado');
       this.presentToast();

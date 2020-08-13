@@ -12,11 +12,11 @@ use Auth;
 
 class CommentController extends Controller
 {
-    public function createComment(CommentRequest $request){
+    public function createComment(CommentRequest $request, $post_id){
         $user = Auth::user();
         $id = $user->id;
         $comment = new Comment;
-        $comment->createComment($request, $id);
+        $comment->createComment($request, $id, $post_id);
         return response()->json($comment);
     }
 

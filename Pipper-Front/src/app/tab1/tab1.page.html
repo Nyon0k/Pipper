@@ -14,6 +14,7 @@
     <app-home-post
      *ngFor="let post of posts"
      [post]="post"
+     (click)='redirectPost(post.id)'
      
      
      >
@@ -25,7 +26,14 @@ teste seguindo
   </div>
 
   <div *ngIf="showTopo">
-teste topo
+    <app-home-post
+     *ngFor="let post of posts"
+     [post]="post"
+     (click)='redirectPost(post.id)'
+     
+     
+     >
+    </app-home-post>
   </div>
 </ion-content>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HomePostComponent } from '../components/home-post/home-post.component';
 import { PostService} from '../services/post/post.service';
 import { Router } from '@angular/router';
@@ -14,19 +14,31 @@ export class Tab1Page implements OnInit {
   showTopo = false;
   showNovo = true;
   
-  constructor(public postService: PostService) {}
+  constructor(public postService: PostService, public router: Router) {}
 
   ngOnInit() {
-    this.getlistPost();
+    this.getlistPostNovo();
+    this.getlistPostRating();
   }
 
-  getlistPost(){
-    this.postService.listPosts().subscribe ((res) =>{
+  getlistPostNovo(){
+    this.postService.listPostsNovo().subscribe ((res) =>{
       this.posts = res;
       console.log(res);
     })
   }
 
+  getlistPostRating(){
+    this.postService.listPoststTopo().subscribe ((res) =>{
+      this.posts = res;
+      console.log(res);
+    })
+  }
+
+  public redirectPost(post) {
+    this.router.navigate(['/post', {'postId': post}]);
+  }
+  
   showFollow() {
     this.showSeguindo = true;
     this.showTopo = false;

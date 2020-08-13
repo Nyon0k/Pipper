@@ -6,11 +6,24 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PostService {
-  apiURL: string = 'http://localhost:8000/api/';
+  apiUrl: string = 'http://localhost:8000/api/';
+
+
 
   constructor(public http:HttpClient) { }
 
-  listPosts(): Observable<any>{
-    return this.http.get(this.apiURL + 'listPosts');
+  httpHeaders: any = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  }
+
+  listPostsNovo(): Observable<any>{
+    return this.http.get(this.apiUrl + 'listPostsByCreationDate');
+  }
+
+  listPoststTopo(): Observable<any>{
+    return this.http.get(this.apiUrl + 'listPostsByRating');
   }
 }

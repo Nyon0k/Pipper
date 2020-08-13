@@ -18,8 +18,16 @@ export class UserService {
   constructor( public http: HttpClient ) { }
 
 
-  public editUser(id,form): Observable<any>{
+  public editUser(form): Observable<any>{
     this.httpHeaders['headers']["Authorization"] = 'Bearer ' + localStorage.getItem('token');
-    return this.http.put(this.apiUrl + 'updateUser/' + id, form, this.httpHeaders);
+    return this.http.put(this.apiUrl + 'updateUser/', form, this.httpHeaders);
+  }
+
+  public showUser(id): Observable<any>{
+    return this.http.get(this.apiUrl + 'showUser/' + id);
+  }
+
+  public listPostUser(id){
+    return this.http.get(this.apiUrl + 'listPostsByAUser/' + id);
   }
 }
