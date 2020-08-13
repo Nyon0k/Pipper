@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Comment;
 use App\Post;
 
+use Illuminate\Support\Facades\Storage;
+
 
 class UserController extends Controller
 {

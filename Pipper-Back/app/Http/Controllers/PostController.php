@@ -9,6 +9,7 @@ use App\Comment;
 use App\Post;
 use Illuminate\Support\Facades\Validator;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -41,6 +42,11 @@ class PostController extends Controller
     }
 
     public function deletePost($id){
+        $post = Post::findOrFail($id);
+        if($post->photo){
+            
+            Storage::delete($post->photo);
+        }
         Post::destroy($id);
         return response()->json(['Post deletado!']);
     }

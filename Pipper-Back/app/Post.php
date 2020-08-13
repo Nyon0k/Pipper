@@ -5,6 +5,7 @@ use App\Http\Requests\PostRequest;
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
@@ -15,6 +16,18 @@ class Post extends Model
         $this->rating = $request->rating;
         $this->tags = $request->tags;
         $this->user_id = $id;
+
+        if(!Storage::exists('localPhotos/products/')){
+            Storage::makeDirectory('localPhotos/products/',0775,true);
+        }
+        if($request->photo){
+            $image = base64_decode($request->photo);
+           $filename = uniqid();
+           $path = 'localPhotos/products/'.$filename;
+           file_put_contents(storage_path('app/'.$path),$image);
+           $this->photo=$path; 
+        }
+
         $this->save();
     }
 
@@ -24,6 +37,14 @@ class Post extends Model
         }
         if($request->originalComment){
             $this->originalComment = $request->originalComment;
+        }
+        if($request->photo){
+            Storage::delete($this->photo);
+            $image = base64_decode($request->photo);
+           $filename = uniqid();
+           $path = 'localPhotos/products/'.$filename;
+           file_put_contents(storage_path('app/'.$path),$image);
+           $this->photo=$path;
         }
         $this->save();
     }
