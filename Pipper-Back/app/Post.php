@@ -11,7 +11,7 @@ class Post extends Model
 {
     public function createPost(Request $request, $id){
         $this->title = $request->title;
-        $this->originalComment = $request->originalComment;
+        $this->text = $request->text;
         $this->like = $request->like;
         $this->rating = $request->rating;
         $this->tags = $request->tags;
@@ -35,8 +35,8 @@ class Post extends Model
         if($request->title){
             $this->title = $request->title;
         }
-        if($request->originalComment){
-            $this->originalComment = $request->originalComment;
+        if($request->text){
+            $this->text = $request->text;
         }
         if($request->photo){
             Storage::delete($this->photo);
