@@ -7,7 +7,7 @@
 }
 
 .imgAndTags {
-    width: 100%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -20,7 +20,7 @@
 
 .imgPost {
     width: 100%;
-    height: auto;
+    height: 50%;
 }
 
 .imgMask {
@@ -41,13 +41,17 @@
 }
 
 .tagsPost {
+    display: flex;
+    width: 100%;
+    justify-content: center;
     align-self: center;
-}
+}   
 
 .textUserAndButtons {
+    width: 65%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .photoAndUser {
@@ -78,6 +82,7 @@ ion-button {
 }
 
 .button {
+    width: 100%;
     --background: #C4FB6D;
     color: black;
 }
@@ -95,11 +100,19 @@ h4 {
     margin-left: 5%;
 }
 
+h3 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 h6 {
     margin-left: 5%;
 }
 
 .text {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 5%;
 }
 
@@ -121,10 +134,16 @@ ion-card {
 }
 
 @media screen and (max-width: 350px) {
+    .textUserAndButtons {
+        align-self: center;
+        width: 100%;
+    }
     .homePost {
         flex-direction: column;
+        align-items: center;
     }
     .imgAndTags {
+        width: 100%;
         margin-right: 0%;
     }
     .tagsPost {

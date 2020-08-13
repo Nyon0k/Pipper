@@ -48,18 +48,22 @@
          <img src="../assets/quote2.png">
         </div>
       </div>
-
-      <div class="interactionButtons">
-        <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="thumbs-up-outline"></ion-icon>10</ion-button>
-        <ion-button class="interactionButton" size="small" mode="md" (click)="show()"><ion-icon name="chatbubble-outline"></ion-icon>6</ion-button>
-        <ion-button class="interactionButton" size="small" mode="md" (click)="presentCopy()"><ion-icon name="arrow-redo-outline"></ion-icon><span style="text-transform:none!important;">Compartilhe</span></ion-button>
+      <div class="intAndTrash">
+        <div class="interactionButtons">
+          <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="thumbs-up-outline"></ion-icon>10</ion-button>
+          <ion-button class="interactionButton" size="small" mode="md" (click)="show()"><ion-icon name="chatbubble-outline"></ion-icon>6</ion-button>
+          <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="star-outline"></ion-icon><span style="text-transform:none!important;">4.5</span></ion-button>
+        </div>
+        <div class="trash">
+          <ion-button class="interactionButton" size="small" mode="md" (click)="presentAlert()"><ion-icon name="trash-bin-outline"></ion-icon></ion-button>
+        </div>
       </div>
     </ion-card-content>
   </ion-card>
 
   <ion-card><ion-card-content>
     <div class="inputAndSubmit">
-      <ion-input position="floating" placeholder="Deixe sua mensagem" class="input" mode="md"></ion-input>
+      <ion-input position="floating" placeholder="Deixe sua mensagem" class="input" mode="md" maxlength="240"></ion-input>
       <ion-button class="submitButton" mode="ios" (click)="presentToast()">
         <ion-icon name="paper-plane-outline" size="large" class="submitIcon"></ion-icon>
       </ion-button>

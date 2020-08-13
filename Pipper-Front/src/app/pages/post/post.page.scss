@@ -94,7 +94,12 @@ ion-button {
 
 .buttonTag, .buttonFollow {
     width: 45%;
-}   
+}
+
+.intAndTrash {
+    display: flex;
+    justify-content: space-between;
+}
 
 h2 {
     margin-top: 2%;
@@ -131,10 +136,16 @@ ion-subtitle {
     font-size: 85%;
     font-style: oblique;
     text-align: justify;
+    //word-wrap: break-word;
+    word-break: break-all;
 }
 
 ion-icon {
     margin-right: 5%;
+}
+
+.trash {
+    margin-top: 2%;
 }
 
 .interactionButtons {
@@ -191,6 +202,7 @@ ion-icon {
 .input {
     background-color: #FFE9E9;
     border-radius: 30px;
+    color: #272727;
     ::placeholder {
         margin-left: 30%;
     }
