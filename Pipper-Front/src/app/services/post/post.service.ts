@@ -26,4 +26,8 @@ export class PostService {
   listPoststTopo(): Observable<any>{
     return this.http.get(this.apiUrl + 'listPostsByRating');
   }
+
+  listPostsSeguindo(user_id): Observable<any>{
+    return this.http.get(this.apiUrl + 'listFollowerPosts/' + user_id);
+  }
 }

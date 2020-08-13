@@ -8,14 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit {
-  public posts = []
+  public posts1 = []
+  public posts2 = []
+  public posts3 = []
 
   showSeguindo = false;
   showTopo = false;
   showNovo = true;
   
   constructor(public postService: PostService, public router: Router) {}
-
+  user_id = localStorage.getItem('id_user');
   ngOnInit() {
     this.getlistPostNovo();
     this.getlistPostRating();
@@ -23,14 +25,21 @@ export class Tab1Page implements OnInit {
 
   getlistPostNovo(){
     this.postService.listPostsNovo().subscribe ((res) =>{
-      this.posts = res;
+      this.posts1 = res;
       console.log(res);
     })
   }
 
   getlistPostRating(){
     this.postService.listPoststTopo().subscribe ((res) =>{
-      this.posts = res;
+      this.posts2 = res;
+      console.log(res);
+    })
+  }
+
+  getlistPostFollow(){
+    this.postService.listPostsSeguindo(this.user_id).subscribe((res)=>{
+      this.posts3 = res;
       console.log(res);
     })
   }

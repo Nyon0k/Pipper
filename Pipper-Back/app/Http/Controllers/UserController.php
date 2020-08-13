@@ -57,6 +57,7 @@ class UserController extends Controller
     }
 
     public function followUser($userFollower, $userFollowed){
+        $user = Auth::user();
         $user1 = User::findOrFail($userFollower);
         $user2 = User::findOrFail($userFollowed);
         $user1->followUserFollower()->attach($user2);
@@ -64,6 +65,7 @@ class UserController extends Controller
     }
 
     public function unfollowUser($userFollower, $userFollowed){
+        $user = Auth::user();
         $user1 = User::findOrFail($userFollower);
         $user2 = User::findOrFail($userFollowed);
         $user1->followUserFollower()->detach($user2);

@@ -15,7 +15,7 @@ export class EditarPerfilPage implements OnInit {
 
   photo: SafeResourceUrl;
   registerForm: FormGroup;
-
+  user_id;
   constructor(
     public formbuilder: FormBuilder,
     public toastController: ToastController,
@@ -29,6 +29,8 @@ export class EditarPerfilPage implements OnInit {
       email: [null, [Validators.email]],
       password: [null, [Validators.minLength(6)]],
     })
+
+    this.user_id = Number(localStorage.getItem('id_user'));
   }
 
   async takePicture(){
@@ -60,7 +62,7 @@ export class EditarPerfilPage implements OnInit {
       console.log(res)
       console.log('perfil editado');
       this.presentToast();
-      this.router.navigate(['/profile']);
+      this.router.navigate(['/profile', {'userId': this.user_id}]);
 
     });
   }

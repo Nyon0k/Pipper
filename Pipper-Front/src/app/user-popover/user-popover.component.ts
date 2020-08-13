@@ -9,8 +9,13 @@ import { Routes, RouterModule, Router } from "@angular/router";
   styleUrls: ['./user-popover.component.scss'],
 })
 export class UserPopoverComponent implements OnInit {
-  constructor(public popoverController: PopoverController, public authService: AuthService, public router: Router) { }
+  user_id;
 
+  constructor(public popoverController: PopoverController, public authService: AuthService, public router: Router) {
+    this.user_id = Number(localStorage.getItem('id_user'));
+
+   }
+  
   ngOnInit() {}
 
 
@@ -26,7 +31,7 @@ export class UserPopoverComponent implements OnInit {
   }
 
   perfil(){
-    this.router.navigate(['/profile'])
+    this.router.navigate(['/profile', {'userId': this.user_id}]);
     this.popoverController.dismiss()
   }
 }

@@ -17,6 +17,9 @@ export class ProfilePage implements OnInit {
   user: {name: 'text',
          nickname: 'text'};
   user_id;
+  user_id_check = Number(localStorage.getItem('id_user'));
+  meuPerfil = true;
+  outroPerfil = false;
   posts;
   post_id;
   followButton: Button;
@@ -32,15 +35,18 @@ export class ProfilePage implements OnInit {
     }
     this.listPostUser();
     this.showUserInfo();
+    this.check();
   }
 
   changeFollow() {
     this.followButton.chance = !this.followButton.chance;
     if (!this.followButton.chance) {
       this.followButton.follow = "Seguir";
+      this.unFollow();
     }
     else if (this.followButton.chance) {
       this.followButton.follow = "Seguindo";
+      this.follow();
     }
     console.log(this.followButton.chance)
   }
@@ -67,6 +73,27 @@ export class ProfilePage implements OnInit {
 
   redirectPost(){
     this.router.navigate(['/post', {'postId': this.post_id}]);
+  }
+
+  check(){
+    if (this.user_id != this.user_id_check){
+      this.meuPerfil = !this.meuPerfil;
+      this.outroPerfil = !this.outroPerfil;
+    }
+  }
+
+  follow(){
+    this.userService.userFollowing(this.user_id_check, this.user_id).subscribe((res) =>{
+      console.log(res)
+      console.log('Seguindo!');
+    })
+  }
+
+  unFollow(){
+    this.userService.userUnFollowing(this.user_id_check, this.user_id).subscribe((res) =>{
+      console.log(res)
+      console.log('Deixei de Seguir!');
+    })
   }
 
 }
