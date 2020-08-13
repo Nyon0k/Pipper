@@ -14,11 +14,15 @@ class PassportController extends Controller
 {
     public function register(UserRequest $request)
     {
+        if($request->photo){
         $newuser = new User;
         $newuser->createUser($request);
         $success['token'] = $newuser->createToken('MyApp')->accessToken;
-        //$newuser-> notify(new UserRegister($newuser));  
+        //$newuser-> notify(new UserRegister($newuser)); 
         return response()->json(['success' => $success, 'user' => $newuser], 200);
+        }else{
+            return response()->json("SEMFOTO!!!");
+        }
     }
     public function login()
     {

@@ -38,6 +38,13 @@ class UserController extends Controller
     }
 
     public function deleteUser($id){
+        
+        $user = User::findOrFail($id);
+        if($user->photo){
+            
+            Storage::delete($user->photo);
+        }
+
         User::destroy($id);
         return response()->json(['Usuário deletado!']);
     }
@@ -78,10 +85,4 @@ class UserController extends Controller
     public function listFollowerPosts($id){
         return response()->json(Post::whereIn('user_id',User::find($id)->followUserFollower()->pluck('users.id'))->get());
     }
-
-    public function search(Request $request){
-        $user = User::with('name', $request);
-        $post = Post::with('');
-    }
-    //fazer metodo de busca de usuario, post
 }

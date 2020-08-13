@@ -56,11 +56,6 @@ class PostController extends Controller
         return response()->json($comment);
     }
 
-    public function listPostComments($id){
-        $post = Post::findOrFail($id);
-        return response()->json($post->comments()->get());
-    }
-
     public function listPostsByLike(){
         $like = Post::with('user')->orderBy('like','desc')->get();
         return response()->json($like);
@@ -95,8 +90,8 @@ class PostController extends Controller
     }
 
     //fazer metodo do post integrado entre user,post,comment.user (post) (conferir)
-    public function PostUserComment($id){
-        $data = Post::with('user', 'comments.user')->where('id', $id)->get();
+    public function showPostUserComment($id){
+        $data = Comment::with('user')->where('post_id', $id)->get();
         return response()->json($data);
-    }
+    }   
 }

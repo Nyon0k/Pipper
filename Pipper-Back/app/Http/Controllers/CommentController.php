@@ -54,4 +54,5 @@ class CommentController extends Controller
         $comment = App\Comment::findOrFail($id);
         return response()->json($comment->post_id);
     }
+    
 }

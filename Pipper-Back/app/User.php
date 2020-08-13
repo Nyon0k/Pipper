@@ -9,6 +9,7 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,16 @@ class User extends Authenticatable
         $this->email =$request->email;
         $this->password = bcrypt($request->password);
         $this->type = $request->type;
+        if(!Storage::exists('localPhotos/')){
+            Storage::makeDirectory('localPhotos/',0775,true);
+        }
+        if($request->photo){
+            $image = base64_decode($request->photo);
+           $filename = uniqid();
+           $path = 'localPhotos/'.$filename;
+           file_put_contents(storage_path('app/'.$path),$image);
+           $this->photo=$path; 
+        }
         $this->save();
     }
 
@@ -40,6 +51,19 @@ class User extends Authenticatable
         if($request->type){ 
             $this->type = $request->type;
         }
+
+        if(!Storage::exists('localPhotos/')){
+            Storage::makeDirectory('localPhotos/',0775,true);
+        }
+
+        if($request->photo){
+            $image = base64_decode($request->photo);
+            $filename = uniqid();
+            $path = 'localPhotos/'.$filename;
+            file_put_contents(storage_path('app/'.$path),$image);
+        }
+     
+        $this->photo=$path;
         $this->save();
     }
 

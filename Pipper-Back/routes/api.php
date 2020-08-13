@@ -41,9 +41,10 @@ Route::GET('getPostId/{id}', 'CommentController@getPostId');
 //Rotas de Passport
 Route::POST('register', 'API\PassportController@register');
 Route::POST('login', 'API\PassportController@login');
+Route::POST('carai', 'UserController@search');
 Route::group(['middleware'=>'auth:api'], function(){
     //Rotas de User autenticado
-    Route::PUT('updateUser', 'UserController@updateUser');
+    Route::POST('updateUser', 'UserController@updateUser');   
     Route::DELETE('deleteUser/{id}', 'UserController@deleteUser');
     Route::POST('makePost/{user_id}/{post_id}', 'UserController@makePost');
     Route::POST('makeComment/{user_id}/{post_id}', 'UserController@makeComment');
@@ -62,5 +63,6 @@ Route::group(['middleware'=>'auth:api'], function(){
     Route::DELETE('deleteComment/{id}', 'CommentController@deleteComment')->middleware('user');
 
     Route::GET('logout', 'API\PassportController@logout');
+    
     Route::POST('getDetails', 'API\PassportController@getDetails');
 });
