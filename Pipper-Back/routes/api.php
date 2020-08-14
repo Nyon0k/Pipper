@@ -65,4 +65,7 @@ Route::group(['middleware'=>'auth:api'], function(){
     Route::GET('logout', 'API\PassportController@logout');
     
     Route::POST('getDetails', 'API\PassportController@getDetails');
+
+    //Rotas de Tag
+    Route::put('tag/{tag_id}/{post_id}','TagController@tag'); 
 });

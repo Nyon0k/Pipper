@@ -57,6 +57,10 @@ class Post extends Model
         return $this->hasMany('App\Comment');
     }
 
+    public function tags(){
+        return $this->belongsToMany('App\Tag');
+    }
+
     public function setUser($user_id) {
         $this->user_id = $user_id;
         $this->save();
