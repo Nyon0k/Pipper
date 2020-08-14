@@ -16,10 +16,11 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('originalComment');
+            $table->string('original_comment');
             $table->integer('like')->nullable()->default(0);
             $table->float('rating')->nullable()->default(0);
             $table->string('tags')->nullable();
+            $table->integer('count_people')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger("user_id")->nullable();
             $table->foreign("user_id")->references('id')->on('users')->onDelete('cascade');

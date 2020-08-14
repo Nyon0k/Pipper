@@ -30,7 +30,7 @@ class PostRequest extends FormRequest
         if($this->isMethod('post')){
             return [
                 'title' => 'required|string',
-                'originalComment' => 'required|string',
+                'original_comment' => 'required|string',
                 'like' => 'integer',
                 'rating' => 'numeric',
                 'tags' => 'string',
@@ -39,7 +39,7 @@ class PostRequest extends FormRequest
         if($this->isMethod('put')){
             return [
                 'title' => 'string',
-                'originalComment' => 'string',
+                'original_comment' => 'string',
                 'like' => 'integer',
                 'rating' => 'numeric',
                 'tags' => 'string',

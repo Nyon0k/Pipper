@@ -15,13 +15,13 @@ class FollowTable extends Migration
     {
         Schema::create('follow', function (Blueprint $table){
             $table->id();
-            $table->unsignedBigInteger('userFollower')->nullable();
-            $table->unsignedBigInteger('userFollowed')->nullable();
+            $table->unsignedBigInteger('user_follower')->nullable();
+            $table->unsignedBigInteger('user_followed')->nullable();
             $table->timestamps();
         });
         Schema::table('follow', function (Blueprint $table){
-            $table->foreign('userFollower')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('userFollowed')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_follower')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_followed')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -24,6 +24,7 @@ Route::GET('showUser/{id}', 'UserController@showUser');
 Route::GET('listUsers', 'UserController@listUsers');
 Route::GET('listFollowerUsers/{id}', 'UserController@listFollowerUsers');
 Route::GET('listFollowerPosts/{id}', 'UserController@listFollowerPosts');
+Route::PUT('search', 'UserController@search');
 
 //Rotas de Post
 Route::GET('showPost/{id}', 'PostController@showPost');
@@ -31,6 +32,9 @@ Route::GET('listPosts', 'PostController@listPosts');
 Route::GET('listPostsByLike', 'PostController@listPostsByLike');
 Route::GET('listPostsByRating', 'PostController@listPostsByRating');
 Route::GET('listPostsByCreationDate', 'PostController@listPostsByCreationDate');
+Route::GET('listPostUser', 'PostController@listPostUser');
+Route::GET('postUserComment/{id}', 'PostController@postUserComment');
+Route::GET('listPostsByAUser/{id}', 'PostController@listPostsByAUser');
 
 //Rotas de Comment
 Route::GET('showComment/{id}', 'CommentController@showComment');
@@ -47,15 +51,16 @@ Route::group(['middleware'=>'auth:api'], function(){
     Route::DELETE('deleteUser/{id}', 'UserController@deleteUser');
     Route::POST('makePost/{user_id}/{post_id}', 'UserController@makePost');
     Route::POST('makeComment/{user_id}/{post_id}', 'UserController@makeComment');
-    Route::PUT('followUser/{user_id1}/{user_id2}', 'UserController@followUser');
+    Route::PUT('followUser/{id}', 'UserController@followUser');
     Route::PUT('unfollowUser/{user_id1}/{user_id2}', 'UserController@unfollowUser');
     //Rotas de Post autenticado
     Route::POST('createPost', 'PostController@createPost');
     Route::PUT('updatePost/{id}', 'PostController@updatePost');
     Route::DELETE('deletePost/{id}', 'PostController@deletePost')->middleware('user');
     Route::PUT('like/{id}', 'PostController@like');
-    Route::PUT('dislike/{id}', 'PostController@dislike')->middleware('user');
+    Route::PUT('dislike/{id}', 'PostController@dislike');
     Route::PUT('attachComment/{post_id}/{comment_id}', 'PostController@attachComment');
+    Route::PUT('like/{id}', 'PostController@like');
     //Rotas de Comment autenticado
     Route::POST('createComment', 'CommentController@createComment');
     Route::PUT('updateComment/{id}', 'CommentController@updateComment');
