@@ -10,11 +10,19 @@
     </div>
 
 <ion-content>
+  <div class="mySpinner">
+    <!--<ion-spinner *ngIf="spinner" name="bubbles"></ion-spinner>-->
+  </div>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="10" pullMax="100" mode="md">
+    <ion-refresher-content
+    refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
   <div *ngIf="showNovo">
     <app-home-post
      *ngFor="let post of posts"
      [post]="post"
-     
+     (click)="redirectPost(post)"
      
      >
     </app-home-post>

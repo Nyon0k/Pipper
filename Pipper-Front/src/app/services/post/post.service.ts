@@ -10,7 +10,19 @@ export class PostService {
 
   constructor(public http:HttpClient) { }
 
+  httpHeaders: any = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  }
+
   listPosts(): Observable<any>{
     return this.http.get(this.apiURL + 'listPosts');
+  }
+
+  deletePost(id): Observable<any>{
+    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
+    return this.http.delete(this.apiURL + 'deletePost/' + id, this.httpHeaders);
   }
 }

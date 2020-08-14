@@ -18,6 +18,7 @@ export class UserPopoverComponent implements OnInit {
     this.authService.logout().subscribe((res) =>{
       console.log(res)
       localStorage.removeItem('token');
+      localStorage.removeItem('id_user');
       console.log('Estou Deslogado!');
       this.popoverController.dismiss();
       this.router.navigate(['/tabs/tab1']);
