@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HomePostComponent } from '../components/home-post/home-post.component';
 import { PostService } from '../services/post/post.service';
 import { Router } from '@angular/router';
@@ -10,37 +10,57 @@ import { Router } from '@angular/router';
 })
 
 export class Tab1Page implements OnInit {
-  public posts = []
+  public posts1 = []
+  public posts2 = []
+  public posts3 = []
 
   showSeguindo = false;
   showTopo = false;
   showNovo = true;
   spinner = false;
   
-  constructor(
-    public postService: PostService,
-    public router: Router) {}
-
+  constructor(public postService: PostService, public router: Router) {}
+  user_id = localStorage.getItem('id_user');
   ngOnInit() {
-    this.getlistPost();
+    this.getlistPostNovo();
+    this.getlistPostRating();
+    this.getlistPostFollow();
   }
 
-  getlistPost(){
-    this.postService.listPosts().subscribe ((res) =>{
-      this.posts = res;
+  getlistPostNovo(){
+    this.postService.listPostsNovo().subscribe ((res) =>{
+      this.posts1 = res;
+      console.log(res);
+    })
+  }
+
+  getlistPostRating(){
+    this.postService.listPoststTopo().subscribe ((res) =>{
+      this.posts2 = res;
+      console.log(res);
+    })
+  }
+
+  getlistPostFollow(){
+    this.postService.listPostsSeguindo(this.user_id).subscribe((res)=>{
+      this.posts3 = res;
       console.log(res);
     })
   }
 
   public redirectPost(post) {
-    localStorage.setItem('post', JSON.stringify(post));
-    this.router.navigate(['/post']);
+    this.router.navigate(['/post', {'postId': post}]);
   }
-
+  
   showFollow() {
+    if (this.user_id != null){
     this.showSeguindo = true;
     this.showTopo = false;
     this.showNovo = false;
+    } else{
+      console.log('Você não está logado!')
+      this.showSeguindo = false;
+    }
   }
 
   showTop() {
@@ -63,7 +83,9 @@ export class Tab1Page implements OnInit {
       this.spinner= !this.spinner;
       console.log('Async operation has ended');
       event.target.complete();
-      this.getlistPost();
+      this.getlistPostNovo();
+      this.getlistPostRating();
+      this.getlistPostFollow();
     }, 2000);
   }
 }

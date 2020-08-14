@@ -26,5 +26,4 @@ export class HomePostComponent implements OnInit {
       follow: "Seguir"
     }
   }
-
 }

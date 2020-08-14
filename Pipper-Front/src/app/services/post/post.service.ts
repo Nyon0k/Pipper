@@ -6,7 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PostService {
-  apiURL: string = 'http://localhost:8000/api/';
+  apiUrl: string = 'http://localhost:8000/api/';
+
+
 
   constructor(public http:HttpClient) { }
 
@@ -17,12 +19,25 @@ export class PostService {
     }
   }
 
-  listPosts(): Observable<any>{
-    return this.http.get(this.apiURL + 'listPosts');
+  listPostsNovo(): Observable<any>{
+    return this.http.get(this.apiUrl + 'listPostsByCreationDate');
   }
 
-  deletePost(id): Observable<any>{
+  listPoststTopo(): Observable<any>{
+    return this.http.get(this.apiUrl + 'listPostsByRating');
+  }
+
+  listPostsSeguindo(user_id): Observable<any>{
+    return this.http.get(this.apiUrl + 'listFollowerPosts/' + user_id);
+  }
+
+  deletePostUser(post_id): Observable<any>{
     this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
-    return this.http.delete(this.apiURL + 'deletePost/' + id, this.httpHeaders);
+    return this.http.delete(this.apiUrl + 'deletePost/' + post_id, this.httpHeaders);
+  }
+
+  editPostUser(post_id, form): Observable<any>{
+    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
+    return this.http.put(this.apiUrl + 'updatePost/' + post_id, form, this.httpHeaders);
   }
 }

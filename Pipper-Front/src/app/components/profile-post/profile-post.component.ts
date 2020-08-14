@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { PostService } from '../../services/post/post.service';
 
 @Component({
   selector: 'app-profile-post',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePostComponent implements OnInit {
 
-  constructor() { }
+  @Input() post;
+  constructor(public postService: PostService) { }
 
   ngOnInit() {}
 

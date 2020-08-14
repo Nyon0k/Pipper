@@ -26,6 +26,7 @@ Route::GET('listFollowerUsers/{id}', 'UserController@listFollowerUsers');
 Route::GET('listFollowerPosts/{id}', 'UserController@listFollowerPosts');
 Route::PUT('search', 'UserController@search');
 
+
 //Rotas de Post
 Route::GET('showPost/{id}', 'PostController@showPost');
 Route::GET('listPosts', 'PostController@listPosts');
@@ -45,7 +46,9 @@ Route::GET('getPostId/{id}', 'CommentController@getPostId');
 //Rotas de Passport
 Route::POST('register', 'API\PassportController@register');
 Route::POST('login', 'API\PassportController@login');
-Route::POST('carai', 'UserController@search');
+
+
+
 Route::group(['middleware'=>'auth:api'], function(){
     //Rotas de User autenticado
     Route::POST('updateUser', 'UserController@updateUser');   
@@ -63,14 +66,13 @@ Route::group(['middleware'=>'auth:api'], function(){
     Route::PUT('attachComment/{post_id}/{comment_id}', 'PostController@attachComment');
     Route::PUT('like/{id}', 'PostController@like');
     //Rotas de Comment autenticado
-    Route::POST('createComment', 'CommentController@createComment');
+    Route::POST('createComment/{post_id}', 'CommentController@createComment');
     Route::PUT('updateComment/{id}', 'CommentController@updateComment');
     Route::DELETE('deleteComment/{id}', 'CommentController@deleteComment')->middleware('user');
-
     Route::GET('logout', 'API\PassportController@logout');
     
-    Route::POST('getDetails', 'API\PassportController@getDetails');
 
     //Rotas de Tag
     Route::put('tag/{tag_id}/{post_id}','TagController@tag'); 
+    Route::GET('getDetails', 'API\PassportController@getDetails');
 });

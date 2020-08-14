@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ProfilePageRoutingModule } from './profile-routing.module';
-
+import { HttpClientModule, HttpClient} from '@angular/common/http';
 import { ProfilePage } from './profile.page';
+import { UserService } from '../../services/user/user.service';
 
 import { ProfilePostComponent } from '../../components/profile-post/profile-post.component';
 
@@ -14,8 +15,10 @@ import { ProfilePostComponent } from '../../components/profile-post/profile-post
     FormsModule,
     IonicModule,
     ProfilePageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  declarations: [ProfilePage, ProfilePostComponent]
+  declarations: [ProfilePage, ProfilePostComponent],
+  providers: [ UserService]
 })
 export class ProfilePageModule {}

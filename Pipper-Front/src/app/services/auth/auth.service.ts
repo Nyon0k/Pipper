@@ -27,14 +27,22 @@ export class AuthService {
   }
 
   public logout(): Observable<any>{
-    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
-    console.log(this.httpHeaders);
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('token');
+    console.log(this.httpHeaders.headers['Authorization']);
     return this.http.get(this.apiUrl + 'logout', this.httpHeaders);
   }
 
   public createPost(form): Observable<any> {
-    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('token');
     console.log(this.httpHeaders);
     return this.http.post(this.apiUrl + 'createPost',  form, this.httpHeaders);
   }
+
+  createComment(form,post_id): Observable<any>{
+    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
+    console.log(this.httpHeaders);
+    return this.http.post(this.apiUrl+ 'createComment/' + post_id, form, this.httpHeaders);
+
+  }
+
 }

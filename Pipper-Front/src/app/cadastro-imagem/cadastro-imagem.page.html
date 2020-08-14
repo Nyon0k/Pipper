@@ -5,7 +5,7 @@
 
 
 <ion-header class="ion-no-border" mode="md">
-  <ion-icon class="header" name="chevron-back-circle-outline"size="large" routerLink="/cadastro"></ion-icon>
+  <ion-icon class="header" name="chevron-back-circle-outline"size="large" (click)="sair()"></ion-icon>
 </ion-header>
 
 <ion-content mode="md">
@@ -26,7 +26,7 @@
     </ion-fab-button>
     </div>
     <div class="fim">
-      <div class="pular">Pular</div>
+      <div class="pular" (click)="sair()">Pular</div>
       <ion-button class="botao" expand="block" size="Secondary" type="submit" shape="round" color ="success">Continuar</ion-button>
     </div>
   </div>

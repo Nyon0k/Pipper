@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from '../../services/user/user.service';
+import { async } from 'rxjs/internal/scheduler/async';
 
 class Button {
   follow: string;
@@ -12,33 +14,86 @@ class Button {
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-
+  user: {name: 'text',
+         nickname: 'text'};
+  user_id;
+  user_id_check = Number(localStorage.getItem('id_user'));
+  meuPerfil = true;
+  outroPerfil = false;
+  posts;
+  post_id;
   followButton: Button;
 
-  constructor(public router: Router) { 
-
+  constructor(public router: Router, public userService: UserService, private route: ActivatedRoute) { 
   }
+    
 
   ngOnInit() {
     this.followButton = {
       follow: "Seguir",
       chance: false
     }
+    this.listPostUser();
+    this.showUserInfo();
+    this.check();
   }
 
   changeFollow() {
     this.followButton.chance = !this.followButton.chance;
     if (!this.followButton.chance) {
       this.followButton.follow = "Seguir";
+      this.unFollow();
     }
     else if (this.followButton.chance) {
       this.followButton.follow = "Seguindo";
+      this.follow();
     }
     console.log(this.followButton.chance)
   }
   
   editar(){
     this.router.navigate(['/editar-perfil']);
+  }
+
+  showUserInfo(){
+    this.userService.showUser(this.user_id).subscribe((res)=>{
+      this.user= res;
+      console.log(res);
+    })
+  }
+
+  async listPostUser(){
+    await this.route.params.subscribe((params) => (this.user_id = params.userId));
+    this.userService.listPostUser(this.user_id).subscribe((res)=>{
+      this.posts = res;
+      //this.post_id = res.id;
+      console.log(this.posts);
+    })
+  }
+
+  redirectPost(post_id){
+    this.router.navigate(['/post', {'postId': post_id}]);
+  }
+
+  check(){
+    if (this.user_id != this.user_id_check){
+      this.meuPerfil = !this.meuPerfil;
+      this.outroPerfil = !this.outroPerfil;
+    }
+  }
+
+  follow(){
+    this.userService.userFollowing(this.user_id_check, this.user_id).subscribe((res) =>{
+      console.log(res)
+      console.log('Seguindo!');
+    })
+  }
+
+  unFollow(){
+    this.userService.userUnFollowing(this.user_id_check, this.user_id).subscribe((res) =>{
+      console.log(res)
+      console.log('Deixei de Seguir!');
+    })
   }
 
 }

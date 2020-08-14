@@ -20,20 +20,33 @@
   </ion-refresher>
   <div *ngIf="showNovo">
     <app-home-post
-     *ngFor="let post of posts"
+     *ngFor="let post of posts1"
      [post]="post"
-     (click)="redirectPost(post)"
+     (click)='redirectPost(post.id)'
+     
      
      >
     </app-home-post>
   </div>
 
   <div *ngIf="showSeguindo">
-teste seguindo
+    <app-home-post
+    *ngFor="let post of posts3"
+    [post]="post"
+    (click)='redirectPost(post.id)'
+    
+    ></app-home-post>
   </div>
 
   <div *ngIf="showTopo">
-teste topo
+    <app-home-post
+     *ngFor="let post of posts2"
+     [post]="post"
+     (click)='redirectPost(post.id)'
+     
+     
+     >
+    </app-home-post>
   </div>
 </ion-content>
 
