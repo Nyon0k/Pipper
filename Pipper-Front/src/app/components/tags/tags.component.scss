@@ -1,3 +1,7 @@
+ion-card {
+    box-shadow: none;
+}
+
 .botao{
     color: #272727;
     --border-radius: 200px;
@@ -8,12 +12,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10%;
 }
 .primario{
      display: flex;
      flex-direction: column;
      justify-content: center;
      align-items: center;
+     margin-bottom: 10%;
 }
 .secundario{
     display: flex;
@@ -24,4 +30,5 @@
 }
 h1{
     font-family:'Poiret One', cursive;
+    -webkit-text-stroke: 0.2px #EFFFFB;
 }

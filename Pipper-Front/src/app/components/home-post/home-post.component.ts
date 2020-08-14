@@ -10,6 +10,11 @@ class Button {
   styleUrls: ['./home-post.component.scss'],
 })
 export class HomePostComponent implements OnInit {
+  optionSlide = {
+    loop: true,
+    direction: 'horizontal',
+}; //slide da tag
+  
   @Input() post: any;
 
   followButton: Button;

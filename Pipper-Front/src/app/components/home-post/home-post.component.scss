@@ -18,6 +18,14 @@
     border-radius: 10%;
 }
 
+.slides {
+    height: 100%;
+}
+
+.slide {
+    height: 100%;
+}
+
 .imgPost {
     width: 100%;
     height: 50%;
@@ -48,7 +56,7 @@
 }   
 
 .textUserAndButtons {
-    width: 65%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -119,6 +127,10 @@ h6 {
 .text h2 {
     color: #FFE9E9;
     margin-top: 5%;
+}
+
+ion-chip {
+    margin-bottom: 1%;
 }
 
 ion-card {

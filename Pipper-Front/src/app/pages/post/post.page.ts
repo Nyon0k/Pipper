@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { PostService } from '../../services/post/post.service';
@@ -14,7 +14,9 @@ class Button {
   templateUrl: './post.page.html',
   styleUrls: ['./post.page.scss'],
 })
+
 export class PostPage implements OnInit {
+
   posts: [any];
   post_id = JSON.parse(localStorage.getItem('post')).id;
   
@@ -24,12 +26,14 @@ export class PostPage implements OnInit {
   constructor(
     public toastController: ToastController,
     public alertController: AlertController,
-    public postService: PostService) { }
+    public postService: PostService,
+    public router: Router) { }
 
   delDeletePost(){
     this.postService.deletePost(this.post_id).subscribe ((res) =>{
       console.log(res);
       console.log('O post foi deletado.')
+      this.router.navigate(["/tabs/tab1"])
     })
   }
 
