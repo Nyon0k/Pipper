@@ -10,6 +10,7 @@ use App\Post;
 use Illuminate\Support\Facades\Validator;
 use Auth;
 use Illuminate\Support\Facades\Storage;
+use DB;
 
 class PostController extends Controller
 {
@@ -77,16 +78,26 @@ class PostController extends Controller
         return response()->json($creationDate);
     }
 
-    public function like($id){
-        $post = Post::findOrFail($id);
-        $post->like();
-        return response()->json("+1 like");
+    public function rating(Request $request, $post_id){
+        $user = Auth::user();
+        $post = Post::findOrFail($post_id);
+        $post->rating($request);
+        return response()->json('Avaliado com sucesso');
     }
 
-    public function dislike($id){
-        $post = Post::findOrFail($id);
-        $post->dislike();
-        return response()->json("-1 like");
+    public function like($post_liked){
+        $user = Auth::user();
+        $post = Post::findOrFail($post_liked);
+        $verified = DB::table('likes')->where('user_liker', $user->id)->where('post_liked', $post->id)->count()>0;
+        if($verified){
+            $user->likes()->detach($post);
+            $post->dislike();
+            return response()->json('Descurtiu!');
+        }else{
+            $user->likes()->attach($post);
+            $post->like();
+            return response()->json("Curtiu!");
+        }
     }
 
     //fazer metodo do post integrado entre user e post (lista) (conferir)
@@ -100,4 +111,14 @@ class PostController extends Controller
         $data = Comment::with('user')->where('post_id', $id)->get();
         return response()->json($data);
     }   
+    
+    public function postUserComment($id){
+        $data = Post::with('user', 'comments.user')->where('id', $id)->get();
+        return response()->json($data);
+    }
+
+    public function listPostsByAUser($id){
+        $userPosts = Post::with('user')->where('user_id', $id)->get();
+        return response()->json($userPosts);    
+    }
 }

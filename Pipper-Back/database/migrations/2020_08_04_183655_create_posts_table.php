@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->integer('like')->nullable()->default(0);
             $table->float('rating')->nullable()->default(0);
             $table->string('tags')->nullable();
+            $table->integer('count_people')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger("user_id")->nullable();
             $table->string('photo')->nullable();

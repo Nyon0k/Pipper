@@ -92,11 +92,15 @@ class User extends Authenticatable
     ];
 
     public function followUserFollower(){
-        return $this->belongsToMany('App\User', 'follow', 'userFollower', 'userFollowed');
+        return $this->belongsToMany('App\User', 'follow', 'user_follower', 'user_followed');
     }
 
     public function followUserFollowed(){
-        return $this->belongsToMany('App\User', 'follow', 'userFollowed', 'userFollower');
+        return $this->belongsToMany('App\User', 'follow', 'user_followed', 'user_follower');
+    }
+
+    public function likes(){
+        return $this->belongsToMany('App\User', 'likes', 'user_liker', 'post_liked');
     }
 
     public function posts(){
@@ -105,6 +109,10 @@ class User extends Authenticatable
 
     public function comments(){
         return $this->hasMany('App\Comment');
+    }
+
+    public function search(){
+
     }
     
 }

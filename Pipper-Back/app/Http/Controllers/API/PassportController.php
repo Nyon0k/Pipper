@@ -17,8 +17,8 @@ class PassportController extends Controller
         if($request->photo){
         $newuser = new User;
         $newuser->createUser($request);
-        $success['token'] = $newuser->createToken('MyApp')->accessToken;
-        //$newuser-> notify(new UserRegister($newuser)); 
+        $success['token'] = $newuser->createToken('Pipper')->accessToken;
+        //$newuser-> notify(new UserRegister($newuser));  
         return response()->json(['success' => $success, 'user' => $newuser], 200);
         }else{
             return response()->json("SEMFOTO!!!");
@@ -28,7 +28,7 @@ class PassportController extends Controller
     {
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
-            $success['token'] = $user->createToken('MyApp')->accessToken;
+            $success['token'] = $user->createToken('Pipper')->accessToken;
             return response()->json(['success' => $success, 'user' => $user], 200);
         } else {
             return response()->json(['error' => 'Usuário não cadastrado!', 'status' => 401]);
