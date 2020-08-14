@@ -71,8 +71,8 @@ export class ProfilePage implements OnInit {
     })
   }
 
-  redirectPost(){
-    this.router.navigate(['/post', {'postId': this.post_id}]);
+  redirectPost(post_id){
+    this.router.navigate(['/post', {'postId': post_id}]);
   }
 
   check(){

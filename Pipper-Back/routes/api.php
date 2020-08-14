@@ -45,14 +45,16 @@ Route::GET('getPostId/{id}', 'CommentController@getPostId');
 //Rotas de Passport
 Route::POST('register', 'API\PassportController@register');
 Route::POST('login', 'API\PassportController@login');
+Route::PUT('followUser/{user_id1}/{user_id2}', 'UserController@followUser');
+Route::PUT('unfollowUser/{user_id1}/{user_id2}', 'UserController@unfollowUser');
+
+
 Route::group(['middleware'=>'auth:api'], function(){
     //Rotas de User autenticado
     Route::PUT('updateUser', 'UserController@updateUser');
     Route::DELETE('deleteUser/{id}', 'UserController@deleteUser');
     Route::POST('makePost/{user_id}/{post_id}', 'UserController@makePost');
     Route::POST('makeComment/{user_id}/{post_id}', 'UserController@makeComment');
-    Route::PUT('followUser/{user_id1}/{user_id2}', 'UserController@followUser');
-    Route::PUT('unfollowUser/{user_id1}/{user_id2}', 'UserController@unfollowUser');
     //Rotas de Post autenticado
     Route::POST('createPost', 'PostController@createPost');
     Route::PUT('updatePost/{id}', 'PostController@updatePost');
@@ -64,7 +66,6 @@ Route::group(['middleware'=>'auth:api'], function(){
     Route::POST('createComment/{post_id}', 'CommentController@createComment');
     Route::PUT('updateComment/{id}', 'CommentController@updateComment');
     Route::DELETE('deleteComment/{id}', 'CommentController@deleteComment')->middleware('user');
-
     Route::GET('logout', 'API\PassportController@logout');
     Route::GET('getDetails', 'API\PassportController@getDetails');
 });

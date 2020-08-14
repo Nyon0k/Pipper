@@ -30,4 +30,14 @@ export class PostService {
   listPostsSeguindo(user_id): Observable<any>{
     return this.http.get(this.apiUrl + 'listFollowerPosts/' + user_id);
   }
+
+  deletePostUser(post_id): Observable<any>{
+    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
+    return this.http.delete(this.apiUrl + 'deletePost/' + post_id, this.httpHeaders);
+  }
+
+  editPostUser(post_id, form): Observable<any>{
+    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
+    return this.http.put(this.apiUrl + 'updatePost/' + post_id, form, this.httpHeaders);
+  }
 }

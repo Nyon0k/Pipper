@@ -49,9 +49,14 @@ export class Tab1Page implements OnInit {
   }
   
   showFollow() {
+    if (this.user_id != null){
     this.showSeguindo = true;
     this.showTopo = false;
     this.showNovo = false;
+    } else{
+      console.log('Você não está logado!')
+      this.showSeguindo = false;
+    }
   }
 
   showTop() {

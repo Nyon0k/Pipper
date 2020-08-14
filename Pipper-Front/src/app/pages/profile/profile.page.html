@@ -59,7 +59,7 @@
     <app-profile-post
     *ngFor="let post of posts"
     [post]="post"
-    
+    (click)="redirectPost(post.id)"
     
     ></app-profile-post>
   </div>

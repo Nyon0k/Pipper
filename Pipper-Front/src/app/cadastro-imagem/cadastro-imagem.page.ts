@@ -30,4 +30,8 @@ export class CadastroImagemPage implements OnInit {
     this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
   }
 
+  sair(){
+    this.router.navigate(['/tabs/tab1'])
+  }
+
 }

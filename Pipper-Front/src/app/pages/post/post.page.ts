@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService} from '../../services/auth/auth.service';
 import { CommentService} from '../../services/comment/comment.service'
 import { UserService } from '../../services/user/user.service';
+import { PostService } from '../../services/post/post.service';
 class Button {
   follow: string;
   chance: boolean;
@@ -18,12 +19,13 @@ class Button {
 export class PostPage implements OnInit {
   public comments = [];
   user_id;
+  user_id_check;
   user;
   post = {id: 0,
     ​
     like: 0,
     ​
-    originalComment: "text",
+    text: "text",
     ​
     rating: 0,
     ​
@@ -34,11 +36,22 @@ export class PostPage implements OnInit {
   commentForm: FormGroup;
   followButton: Button;
   showComment = false;
+  postForm: FormGroup;
+  editMode = false;
+  editModeOff = true;
+  deleteButton = true;
   
-  constructor(public toastController: ToastController, public formbuilder: FormBuilder, public authService: AuthService, public commentService: CommentService, private route: ActivatedRoute, public userService: UserService, public router: Router) {
+  constructor(public toastController: ToastController, public formbuilder: FormBuilder, public authService: AuthService, public commentService: CommentService, private route: ActivatedRoute, public userService: UserService, public router: Router, public postService: PostService) {
     this.commentForm = this.formbuilder.group({
       text: [null]
     });
+
+    this.postForm = this.formbuilder.group({
+      title: [null],
+      text: [null]
+    });
+
+    this.user_id_check = Number(localStorage.getItem('id_user'));
    }
 
   async presentToast() {
@@ -66,6 +79,7 @@ export class PostPage implements OnInit {
     }
 
     this.showPost();
+
   }
 
   changeFollow() {
@@ -113,7 +127,9 @@ export class PostPage implements OnInit {
           console.log(res);
           this.user = res.name;
           this.user_id = res.id;
-
+          if (this.user_id != this.user_id_check){
+            this.deleteButton = !this.deleteButton
+          }
         })
     }
     )
@@ -124,5 +140,32 @@ export class PostPage implements OnInit {
     this.router.navigate(['/profile', {'userId': this.user_id}]);
   }
 
+  deletePost(){
+    if (this.user_id == this.user_id_check){
+    this.postService.deletePostUser(this.post_id).subscribe((res) =>{
+      console.log(res);
+      console.log('Post Apagado!');
+      this.router.navigate(['/tabs/tab1']);
+    })
+    } else{
+      console.log('Voce nao pode apagar este post!')
+    }
+  }
+
+  editPost(){
+    this.postService.editPostUser(this.post_id, this.postForm.value).subscribe((res) =>{
+      this.editMode = false;
+      this.editModeOff = true;
+      console.log(res)
+      console.log('Post Editado!');
+    })
+  }
+  
+  edit(){
+    if (this.user_id == this.user_id_check){
+    this.editMode = !this.editMode;
+    this.editModeOff = !this.editModeOff;
+    }
+  }
 }
 

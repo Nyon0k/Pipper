@@ -34,9 +34,6 @@ export class CadastroPage implements OnInit {
     this.authservice.register(form.value).subscribe(
       (res)=> {
         console.log(res);
-        localStorage.setItem('token', res.success.token);
-        localStorage.setItem('user_name', res.user.name);
-        localStorage.setItem('user_email', res.user.email);
         this.router.navigate(['cadastro-imagem'])
       },
       (err) => {

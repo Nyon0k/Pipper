@@ -20,7 +20,7 @@ export class Tab3Page {
 
   this.postForm = this.formbuilder.group({
     title: [null,[Validators.required]],
-    originalComment: [null, [Validators.required]],
+    text: [null, [Validators.required]],
   });
  }
 

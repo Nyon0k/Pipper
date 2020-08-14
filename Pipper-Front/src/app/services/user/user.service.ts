@@ -9,7 +9,7 @@ export class UserService {
 
   apiUrl: string = 'http://localhost:8000/api/';
 
-  httpHeaders: object = {
+  httpHeaders: any = {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
@@ -19,7 +19,7 @@ export class UserService {
 
 
   public editUser(form): Observable<any>{
-    this.httpHeaders['headers']["Authorization"] = 'Bearer ' + localStorage.getItem('token');
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('token');
     return this.http.put(this.apiUrl + 'updateUser/', form, this.httpHeaders);
   }
 
@@ -31,13 +31,13 @@ export class UserService {
     return this.http.get(this.apiUrl + 'listPostsByAUser/' + id);
   }
 
-  public userFollowing(user_id, follower_id): Observable<any>{
-    this.httpHeaders['headers']["Authorization"] = 'Bearer ' + localStorage.getItem('token');
-    return this.http.put(this.apiUrl + 'followUser/' + user_id + '/' + follower_id, this.httpHeaders)
+  public userFollowing(user_id, followed_id): Observable<any>{
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('token');
+    return this.http.put(this.apiUrl + 'followUser/' + user_id + '/' + followed_id, this.httpHeaders)
   }
 
-  public userUnFollowing(user_id, follower_id): Observable<any>{
-    this.httpHeaders['headers']["Authorization"] = 'Bearer ' + localStorage.getItem('token');
-    return this.http.put(this.apiUrl + 'unfollowUser/' + user_id + '/' + follower_id, this.httpHeaders)
+  public userUnFollowing(user_id, followed_id): Observable<any>{
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('token');
+    return this.http.put(this.apiUrl + 'unfollowUser/' + user_id + '/' + followed_id, this.httpHeaders)
   }
 }
