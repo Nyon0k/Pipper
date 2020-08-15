@@ -10,7 +10,7 @@
   <ion-card>
     <ion-card-header>
       <div class="cardPhoto">
-        <img src="https://www.skinnytaste.com/wp-content/uploads/2019/09/Baked-Sweet-Potatoes-5-500x500.jpg">
+        <img src="https://emporioquatroestrelas.vteximg.com.br/arquivos/ids/159625-1000-1000/folha-de-louro-emp.png?v=637130581619630000">
       </div>
     </ion-card-header>
 
@@ -30,8 +30,8 @@
         </div>
 
         <div class="followAndTagPart"> <!--row-->
-          <ion-button size="small" class="buttonFollow" strong="true" mode="ios" (click)="changeFollow()">{{followButton.follow}}</ion-button>
-          <ion-button size="small" class="buttonTag" strong="true" mode="ios">Tags</ion-button>
+          <ion-button [ngClass]="{'following':followButton.chance}" size="small" class="buttonFollow" strong="true" mode="md" (click)="changeFollow()"><span style="text-transform:none!important;">{{followButton.follow}}</span></ion-button>
+          <ion-button size="small" class="buttonTag" strong="true" mode="md"><span style="text-transform:none!important;">Tags</span></ion-button>
         </div>
       </div>
       <!-- Display das informações do post -->
@@ -43,7 +43,7 @@
         <div class="quoteIconLeft">
           <img src="../assets/quote.png">
         </div>
-        <ion-card-subtitle>{{post.text}}</ion-card-subtitle>
+        <ion-card-subtitle mode="md">{{post.text}}</ion-card-subtitle>
         <div class="quoteIconRight">
          <img src="../assets/quote2.png">
         </div>
@@ -52,31 +52,35 @@
     <!-- Div para editar as informações do post -->
     <div *ngIf="editMode" class="inputAndSubmit">
       <form [formGroup]="postForm" (ngSubmit)="editPost()">
-      <ion-list>
+      
       <div class="postTitle">
-        <ion-input position="floating" placeholder="Título" class="input" mode="md" type="title" formControlName="title"></ion-input>
+        <ion-input position="floating" placeholder="Título" class="inputTitle" mode="md" type="title" formControlName="title"></ion-input>
       </div>
-      <div class="leftRightAndText">
-        <div class="quoteIconLeft">
+      <div class="leftRight">
+        <div class="quoteLeft">
           <img src="../assets/quote.png">
         </div>
-        <ion-input position="floating" placeholder="Comentário" class="input" mode="md" type="text" formControlName="text"></ion-input>
-        <div class="quoteIconRight">
+        <ion-input position="floating" placeholder="Comentário" class="inputText" mode="md" type="text" formControlName="text"></ion-input>
+        <div class="quoteRight">
          <img src="../assets/quote2.png">
         </div>
       </div>
       <ion-button class="interactionButton" size="small" mode="md" type="submit"><span style="text-transform:none!important;">Concluído</span></ion-button>
-      </ion-list>
+      
     </form>
     </div>
       
       <!-- Botões que desaparecem quando enquanto a edição do post nao estiver finalizada -->
       <div class="interactionButtons" *ngIf= "editModeOff">
-        <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="thumbs-up-outline"></ion-icon>{{post.likes}}</ion-button>
-        <ion-button class="interactionButton" size="small" mode="md" (click)="listComments()"><ion-icon name="chatbubble-outline"></ion-icon>6</ion-button>
-        <ion-button class="interactionButton" size="small" mode="md" (click)="presentCopy()"><ion-icon name="arrow-redo-outline"></ion-icon><span style="text-transform:none!important;">Compartilhe</span></ion-button>
-        <ion-button class="interactionButton" size="small" mode="md" (click)="deletePost()" *ngIf="deleteButton"><ion-icon name="arrow-redo-outline"></ion-icon><span style="text-transform:none!important;">Apagar</span></ion-button>
-        <ion-button class="interactionButton" size="small" mode="md" (click)="edit()"><ion-icon name="arrow-redo-outline"></ion-icon><span style="text-transform:none!important;">Editar</span></ion-button>
+        <div class="allButtons">
+          <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="thumbs-up-outline"></ion-icon>{{post.like}}</ion-button>
+          <ion-button class="interactionButton" size="small" mode="md" (click)="listComments()"><ion-icon name="chatbubble-outline"></ion-icon></ion-button>
+          <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="star-outline"></ion-icon>{{post.rating}}</ion-button>
+        </div>
+        <div class="trash">
+          <ion-button class="interactionButton" size="small" mode="md" (click)="edit()"><ion-icon name="create-outline"></ion-icon><span style="text-transform:none!important;">Editar</span></ion-button>
+          <ion-button class="interactionButton" size="small" mode="md" (click)="presentAlert()" *ngIf="deleteButton"><ion-icon name="trash-outline"></ion-icon><span style="text-transform:none!important;">Apagar</span></ion-button>
+        </div>
       </div>
     </ion-card-content>
   </ion-card>

@@ -36,9 +36,9 @@
       <div class="hr"></div>
   
       <div class="followOrEdit">
-        <ion-button class="buttonClass" (click)="changeFollow()" *ngIf="outroPerfil">{{followButton.follow}}</ion-button>
-        <ion-button class="buttonClass" *ngIf="outroPerfil">Mensagem</ion-button>
-        <ion-button class="buttonClass" (click)="editar()" *ngIf="meuPerfil">Editar perfil</ion-button>
+        <ion-button mode="md" class="buttonClass" (click)="changeFollow()" *ngIf="outroPerfil">{{followButton.follow}}</ion-button>
+        <ion-button mode="md" class="buttonClass" *ngIf="outroPerfil">Mensagem</ion-button>
+        <ion-button mode="md" class="buttonClass" (click)="editar()" *ngIf="meuPerfil">Editar perfil</ion-button>
       </div>
     </ion-card-content>
   </ion-card>
@@ -48,7 +48,7 @@
       <ion-card-content>
         <div class="fixedHeader">
           <div class="postHeader">
-            <h2 class="postTitle">Publicações de</h2><h2>{{user.nickname}}</h2>
+            <h2 class="postTitle">Publicações de</h2><h2>@{{user.nickname}}</h2>
           </div>
         </div>
       </ion-card-content>

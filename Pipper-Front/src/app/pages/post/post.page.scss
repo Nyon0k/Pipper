@@ -64,10 +64,17 @@ h1 {
 
 h3 {
     color: #FFE9E9;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 h4 {
     font-style: italic;
     font-size: 70%;
+}
+
+.allButtons {
+    display: flex;
 }
 
 .upperContentPart {
@@ -77,12 +84,14 @@ h4 {
 
 .followAndTagPart {
     display: flex;
-    justify-content: space-around;
     width: 100%;
-
+    justify-content: space-between;
 }
 
 .nameAndTime {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
     margin-left: 5%;
 }
 
@@ -92,8 +101,16 @@ ion-button {
     --color: black;
 }
 
-.buttonTag, .buttonFollow {
-    width: 45%;
+.buttonFollow {
+    width: 100%;
+}
+
+.following {
+    --background: #272727;
+    color: #C4FB6D;
+    border: 1px solid #C4FB6D;
+    border-radius: 20px;
+    font-style: italic;
 }
 
 .intAndTrash {
@@ -102,8 +119,8 @@ ion-button {
 }
 
 h2 {
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-top: 5%;
+    margin-bottom: 3%;
     color: #FFE9E9;
 }
 
@@ -124,24 +141,55 @@ h2 {
     margin-left: 2%;
 }
 
+.leftRight {
+    display: flex;
+    justify-content: center;
+}
+
+.quoteLeft {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 5%;
+    margin-right: 2%;
+}
+
+.quoteRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 5%;
+    margin-left: 2%;
+}
+
 .leftRightAndText {
     display: flex;
+    justify-content: center;
 }
 
 .quoteIconLeft img, .quoteIconRight img {
     width: 2vh;
 }
 
-ion-subtitle {
+ion-card-subtitle {
     font-size: 85%;
     font-style: oblique;
     text-align: justify;
     //word-wrap: break-word;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 ion-icon {
     margin-right: 5%;
+}
+
+.userNameAndNickname {
+    display: flex;
+    width: 100%;
+}
+.userNameAndNickname h3 {
+    word-break: break-word;
 }
 
 .trash {
@@ -149,7 +197,9 @@ ion-icon {
 }
 
 .interactionButtons {
-    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
 }
 
 .interactionButton {
@@ -208,17 +258,44 @@ ion-icon {
     }
 }
 
+.inputTitle {
+    background-color: #FFE9E9;
+    border-radius: 30px;
+    color: #272727;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    ::placeholder {
+        margin-left: 30%;
+    }
+}
+
+.inputText {
+    background-color: #FFE9E9;
+    border-radius: 30px;
+    color: #272727;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    ::placeholder {
+        margin-left: 30%;
+    }
+}
+
 .inputAndSubmit {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    justify-content: center;
+}
+
+form {
+    width: 100%;
 }
 
 .submitButton {
     --background: #C4FB6D;
     width: 18%;
     margin-left: 3%;
-    height: 40px;
+    height: 43px;
 }
 
 .submitIcon {
@@ -234,3 +311,4 @@ ion-icon {
         width: 100%;
     }
 }
+

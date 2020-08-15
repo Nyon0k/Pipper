@@ -43,7 +43,16 @@ export class PostPage implements OnInit {
   editModeOff = true;
   deleteButton = true;
   
-  constructor(public toastController: ToastController, public formbuilder: FormBuilder, public authService: AuthService, public commentService: CommentService, private route: ActivatedRoute, public userService: UserService, public router: Router, public postService: PostService,  public alertController: AlertController) {
+  constructor(
+      public toastController: ToastController, 
+      public formbuilder: FormBuilder, 
+      public authService: AuthService, 
+      public commentService: CommentService, 
+      private route: ActivatedRoute, 
+      public userService: UserService, 
+      public router: Router, 
+      public postService: PostService,  
+      public alertController: AlertController) {
     this.commentForm = this.formbuilder.group({
       text: [null]
     });
