@@ -2,8 +2,7 @@
 
 .homePost {
     display: flex;
-    justify-content: space-between;
-    
+    justify-content: space-around;
 }
 
 .imgAndTags {
@@ -11,7 +10,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-right: 5%;
+    margin-top: 1%;
 }
 
 .imgAndTags img {
@@ -28,17 +27,11 @@
 
 .imgPost {
     width: 100%;
-    height: 50%;
-}
-
-.imgMask {
     display: flex;
-    width: 100%;
     display: inline-block;
     height: auto;
     border-radius: 10px;
     overflow: hidden;
-
 }
 
 .imgMask img {
@@ -46,14 +39,15 @@
     object-fit: cover;
     width: 100%;
     background-size: cover;
+    
 }
 
 .tagsPost {
     display: flex;
-    width: 100%;
-    justify-content: center;
-    align-self: center;
-}   
+    overflow-x: scroll;
+    border-radius: 50px;
+    margin-top: 5%;
+}
 
 .textUserAndButtons {
     width: 55%;
@@ -76,6 +70,7 @@
 
 .userPhotoAndFollow {
     display: flex;
+    margin-bottom: 2%;
 }
 
 ion-button {
@@ -84,9 +79,7 @@ ion-button {
 
 .buttons {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
-    
 }
 
 .button {
@@ -95,17 +88,39 @@ ion-button {
     color: black;
 }
 
-.star {
-    color: darkorange;
-
+div.buttons ion-button.button {
+    width: 50%;
+    height: 100%;
 }
 
 ion-icon {
     margin-right: 5%;
 }
 
-h4 {
-    margin-left: 5%;
+.name {
+    color: #FFE9E9;
+    width: auto;
+}
+
+.username {
+    font-size: 80%;
+}
+
+.nameAndTime {
+    width: 100%;
+}
+
+.userTime {
+    width: 100%;
+    display: flex;
+}
+
+.nameAndUser {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    margin-left: 2%;
 }
 
 h3 {
@@ -115,18 +130,22 @@ h3 {
 }
 
 h6 {
-    margin-left: 5%;
+    margin-left: 2%;
+}
+
+.time {
+    font-size: 80%;
+    font-style: italic;
 }
 
 .text {
     display: flex;
     flex-direction: column;
-    margin-bottom: 5%;
 }
 
 .text h2 {
     color: #FFE9E9;
-    margin-top: 5%;
+    margin-top: 0%;
 }
 
 ion-chip {
@@ -138,11 +157,24 @@ ion-card {
 }
 
 .mask {
-    width: 30%;
+    width: 20%;
     display: inline-block;
     height: auto;
-    border-radius: 50%;
+    border-radius: 50px;
     overflow: hidden;
+}
+
+.follow {
+    display: flex;
+    width: 50%;
+}
+
+.tags {
+    height: 25px;
+    font-family: 'Poiret One', cursive;
+    --background: #404040;
+    color: #FFE9E9;
+    
 }
 
 @media screen and (max-width: 350px) {
