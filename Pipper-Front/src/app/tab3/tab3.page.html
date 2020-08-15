@@ -2,6 +2,13 @@
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
   </style> 
 
+<ion-content>
+<ion-card>
+  <div class="ionTitle">
+    <h2>O que tem a dizer?</h2>
+  </div>
+</ion-card>
+
 <ion-card>
   <ion-card-header *ngIf="photo">
   <img
@@ -19,9 +26,9 @@
 
 <ion-card-content>
   <div class="usuario">
-  <div class="imagem"><img src="../../assets/rosto.jpg" class="rosto"></div>
-  <div class="nome"><h4>Fulano (@fulano)</h4></div>
-  <div class="tag"><ion-button color="tertiary"><ion-icon name="chevron-back-outline"></ion-icon>tag</ion-button></div>
+    <div class="imagem"><img src="https://i.pinimg.com/736x/27/9d/60/279d60166aa6d25c9bf4fa4cd2f9f9eb.jpg" class="rosto"></div>
+    <div class="nome"><h4>Fulano <br> @fulano</h4></div>
+    <div class="tag"><ion-button color="tertiary"><ion-icon name="chevron-back-outline"></ion-icon>tag</ion-button></div>
   </div>
   <form [formGroup]="postForm" (ngSubmit) = "submitForm(postForm)">
     <ion-list>
@@ -34,7 +41,10 @@
         <ion-textarea auto-grow="true" type="text" formControlName="text" type="text" maxLength="442"></ion-textarea>
       </ion-item>
     </ion-list>
-    <ion-button class="botao" expand="block" size="Secondary" type="submit" shape="round" [disabled]="postForm.invalid" color ="success">Continuar</ion-button>
+    <div class="button">
+      <ion-button class="botao" expand="block" size="Secondary" type="submit" shape="round" [disabled]="postForm.invalid" color ="success">Continuar</ion-button>
+    </div>
   </form>
 </ion-card-content>
 </ion-card>
+</ion-content>

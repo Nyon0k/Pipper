@@ -7,15 +7,44 @@ ion-content{
 }
 ion-button{
     color: #000000;
-    --border-radius: 500px;
+    --border-radius: 20px;
 }
 ion-card{
-  overflow: hidden;
-  overflow-y: auto;
+    overflow: hidden;
+    overflow-y: auto;
+    margin-top: 2%;
+    border-radius: 10px;
+    margin-bottom: 2%;
+}
+.ionTitle {
+    display: flex;
+    justify-content: center;
+}
+
+.ionTitle h2 {
+    font-size: 150%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-family: 'Poiret One';
+    color: #50D890;
 }
 .imagem{
     margin-left: 3%;
+    width: 20%;
+    display: inline-block;
+    height: auto;
+    border-radius: 50px;
+    overflow: hidden;
 }
+
+.imagem img {
+    width: 100%;
+    border-radius: 50%;
+    height: auto;
+    object-fit: cover;
+    background-size: cover;
+}
+
 .usuario{
     display: flex;
 
@@ -33,8 +62,8 @@ h4{
 .tag{
     --ion-color: #000000;
     border-radius: 200px;
-    margin-left: 8%;
     width: 40%;
+
 }
 .rosto{
     width: 30vw;
@@ -53,4 +82,11 @@ img.foto-perfil{
     width: 40;
     border-radius: 10px;
 
+}
+.button {
+    display: flex;
+    justify-content: center;
+}
+.botao {
+    width: 50%;
 }
