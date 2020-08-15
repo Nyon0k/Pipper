@@ -10,7 +10,7 @@ export class CommentService {
   constructor(public http:HttpClient) { }
 
   listPostComment(post_id): Observable<any>{
-    return this.http.get(this.apiUrl + 'postUserComment/' + post_id)
+    return this.http.get(this.apiUrl + 'showPostUserComment/' + post_id)
   }
 
   listPostInfo(post_id): Observable<any>{

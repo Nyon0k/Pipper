@@ -58,9 +58,10 @@ class User extends Authenticatable
             $filename = uniqid();
             $path = 'localPhotos/users/'.$filename;
             file_put_contents(storage_path('app/'.$path),$image);
+            $this->photo=$path;
         }
      
-        $this->photo=$path;
+
         $this->save();
     }
 

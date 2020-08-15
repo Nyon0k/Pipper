@@ -7,6 +7,7 @@ import { CommentService} from '../../services/comment/comment.service'
 import { UserService } from '../../services/user/user.service';
 import { PostService } from '../../services/post/post.service';
 
+
 class Button {
   follow: string;
   chance: boolean;
@@ -41,6 +42,7 @@ export class PostPage implements OnInit {
   postForm: FormGroup;
   editMode = false;
   editModeOff = true;
+  editButton = false;
   deleteButton = true;
   
   constructor(public toastController: ToastController, public formbuilder: FormBuilder, public authService: AuthService, public commentService: CommentService, private route: ActivatedRoute, public userService: UserService, public router: Router, public postService: PostService,  public alertController: AlertController) {
@@ -141,6 +143,10 @@ export class PostPage implements OnInit {
           if (this.user_id != this.user_id_check){
             this.deleteButton = !this.deleteButton
           }
+
+          if (this.user_id_check == this.user_id){
+            this.editButton = true
+          }
         })
     }
     )
@@ -177,6 +183,12 @@ export class PostPage implements OnInit {
     this.editMode = !this.editMode;
     this.editModeOff = !this.editModeOff;
     }
+  }
+
+  likePost(){
+    this.postService.likePost(this.post_id).subscribe((res) =>{
+      console.log('Post liked!')
+    })
   }
 }
 

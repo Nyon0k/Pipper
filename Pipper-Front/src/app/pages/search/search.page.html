@@ -1,11 +1,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
 <div class="busca">
   <div class="search" *ngIf="searchUser">
-    <ion-icon name="search-outline" (click)="search()"></ion-icon>
-    <form><ion-input></ion-input></form>
+    <ion-icon name="search-outline" (click)="search()" type="Submit"></ion-icon>
+    <form [formGroup]="searchForm" (ngSubmit)="searchPage()"><ion-input type="text" formControlName="name"></ion-input>
+    </form>
   </div>
   <div class="search2" *ngIf="searchPost">
-    <ion-icon name="search-outline" (click)="search()"></ion-icon>
+    <ion-icon name="search-outline" type="submit" (click)="search()"></ion-icon>
     <form>
       <ion-button class="tag" color="tertiary" (click)="presentPopover($event)">
         Tags
@@ -37,7 +38,11 @@
 </div>
 
 <div *ngIf="botaoUser">
-  <ion-button></ion-button>
+    <ion-card *ngFor="let user of users">
+      <app-user-component
+      [user]="user"
+      ></app-user-component>
+    </ion-card>
 </div>
 
 </ion-content>

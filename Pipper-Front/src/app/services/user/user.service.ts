@@ -27,17 +27,18 @@ export class UserService {
     return this.http.get(this.apiUrl + 'showUser/' + id);
   }
 
-  public listPostUser(id){
+  public listPostUser(id): Observable<any>{
     return this.http.get(this.apiUrl + 'listPostsByAUser/' + id);
   }
 
-  public userFollowing(user_id, followed_id): Observable<any>{
-    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('token');
-    return this.http.put(this.apiUrl + 'followUser/' + user_id + '/' + followed_id, this.httpHeaders)
+  public userFollowing(followed_id): Observable<any>{
+    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
+    console.log(this.httpHeaders.headers);
+    return this.http.put(this.apiUrl + 'followUser/' + followed_id, null, this.httpHeaders);
   }
 
-  public userUnFollowing(user_id, followed_id): Observable<any>{
-    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('token');
-    return this.http.put(this.apiUrl + 'unfollowUser/' + user_id + '/' + followed_id, this.httpHeaders)
-  }
+  //public userUnFollowing(user_id, followed_id): Observable<any>{
+    //this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('token');
+    //return this.http.put(this.apiUrl + 'unfollowUser/' + user_id + '/' + followed_id, this.httpHeaders)
+  //}
 }

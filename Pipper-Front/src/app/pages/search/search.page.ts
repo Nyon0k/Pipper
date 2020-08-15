@@ -1,7 +1,8 @@
 import { Component, OnInit ,Input } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { TagsComponent } from '../../components/tags/tags.component';
-import { ThrowStmt } from '@angular/compiler';
+import { SearchService } from '../../services/search/search.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -24,9 +25,20 @@ export class SearchPage implements OnInit {
   searchUser= true;
   botaoPost = false;
   botaoUser = false;
+  searchForm: FormGroup;
+  users = [
+    {
+      name: 'text',
+      nickname: 'text'
+    }
+  ];
   
 
-  constructor(public popoverController: PopoverController) {}
+  constructor(public popoverController: PopoverController, public searchService: SearchService, public formbuilder: FormBuilder) {
+    this.searchForm = this.formbuilder.group({
+      name: [null]
+    });
+  }
     async presentPopover(event){
       console.log(event);
       const popover = await this.popoverController.create({
@@ -35,6 +47,7 @@ export class SearchPage implements OnInit {
         event,
         translucent: true
       });
+      
       await popover.present();
       const { data } = await popover.onDidDismiss();
       if (data.servico){
@@ -73,7 +86,7 @@ export class SearchPage implements OnInit {
     }
 
   ngOnInit() {
-    console.log(this.servico)
+
   }
 
   searchPoste(){
@@ -102,6 +115,9 @@ export class SearchPage implements OnInit {
     if (this.searchUser == true){
     this.botaoUser = true;
     this.botaoPost = false;
+    this.searchPage();
+    console.log(this.searchForm.value);
+
     }
     if (this.searchPost == true){
       this.botaoPost = true;
@@ -142,4 +158,14 @@ export class SearchPage implements OnInit {
         break;
     }
  }
+
+ searchPage(){
+    this.searchService.search(this.searchForm.value).subscribe((res)=>{
+      this.users = res[0];
+      console.log(this.users)
+      console.log(res);
+      console.log('Usuário Procurado');
+    })
+ }
+
 }

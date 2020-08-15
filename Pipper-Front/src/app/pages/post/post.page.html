@@ -72,11 +72,11 @@
       
       <!-- Botões que desaparecem quando enquanto a edição do post nao estiver finalizada -->
       <div class="interactionButtons" *ngIf= "editModeOff">
-        <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="thumbs-up-outline"></ion-icon>{{post.likes}}</ion-button>
+        <ion-button class="interactionButton" size="small" mode="md" (click)="likePost()"><ion-icon name="thumbs-up-outline"></ion-icon>{{post.likes}}</ion-button>
         <ion-button class="interactionButton" size="small" mode="md" (click)="listComments()"><ion-icon name="chatbubble-outline"></ion-icon>6</ion-button>
         <ion-button class="interactionButton" size="small" mode="md" (click)="presentCopy()"><ion-icon name="arrow-redo-outline"></ion-icon><span style="text-transform:none!important;">Compartilhe</span></ion-button>
         <ion-button class="interactionButton" size="small" mode="md" (click)="deletePost()" *ngIf="deleteButton"><ion-icon name="arrow-redo-outline"></ion-icon><span style="text-transform:none!important;">Apagar</span></ion-button>
-        <ion-button class="interactionButton" size="small" mode="md" (click)="edit()"><ion-icon name="arrow-redo-outline"></ion-icon><span style="text-transform:none!important;">Editar</span></ion-button>
+        <ion-button class="interactionButton" size="small" mode="md" (click)="edit()" *ngIf="editButton"><ion-icon name="arrow-redo-outline"></ion-icon><span style="text-transform:none!important;">Editar</span></ion-button>
       </div>
     </ion-card-content>
   </ion-card>

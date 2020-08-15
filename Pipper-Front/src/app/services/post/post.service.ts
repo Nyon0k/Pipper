@@ -40,4 +40,10 @@ export class PostService {
     this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
     return this.http.put(this.apiUrl + 'updatePost/' + post_id, form, this.httpHeaders);
   }
+
+  likePost(post_id): Observable<any>{
+    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
+    return this.http.put(this.apiUrl+ 'like/' + post_id, null, this.httpHeaders);
+  }
+
 }

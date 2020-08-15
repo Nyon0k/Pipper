@@ -23,6 +23,7 @@ export class ProfilePage implements OnInit {
   posts;
   post_id;
   followButton: Button;
+  postCount;
 
   constructor(public router: Router, public userService: UserService, private route: ActivatedRoute) { 
   }
@@ -42,7 +43,7 @@ export class ProfilePage implements OnInit {
     this.followButton.chance = !this.followButton.chance;
     if (!this.followButton.chance) {
       this.followButton.follow = "Seguir";
-      this.unFollow();
+      this.follow();
     }
     else if (this.followButton.chance) {
       this.followButton.follow = "Seguindo";
@@ -68,6 +69,7 @@ export class ProfilePage implements OnInit {
       this.posts = res;
       //this.post_id = res.id;
       console.log(this.posts);
+      this.postCount = res.length
     })
   }
 
@@ -83,17 +85,17 @@ export class ProfilePage implements OnInit {
   }
 
   follow(){
-    this.userService.userFollowing(this.user_id_check, this.user_id).subscribe((res) =>{
+    this.userService.userFollowing(this.user_id).subscribe((res) =>{
       console.log(res)
       console.log('Seguindo!');
     })
   }
 
-  unFollow(){
+  /*unFollow(){
     this.userService.userUnFollowing(this.user_id_check, this.user_id).subscribe((res) =>{
       console.log(res)
       console.log('Deixei de Seguir!');
     })
-  }
+  }*/
 
 }
