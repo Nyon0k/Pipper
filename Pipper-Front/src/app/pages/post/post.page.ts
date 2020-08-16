@@ -168,10 +168,11 @@ export class PostPage implements OnInit {
 
   deletePost(){
     if (this.user_id == this.user_id_check){
-    this.postService.deletePostUser(this.post_id).subscribe((res) =>{
-      console.log(res);
-      console.log('Post Apagado!');
-      this.router.navigate(['/tabs/tab1']);
+    this.postService.deletePostUser(this.post_id).subscribe(
+      (res) =>{
+        this.router.navigate(['/tabs/tab1'])
+        console.log(res);
+        console.log('Post Apagado!');
     })
     } else{
       console.log('Voce nao pode apagar este post!')
@@ -200,4 +201,3 @@ export class PostPage implements OnInit {
     })
   }
 }
-

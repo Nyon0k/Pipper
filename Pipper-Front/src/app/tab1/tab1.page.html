@@ -10,9 +10,9 @@
     </div>
 
 <ion-content>
-  <div class="mySpinner">
-    <!--<ion-spinner *ngIf="spinner" name="bubbles"></ion-spinner>-->
-  </div>
+  <!--<div class="mySpinner">
+    <ion-spinner *ngIf="spinner" name="bubbles"></ion-spinner>
+  </div>-->
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="10" pullMax="100" mode="md">
     <ion-refresher-content
     refreshingSpinner="crescent">

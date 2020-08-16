@@ -181,3 +181,12 @@ h6 {
 .postTitle {
     color: grey;
 }
+
+.following {
+    --background: #272727;
+    font-style: italic;
+    --border-radius: 10px;
+    --color: #50D890;
+    -webkit-text-stroke: 1px #50D890;
+    
+}

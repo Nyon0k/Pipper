@@ -39,9 +39,11 @@
 
 <div *ngIf="botaoUser">
     <ion-card *ngFor="let user of users">
-      <app-user-component
-      [user]="user"
-      ></app-user-component>
+      <ion-card-content>
+        <app-user-component
+        [user]="user"
+        ></app-user-component>
+      </ion-card-content>
     </ion-card>
 </div>
 

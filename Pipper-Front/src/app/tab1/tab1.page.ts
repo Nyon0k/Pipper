@@ -22,11 +22,15 @@ export class Tab1Page implements OnInit {
   constructor(public postService: PostService, public router: Router) {}
   user_id = localStorage.getItem('id_user');
   ngOnInit() {
+    
+  }
+
+  ionViewWillEnter(){
     this.getlistPostNovo();
     this.getlistPostRating();
     this.getlistPostFollow();
   }
-
+  
   getlistPostNovo(){
     this.postService.listPostsNovo().subscribe ((res) =>{
       this.posts1 = res;

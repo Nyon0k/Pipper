@@ -70,6 +70,7 @@ export class Tab3Page {
   submitForm(postForm){
     this.authservice.createPost(postForm.value).subscribe(
       (res)=> {
+        this.router.navigate(['/tabs/tab1'])
         console.log(res);
         console.log("Post foi criado.");
       },
@@ -77,7 +78,6 @@ export class Tab3Page {
         console.log(err);
       }
     );
-    this.router.navigate(['/tabs/tab1'])
 }
 
 }

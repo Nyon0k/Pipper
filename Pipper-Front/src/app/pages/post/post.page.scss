@@ -75,6 +75,11 @@ h4 {
 
 .allButtons {
     display: flex;
+    justify-content: space-between;
+}
+
+.leftSideButtons {
+    display: flex;
 }
 
 .upperContentPart {

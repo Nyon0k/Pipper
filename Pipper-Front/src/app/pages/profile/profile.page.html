@@ -36,7 +36,7 @@
       <div class="hr"></div>
   
       <div class="followOrEdit">
-        <ion-button mode="md" class="buttonClass" (click)="changeFollow()" *ngIf="outroPerfil">{{followButton.follow}}</ion-button>
+        <ion-button mode="md" class="buttonClass" (click)="changeFollow()" *ngIf="outroPerfil" [ngClass]="{'following':followButton.chance}">{{followButton.follow}}</ion-button>
         <ion-button mode="md" class="buttonClass" *ngIf="outroPerfil">Mensagem</ion-button>
         <ion-button mode="md" class="buttonClass" (click)="editar()" *ngIf="meuPerfil">Editar perfil</ion-button>
       </div>
