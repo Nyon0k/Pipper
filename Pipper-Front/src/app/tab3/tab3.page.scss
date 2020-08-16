@@ -30,19 +30,28 @@ ion-card{
 }
 .imagem{
     margin-left: 3%;
-    width: 20%;
-    display: inline-block;
-    height: auto;
-    border-radius: 50px;
+    width: 15vw;
+    height: 15vw;
+    position: relative;
     overflow: hidden;
+    border-radius: 50%;
+    background-color: #272727;
+    object-fit: cover;
 }
 
 .imagem img {
-    width: 100%;
-    border-radius: 50%;
-    height: auto;
-    object-fit: cover;
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
     background-size: cover;
+}
+
+.imgPlace {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 20%;
 }
 
 .usuario{

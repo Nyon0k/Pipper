@@ -1,10 +1,11 @@
 .homePost {
     display: flex;
-    justify-content: space-around;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .imgAndTags {
-    width: 60%;
+    max-width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -25,18 +26,20 @@
 }
 
 .imgPost {
-    width: 100%;
-    display: flex;
-    display: inline-block;
-    height: auto;
-    border-radius: 10px;
+    width: 30vw;
+    height: 30vw;
+    position: relative;
     overflow: hidden;
+    border-radius: 10%;
+    background-color: #272727;
+    object-fit: cover;
 }
 
 .imgPost img {
-    height: auto;
-    object-fit: cover;
-    width: 100%;
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
     background-size: cover;
 }
 
@@ -53,8 +56,9 @@
     margin-top: 3%;
 }
 .textUserAndButtons {
-    width: 100%;
+    width: 60%;
     margin-left: 3%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -62,14 +66,32 @@
 
 .photoAndUser {
     display: flex;
+    width: 100%;
 }
 
-.photoAndUser img {
-    width: 100%;
+.mask {
+    width: 10vw;
+    height: 10vw;
+    position: relative;
+    overflow: hidden;
     border-radius: 50%;
-    height: auto;
+    background-color: #272727;
     object-fit: cover;
+}
+
+.mask img {
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
     background-size: cover;
+}
+
+.imgPlace {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 15%;
 }
 
 .userPhotoAndFollow {
@@ -113,7 +135,9 @@ ion-icon {
 .name {
     color: #FFE9E9;
     width: auto;
-    word-break: break-all;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .username {
@@ -133,8 +157,8 @@ ion-icon {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 90%;
-    margin-left: 2%;
+    width: 95%;
+    margin-left: 5%;
 }
 
 h3 {
@@ -170,17 +194,9 @@ ion-card {
     border-radius: 10px;
 }
 
-.mask {
-    width: 20%;
-    display: inline-block;
-    height: auto;
-    border-radius: 50px;
-    overflow: hidden;
-}
-
 .follow {
     display: flex;
-    width: 50%;
+    width: 40%;
 }
 
 .tags {
@@ -205,6 +221,9 @@ ion-card {
     .imgAndTags {
         width: 100%;
         margin-right: 0%;
+        align-items: center;
+        margin-bottom: 5%;
+    
     }
     .tagsPost {
         margin-bottom: 5%;

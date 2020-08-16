@@ -59,10 +59,10 @@ export class EditarPerfilPage implements OnInit {
 
   editarPerfil(){
     this.userService.editUser(this.registerForm.value).subscribe((res) =>{
-      this.router.navigate(['/profile', {'userId': this.user_id}]);
       console.log(res)
       console.log('perfil editado');
       this.presentToast();
+      this.router.navigate(['/profile', {'userId': this.user_id}]);
 
     });
   }

@@ -7,18 +7,28 @@ ion-card-content {
 }
 
 .profileImg {
-    width: 30%;
-    display: inline-block;
-    height: auto;
-    border-radius: 10%;
+    width: 18vw;
+    height: 18vw;
+    position: relative;
     overflow: hidden;
+    border-radius: 10%;
+    background-color: #272727;
+    object-fit: cover;
 }
 
 .profileImg img {
+    display: inline-block;
+    margin: 0 auto;
     height: 100%;
-    object-fit: cover;
-    width: 100%;
+    width: auto;
     background-size: cover;
+}
+
+.imgPlace {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 20%;
 }
 
 .timeHrTitle {

@@ -18,8 +18,10 @@
       <div class="upperContentPart"> <!--row-->
 
         <div class="userPart"> <!--row-->
-          <div class="userMask">
-            <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg" (click)="redirectUser()">
+          <div class="imgPlace2">
+            <div class="userMask">
+              <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg" (click)="redirectUser()">
+            </div>
           </div>
           <div class="nameAndTime"> <!--collumn-->
             <div class="userNameAndNickname">
@@ -53,13 +55,13 @@
       <form [formGroup]="postForm" (ngSubmit)="editPost()">
       
       <div class="postTitle">
-        <ion-input position="floating" placeholder="Título" class="inputTitle" mode="md" type="title" formControlName="title" maxlength="50"></ion-input>
+        <ion-input position="floating" placeholder="{{post.title}}" class="inputTitle" mode="md" type="title" formControlName="title" maxlength="50"></ion-input>
       </div>
       <div class="leftRight">
         <div class="quoteLeft">
           <img src="../assets/quote.png">
         </div>
-        <ion-input position="floating" placeholder="Comentário" class="inputText" mode="md" type="text" formControlName="text" maxlength="256"></ion-input>
+        <ion-input position="floating" placeholder="{{post.text}}" class="inputText" mode="md" type="text" formControlName="text" maxlength="256"></ion-input>
         <div class="quoteRight">
          <img src="../assets/quote2.png">
         </div>
@@ -92,7 +94,7 @@
   <ion-card><ion-card-content>
     <form [formGroup]="commentForm" (ngSubmit)="sendComment()">
     <div class="inputAndSubmit">
-      <ion-input position="floating" placeholder="Deixe sua mensagem" class="input" mode="md" type="text" formControlName="text"></ion-input>
+      <ion-input position="floating" placeholder="Deixe sua mensagem" class="input" mode="md" type="text" formControlName="text" maxlength="248"></ion-input>
       <ion-button class="submitButton" mode="ios" type="submit">
         <ion-icon name="paper-plane-outline" size="large" class="submitIcon"></ion-icon>
       </ion-button>

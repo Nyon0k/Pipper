@@ -11,11 +11,12 @@
 
 .profileMask {
     width: 30%;
-    display: inline-block;
-    height: auto;
-    border-radius: 50px;
+    height: 30%;
+    position: relative;
     overflow: hidden;
-    align-self: center;
+    border-radius: 50%;
+    background-color: #272727;
+    object-fit: cover;
 
 }
 
@@ -25,6 +26,13 @@
     height: auto;
     object-fit: cover;
     background-size: cover;
+}
+
+.imgPlace {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .userNumbers {
@@ -37,16 +45,27 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-left: 2%;
 }
 
 .userNames {
     display: flex;
+    flex-direction: row;
     width: 100%;
-    justify-content: center;
     margin-top: 2%;
     margin-bottom: 2%;
+    justify-content: center;
 }
+
+.username {
+    width: auto;
+    font-size: 110%;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 0%;
+    margin-bottom: 2%;
+    color: #FFE9E9;
+
+}
+
 .hr {
     background-color: #C4FB6D;
     height: 0.1px;
@@ -64,19 +83,10 @@
     justify-content: center;
 }
 
-h2 {
-    font-size: 110%;
-    font-family: 'Roboto', sans-serif;
-    margin-top: 0%;
-    margin-bottom: 2%;
-    color: #FFE9E9;
-    margin-right: 1%;
-}
-
 .leaf {
     color: #C4FB6D;
-    margin-left: 2%;
     margin-top: 1%;
+    width: 30px;
 }
 
 .names {
@@ -84,13 +94,6 @@ h2 {
     flex-direction: column;
     margin-left: 5%;
     width: 100%;
-}
-
-.nick {
-    font-family: 'Roboto', sans-serif;
-    font-weight: lighter;
-    width: 100%;
-    -webkit-text-stroke: 0.5px #50D890;
 }
 
 .conteudo {

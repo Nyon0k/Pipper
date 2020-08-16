@@ -56,20 +56,28 @@ ion-icon {
 }
 
 .profileMask {
-    width: 30%;
-    display: inline-block;
-    height: auto;
-    border-radius: 50px;
+    width: 20vw;
+    height: 20vw;
+    position: relative;
     overflow: hidden;
-    margin-right: 2%;
+    border-radius: 50%;
+    background-color: #272727;
+    object-fit: cover;
 }
 
 .profileMask img {
-    width: 100%;
-    border-radius: 50%;
-    height: auto;
-    object-fit: cover;
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
     background-size: cover;
+}
+
+.imgPlace {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 30%;
 }
 
 .postsCard {
@@ -78,7 +86,7 @@ ion-icon {
 
 h2 {
     color: #FFE9E9;
-    margin-left: 2%;
+    margin-left: 4%;
 }
 
 .hrPost {
@@ -91,6 +99,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     height: 70%;
+    margin-top: 3%;
 }
 
 .profileContent {
@@ -155,18 +164,26 @@ h6 {
         align-items: center;
     }
 
+    .imgPlace {
+        margin-bottom: 3%;
+        align-items: center;
+    }
+
     .profileMask {
-        display: flex;
-        justify-content: center;
-        width: 50%;
-        margin-right: 0%;
-        margin-bottom: 5%;
+        width: 20vw;
+        height: 20vw;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        background-color: #272727;
+        object-fit: cover;
     }
 
     .userInfo h2 {
         display: flex;
         justify-content: center;
         margin-bottom: 5%;
+        margin-left: 0px;
     }
 
     .userPosts, .userFollowing, .userFollowers {

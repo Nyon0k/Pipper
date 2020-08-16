@@ -12,11 +12,13 @@
   <ion-card class="profile">
     <ion-card-content>
       <div class="profileContent">
-        <div class="profileMask">
-          <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
+        <div class="imgPlace">
+          <div class="profileMask">
+            <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
+          </div>
         </div>
         <div class="userInfo" *ngIf="user">
-          <h2>{{user.name}}<ion-icon name="leaf-outline" class="leaf"></ion-icon></h2>
+          <h2>{{user.name}}</h2>
           <div class="userNumbers">
             <div class="userPosts">
               <div class="number"><h3>{{postCount}}</h3></div>
