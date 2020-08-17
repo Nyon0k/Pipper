@@ -4,8 +4,10 @@
     position: relative;
     overflow: hidden;
     border-radius: 50%;
-    background-color: #272727;
     object-fit: cover;
+    background-image: url("../../../assets/chamaBG.png");
+    background-repeat: repeat;
+    background-size: contain;
 }
 
 .iconMask img {

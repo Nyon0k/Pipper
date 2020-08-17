@@ -209,7 +209,9 @@ ion-icon {
 }
 
 .trash {
+    display: flex;
     margin-top: 2%;
+    justify-content: center;
 }
 
 .interactionButtons {

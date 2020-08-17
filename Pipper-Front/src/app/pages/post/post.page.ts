@@ -170,9 +170,9 @@ export class PostPage implements OnInit {
     if (this.user_id == this.user_id_check){
     this.postService.deletePostUser(this.post_id).subscribe(
       (res) =>{
-        this.router.navigate(['/tabs/tab1'])
         console.log(res);
         console.log('Post Apagado!');
+        this.router.navigate(['/tabs/tab1']);
     })
     } else{
       console.log('Voce nao pode apagar este post!')
@@ -199,5 +199,17 @@ export class PostPage implements OnInit {
     this.postService.likePost(this.post_id).subscribe((res) =>{
       console.log('Post liked!')
     })
+  }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+      this.showPost();
+      this.likePost();
+      this.listComments();
+    }, 2000);
   }
 }

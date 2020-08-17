@@ -8,7 +8,11 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="10" pullMax="100" mode="md">
+    <ion-refresher-content
+    refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-card class="profile">
     <ion-card-content>
       <div class="profileContent">

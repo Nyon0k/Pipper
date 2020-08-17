@@ -45,6 +45,7 @@ export class SearchPage implements OnInit {
         component: TagsComponent,
         cssClass: 'tagspopovercss',
         event,
+        mode: "md",
         translucent: true
       });
       
@@ -167,5 +168,15 @@ export class SearchPage implements OnInit {
       console.log('Usuário Procurado');
     })
  }
+
+ doRefresh(event) {
+  console.log('Begin async operation');
+
+  setTimeout(() => {
+    console.log('Async operation has ended');
+    event.target.complete();
+    this.searchPage();
+  }, 2000);
+}
 
 }

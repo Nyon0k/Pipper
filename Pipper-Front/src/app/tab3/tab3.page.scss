@@ -71,7 +71,7 @@ h4{
 .tag{
     --ion-color: #000000;
     border-radius: 200px;
-    width: 40%;
+    width: 30%;
 
 }
 .rosto{
@@ -95,7 +95,12 @@ img.foto-perfil{
 .button {
     display: flex;
     justify-content: center;
+    margin-top: 5%;
 }
 .botao {
     width: 50%;
+}
+
+.label {
+    color: #50D890;
 }

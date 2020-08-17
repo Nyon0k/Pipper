@@ -98,4 +98,14 @@ export class ProfilePage implements OnInit {
     })
   }*/
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+      this.listPostUser();
+      this.showUserInfo();
+    }, 2000);
+  }
 }
