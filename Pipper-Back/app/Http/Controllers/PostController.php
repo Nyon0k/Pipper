@@ -45,7 +45,6 @@ class PostController extends Controller
     public function deletePost($id){
         $post = Post::findOrFail($id);
         if($post->photo){
-            
             Storage::delete($post->photo);
         }
         Post::destroy($id);
