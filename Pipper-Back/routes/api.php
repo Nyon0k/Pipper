@@ -61,7 +61,7 @@ Route::group(['middleware'=>'auth:api'], function(){
     //Rotas de Post autenticado
     Route::POST('createPost', 'PostController@createPost');
     Route::PUT('updatePost/{id}', 'PostController@updatePost');
-    Route::DELETE('deletePost/{id}', 'PostController@deletePost');
+    Route::DELETE('deletePost/{id}', 'PostController@deletePost')->middleware('user');
     Route::PUT('like/{id}', 'PostController@like');
     //Route::PUT('dislike/{id}', 'PostController@dislike');
     Route::PUT('attachComment/{post_id}/{comment_id}', 'PostController@attachComment');

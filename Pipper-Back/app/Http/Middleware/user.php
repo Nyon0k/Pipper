@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use App\Comment as CommentModel;
-use App\Post as PostModel;
-use App\User as UserModel;
+use App\Comment;
+use App\Post;
+use AppUser;
 use Closure;
 use Auth;
 
@@ -19,15 +19,19 @@ class user{
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        $comment = Comment::with('Post')->where('post_id', $request->post_id)->where('user_id', $user->id)->get(); //Verifica se o usuário é dono do comentário
-        $post = Post::with('user')->where('user_id', $user->id)->get(); //Verifica se o usuário é o dono do post
-        $keyModerator = User::where('type', 1)->get(); //Verifica se o usuário é moderador
-        if($keyModerator->type == 1){
+        $comment = Comment::with('user')->where('id', $request->id)->where('user_id', $user->id)->first(); //Verifica se o usuário é dono do comentário
+        $post = Post::with('user')->where('id', $request->id)->where('user_id', $user->id)->first(); //Verifica se o usuário é o dono do post
+        //Verifica se o usuário é moderador
+        if($user->type == 1){
             echo 'entrou no keyModerator';
             return $next($request);
         }
-        if($comment || $post){
-            echo 'entrou no outro';
+        if($comment){
+            echo 'entrou no comment';
+            return $next($request);
+        }
+        if($post){
+            echo 'entrou no post';
             return $next($request);
         }
         else{
