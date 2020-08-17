@@ -1,25 +1,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
 <ion-header>
   <div class="headerDec">
-    <ion-icon routerLink="" class="backIcon" name="chevron-back-circle-outline" size="large"></ion-icon>
+    <ion-icon (click)="voltar()" class="backIcon" name="chevron-back-circle-outline" size="large"></ion-icon>
     <h1>Pipper</h1>
   </div>
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>
+  <ion-card *ngIf="user">
+    <ion-card-header *ngIf="editModeOff">
       <div class="cardPhoto">
-        <img src="https://emporioquatroestrelas.vteximg.com.br/arquivos/ids/159625-1000-1000/folha-de-louro-emp.png?v=637130581619630000">
+        <img [src]="photoPost">
       </div>
     </ion-card-header>
+
+      <ion-card-header *ngIf="editMode">
+        <img
+        class="foto-perfil"
+        [src]="photoPost"
+        vertical="center"
+        horizontal="center"
+        />
+        <ion-fab-button (click)="takePicture()">
+          <ion-icon></ion-icon>
+        </ion-fab-button>
+      </ion-card-header>
 
     <ion-card-content>
       <div class="upperContentPart"> <!--row-->
 
         <div class="userPart"> <!--row-->
           <div class="userMask">
-            <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg" (click)="redirectUser()">
+            <img [src]="photo" (click)="redirectUser()">
           </div>
           <div class="nameAndTime"> <!--collumn-->
             <div class="userNameAndNickname">
@@ -51,8 +63,8 @@
     </div>
     <!-- Div para editar as informações do post -->
     <div *ngIf="editMode" class="inputAndSubmit">
-      <form [formGroup]="postForm" (ngSubmit)="editPost()">
-      
+      <form [formGroup]="postForm" (ngSubmit)="editPost(postForm)">
+
       <div class="postTitle">
         <ion-input position="floating" placeholder="Título" class="inputTitle" mode="md" type="title" formControlName="title"></ion-input>
       </div>

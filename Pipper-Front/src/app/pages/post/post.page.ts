@@ -6,6 +6,8 @@ import { AuthService} from '../../services/auth/auth.service';
 import { CommentService} from '../../services/comment/comment.service'
 import { UserService } from '../../services/user/user.service';
 import { PostService } from '../../services/post/post.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 
 
 class Button {
@@ -24,6 +26,8 @@ export class PostPage implements OnInit {
   user_id;
   user_id_check;
   user;
+  photo;
+  photoPost: SafeResourceUrl;
   post = {id: 0,
     ​
     like: 0,
@@ -36,6 +40,7 @@ export class PostPage implements OnInit {
     ​
     title: "text"};
   post_id;
+  userType;
   commentForm: FormGroup;
   followButton: Button;
   showComment = false;
@@ -43,7 +48,7 @@ export class PostPage implements OnInit {
   editMode = false;
   editModeOff = true;
   editButton = false;
-  deleteButton = true;
+  deleteButton = false;
   
   constructor(
       public toastController: ToastController, 
@@ -54,7 +59,8 @@ export class PostPage implements OnInit {
       public userService: UserService, 
       public router: Router, 
       public postService: PostService,  
-      public alertController: AlertController) {
+      public alertController: AlertController,
+      private sanitizer: DomSanitizer) {
     this.commentForm = this.formbuilder.group({
       text: [null]
     });
@@ -101,6 +107,18 @@ export class PostPage implements OnInit {
     }
 
     this.showPost();
+  }
+
+  async takePicture(){
+    const image = await Plugins.Camera.getPhoto({
+      quality: 100,
+      allowEditing: true,
+      saveToGallery: true,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera,
+    });
+
+    this.photoPost = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
 
   }
 
@@ -143,20 +161,36 @@ export class PostPage implements OnInit {
     await this.route.params.subscribe((params) => (this.post_id = params.postId));
     this.commentService.listPostInfo(this.post_id).subscribe((res)=>{
       this.post = res;
+      this.photoPost = res.photo;
       console.log(this.post);
+      console.log(res.user_id);
+      //Usuário Dono do post
       this.userService.showUser(res.user_id).subscribe((res)=>
         {
           console.log(res);
           this.user = res.name;
           this.user_id = res.id;
-          if (this.user_id != this.user_id_check){
-            this.deleteButton = !this.deleteButton
+          this.photo = res.photo;
+          if (this.photo == null){
+            this.photo = '../../assets/chamaBG.png';
           }
-
-          if (this.user_id_check == this.user_id){
-            this.editButton = true
-          }
+          //Usuário Visitante do post
+          this.userService.showUser(this.user_id_check).subscribe((res)=>{
+            this.userType = res.type;
+            console.log(res);
+            console.log(this.userType)
+            if (this.user_id == this.user_id_check || this.userType == 1){
+              this.deleteButton = true
+            }
+        
+            if (this.user_id_check == this.user_id){
+              this.editButton = true
+            }
         })
+
+        })
+
+
     }
     )
   }
@@ -167,7 +201,7 @@ export class PostPage implements OnInit {
   }
 
   deletePost(){
-    if (this.user_id == this.user_id_check){
+    if (this.user_id == this.user_id_check || this.userType == 1){
     this.postService.deletePostUser(this.post_id).subscribe((res) =>{
       console.log(res);
       console.log('Post Apagado!');
@@ -178,10 +212,16 @@ export class PostPage implements OnInit {
     }
   }
 
-  editPost(){
-    this.postService.editPostUser(this.post_id, this.postForm.value).subscribe((res) =>{
+  editPost(postForm){
+    if(this.photoPost){
+      postForm.value.photo = this.photoPost['changingThisBreaksApplicationSecurity'];
+      } else{
+        postForm.value.photo = null;
+      }
+    this.postService.editPostUser(this.post_id, postForm.value).subscribe((res) =>{
       this.editMode = false;
       this.editModeOff = true;
+      this.post = res;
       console.log(res)
       console.log('Post Editado!');
     })
@@ -199,5 +239,11 @@ export class PostPage implements OnInit {
       console.log('Post liked!')
     })
   }
+
+  voltar(){
+    this.router.navigate(['/tabs/tab1']);
+  }
+
+
 }
 

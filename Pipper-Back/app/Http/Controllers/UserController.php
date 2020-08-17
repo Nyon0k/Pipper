@@ -26,6 +26,7 @@ class UserController extends Controller
 
     public function showUser($id){
         $user = User::findOrFail($id);
+        $user->loadCount('followUserFollower as followed','followUserFollowed as followers');
         return response()->json($user);
     }
 

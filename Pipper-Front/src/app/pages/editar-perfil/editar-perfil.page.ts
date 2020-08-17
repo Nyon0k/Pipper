@@ -23,7 +23,6 @@ export class EditarPerfilPage implements OnInit {
     private userService: UserService,
     private router: Router) { 
     this.registerForm = this.formbuilder.group({
-      //image: [null],
       name: [null],
       nickname: [null],
       email: [null, [Validators.email]],
@@ -57,7 +56,16 @@ export class EditarPerfilPage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewWillEnter(){
+    console.log('IVWE');
+  }
+
   editarPerfil(){
+    if(this.photo){
+      this.registerForm.value.photo = this.photo['changingThisBreaksApplicationSecurity'];
+      }else{
+        this.registerForm.value.photo = null;
+      }
     this.userService.editUser(this.registerForm.value).subscribe((res) =>{
       console.log(res)
       console.log('perfil editado');
@@ -66,5 +74,7 @@ export class EditarPerfilPage implements OnInit {
 
     });
   }
+
+
 
 }

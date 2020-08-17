@@ -5,26 +5,26 @@
 
 <ion-content mode="md">
   <div class="ion-padding">
-    <div class="profileContent">
+    <div class="profileContent" *ngIf="userInfo">
       <div class="profileMask">
-        <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
+        <img [src]="userInfo.photo">
       </div>
       <div class="userInfo">
         <div class="userNames">
-          <h2>Fulano •</h2>
-          <h2>@fulano</h2><ion-icon name="leaf-outline" class="leaf"></ion-icon>
+          <h2>{{userInfo.name}} •</h2>
+          <h2>{{userInfo.nickname}}</h2><ion-icon name="leaf-outline" class="leaf"></ion-icon>
         </div>
         <div class="userNumbers">
-          <div class="userPosts">
-            <div class="number"><h3>56</h3></div>
+          <div class="userPosts" *ngIf="postInfo">
+            <div class="number"><h3>{{postInfo.length}}</h3></div>
             <div class="numberText"><h6>Publicações</h6></div>
           </div>
           <div class="userFollowers">
-            <div class="number"><h3>8</h3></div>
+            <div class="number"><h3>{{userInfo.followers}}</h3></div>
             <div class="numberText"><h6>Seguidores</h6></div>
           </div>
           <div class="userFollowing">
-            <div class="number"><h3>102</h3></div>
+            <div class="number"><h3>{{userInfo.followed}}</h3></div>
             <div class="numberText"><h6>Seguindo</h6></div>
           </div>
         </div>

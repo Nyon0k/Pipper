@@ -22,16 +22,18 @@ class User extends Authenticatable
         $this->email =$request->email;
         $this->password = bcrypt($request->password);
         $this->type = $request->type;
-        if(!Storage::exists('localPhotos/users/')){
-            Storage::makeDirectory('localPhotos/users/',0775,true);
-        }
-        if($request->photo){
-            $image = base64_decode($request->photo);
-           $filename = uniqid();
-           $path = 'localPhotos/users/'.$filename;
-           file_put_contents(storage_path('app/'.$path),$image);
-           $this->photo=$path; 
-        }
+        $this->photo = $request->photo;
+        // if(!Storage::exists('localPhotos/users/')){
+        //     Storage::makeDirectory('localPhotos/users/',0775,true);
+        // }
+        // if($request->photo){
+        //     $image = base64_decode($request->photo);
+        //    $filename = uniqid();
+        //    $path = 'localPhotos/users/'.$filename;
+        //    file_put_contents(storage_path('app/'.$path),$image);
+        //    $this->photo=$path; 
+        // }
+
         $this->save();
     }
 
@@ -53,12 +55,13 @@ class User extends Authenticatable
         }
 
         if($request->photo){
-            Storage::delete($this->photo);
-            $image = base64_decode($request->photo);
-            $filename = uniqid();
-            $path = 'localPhotos/users/'.$filename;
-            file_put_contents(storage_path('app/'.$path),$image);
-            $this->photo=$path;
+            // Storage::delete($this->photo);
+            // $image = base64_decode($request->photo);
+            // $filename = uniqid();
+            // $path = 'localPhotos/users/'.$filename;
+            // file_put_contents(storage_path('app/'.$path),$image);
+            // $this->photo=$path;
+            $this->photo = $request->photo;
         }
      
 

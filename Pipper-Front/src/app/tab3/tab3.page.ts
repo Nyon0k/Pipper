@@ -21,6 +21,7 @@ export class Tab3Page {
   this.postForm = this.formbuilder.group({
     title: [null,[Validators.required]],
     text: [null, [Validators.required]],
+    //photo: [null]
   });
  }
 
@@ -68,16 +69,20 @@ export class Tab3Page {
   }
 
   submitForm(postForm){
+    if(this.photo)
+    postForm.value.photo = this.photo['changingThisBreaksApplicationSecurity'];
+    console.log(postForm.value);
     this.authservice.createPost(postForm.value).subscribe(
       (res)=> {
         console.log(res);
         console.log("Post foi criado.");
+        this.router.navigate(['/tabs/tab1']);
       },
       (err) => {
         console.log(err);
       }
     );
-    this.router.navigate(['/tabs/tab1'])
+
 }
 
 }

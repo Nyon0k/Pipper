@@ -1,7 +1,7 @@
 <div class="imgAndText">
 
   <div class="iconMask">
-    <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
+    <img [src]="comments.user.photo">
   </div>
 
   <div class="commentText">
@@ -9,5 +9,6 @@
     <h6></h6>
     <h5>{{comments.text}}</h5>
   </div>
+  <ion-button (click)='deleteCommentMod()' *ngIf="deleteButton"><ion-icon name="trash-outline"></ion-icon></ion-button>
 </div>
 <div class="hr"></div>

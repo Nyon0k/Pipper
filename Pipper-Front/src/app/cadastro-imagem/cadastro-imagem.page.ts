@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Routes, RouterModule, Router } from "@angular/router";
+import { AuthService} from '../services/auth/auth.service';
 
 
 @Component({
@@ -10,12 +11,15 @@ import { Routes, RouterModule, Router } from "@angular/router";
   styleUrls: ['./cadastro-imagem.page.scss'],
 })
 export class CadastroImagemPage implements OnInit {
-
+  registerForm;
   photo: SafeResourceUrl;
 
-  constructor(private sanitizer: DomSanitizer, private router: Router) { }
-
+  constructor(private sanitizer: DomSanitizer, private router: Router, public authService: AuthService) {
+    this.registerForm = this.router.getCurrentNavigation().extras;
+   }
+  
   ngOnInit() {
+    console.log(this.registerForm)
   }
 
   async takePicture(){
@@ -31,7 +35,29 @@ export class CadastroImagemPage implements OnInit {
   }
 
   sair(){
-    this.router.navigate(['/tabs/tab1'])
+    this.router.navigate(['/tabs/tab1']);
   }
 
+  voltar(){
+    this.router.navigate(['/cadastro']);
+  }
+
+  cadastro(){
+    if(this.photo){
+      this.registerForm.photo = this.photo['changingThisBreaksApplicationSecurity'];
+      }else{
+        this.registerForm.photo = null;
+      }
+    console.log(this.registerForm);
+    this.authService.register(this.registerForm).subscribe(
+      (res)=> {
+        console.log(res);
+        this.router.navigate(['/tabs/tab1']);
+
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 }

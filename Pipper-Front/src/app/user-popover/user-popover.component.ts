@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { AuthService } from "../services/auth/auth.service";
 import { Routes, RouterModule, Router } from "@angular/router";
-
+import { UserService } from '../services/user/user.service';
 @Component({
   selector: 'app-user-popover',
   templateUrl: './user-popover.component.html',
@@ -10,13 +10,17 @@ import { Routes, RouterModule, Router } from "@angular/router";
 })
 export class UserPopoverComponent implements OnInit {
   user_id;
+  userInfo;
+  postInfo;
 
-  constructor(public popoverController: PopoverController, public authService: AuthService, public router: Router) {
+  constructor(public popoverController: PopoverController, public authService: AuthService, public router: Router, public userService: UserService) {
     this.user_id = Number(localStorage.getItem('id_user'));
 
    }
   
-  ngOnInit() {}
+  ngOnInit() {
+    this.showUserInfo();
+  }
 
 
   logout(){
@@ -36,4 +40,26 @@ export class UserPopoverComponent implements OnInit {
     this.router.navigate(['/profile', {'userId': this.user_id}]);
     this.popoverController.dismiss()
   }
+
+  showUserInfo(){
+    this.userService.showUser(this.user_id).subscribe((res) =>{
+      this.userInfo = res;
+      if(this.userInfo.photo == null){
+        this.userInfo.photo = '../../assets/chamaBG.png'
+      }
+      console.log(res);
+      console.log('Seu Perfil');
+    })
+    this.userService.listPostUser(this.user_id).subscribe((res) =>{
+      this.postInfo = res;
+      if (this.postInfo == null){
+        this.postInfo.length = null;
+        this.postInfo.followers = null;
+        this.postInfo.followed = null;
+      }
+      console.log(res);
+      console.log('Seus posts');
+    })
+  }
+
 }

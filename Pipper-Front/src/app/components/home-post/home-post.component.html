@@ -1,9 +1,9 @@
-<ion-card>
+<ion-card (click)="postClick(post.id)">
   <ion-card-content>
     <div class="userPhotoAndFollow"> <!--row-->
       <div class="photoAndUser">
         <div class="mask">
-          <img src="https://pbs.twimg.com/profile_images/1082020318523412480/E87sUSUc_400x400.jpg">
+          <img [src]="post.user.photo">
         </div>
         <div class="nameAndTime">
           <div class="nameAndUser">
@@ -21,7 +21,7 @@
     </div>
     <div class="homePost">
       <div class="imgAndTags"> <!--collumn-->
-          <div class="imgPost"><img src="https://emporioquatroestrelas.vteximg.com.br/arquivos/ids/159625-1000-1000/folha-de-louro-emp.png?v=637130581619630000">
+          <div class="imgPost"><img [src]='post.photo'>
         </div>
       </div>
 

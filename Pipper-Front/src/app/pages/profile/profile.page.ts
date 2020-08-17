@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user/user.service';
 import { async } from 'rxjs/internal/scheduler/async';
+import { ThrowStmt } from '@angular/compiler';
 
 class Button {
   follow: string;
@@ -15,7 +16,8 @@ class Button {
 })
 export class ProfilePage implements OnInit {
   user: {name: 'text',
-         nickname: 'text'};
+         nickname: 'text'
+        photo: '../../assets/chamaBG.png'};
   user_id;
   user_id_check = Number(localStorage.getItem('id_user'));
   meuPerfil = true;
@@ -59,6 +61,9 @@ export class ProfilePage implements OnInit {
   showUserInfo(){
     this.userService.showUser(this.user_id).subscribe((res)=>{
       this.user= res;
+      if(this.user.photo == null){
+        this.user.photo = '../../assets/chamaBG.png'
+      }
       console.log(res);
     })
   }

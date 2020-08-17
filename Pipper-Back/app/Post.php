@@ -16,17 +16,18 @@ class Post extends Model
         $this->rating = $request->rating;
         $this->tags = $request->tags;
         $this->user_id = $id;
+        $this->photo = $request->photo;
 
-        if(!Storage::exists('localPhotos/products/')){
-            Storage::makeDirectory('localPhotos/products/',0775,true);
-        }
-        if($request->photo){
-            $image = base64_decode($request->photo);
-           $filename = uniqid();
-           $path = 'localPhotos/products/'.$filename;
-           file_put_contents(storage_path('app/'.$path),$image);
-           $this->photo=$path; 
-        }
+        // if(!Storage::exists('localPhotos/products/')){
+        //     Storage::makeDirectory('localPhotos/products/',0775,true);
+        // }
+        // if($request->photo){
+        //     $image = base64_decode($request->photo);
+        //    $filename = uniqid();
+        //    $path = 'localPhotos/products/'.$filename;
+        //    file_put_contents(storage_path('app/'.$path),$image);
+        //    $this->photo=$path; 
+        // }
 
         $this->count_people = 0;
         $this->save();
@@ -40,12 +41,13 @@ class Post extends Model
             $this->text = $request->text;
         }
         if($request->photo){
-            Storage::delete($this->photo);
-            $image = base64_decode($request->photo);
-           $filename = uniqid();
-           $path = 'localPhotos/products/'.$filename;
-           file_put_contents(storage_path('app/'.$path),$image);
-           $this->photo=$path;
+        //     Storage::delete($this->photo);
+        //     $image = base64_decode($request->photo);
+        //    $filename = uniqid();
+        //    $path = 'localPhotos/products/'.$filename;
+        //    file_put_contents(storage_path('app/'.$path),$image);
+        //    $this->photo=$path;
+            $this->photo = $request->photo;
         }
         $this->save();
     }

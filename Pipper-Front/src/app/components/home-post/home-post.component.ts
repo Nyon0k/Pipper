@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 class Button {
   follow: string;
@@ -16,6 +16,7 @@ export class HomePostComponent implements OnInit {
 }; //slide da tag
   
   @Input() post: any;
+  @Output() postClicked = new EventEmitter<number>();
 
   followButton: Button;
   
@@ -25,5 +26,13 @@ export class HomePostComponent implements OnInit {
     this.followButton = {
       follow: "Seguir"
     }
+
+    if (this.post.user.photo == null){
+      this.post.user.photo = '../../assets/chamaBG.png';
+    }
+  }
+
+  postClick(id){
+    this.postClicked.emit(id);
   }
 }

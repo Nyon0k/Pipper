@@ -30,17 +30,18 @@ export class CadastroPage implements OnInit {
 
   submitForm(form){
     form.value.type = 0;
-    console.log("Usuário Cadastrado");
-    this.authservice.register(form.value).subscribe(
-      (res)=> {
-        console.log(res);
-        this.router.navigate(['cadastro-imagem'])
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-}
+    this.router.navigate(['cadastro-imagem'], form.value)
+    // console.log("Usuário Cadastrado");
+    // this.authservice.register(form.value).subscribe(
+    //   (res)=> {
+    //     console.log(res);
+
+    //   },
+    //   (err) => {
+    //     console.log(err);
+    //   }
+    // );
+  }
 
   async presentPopover(event){
     const popover = await this.popoverController.create({
