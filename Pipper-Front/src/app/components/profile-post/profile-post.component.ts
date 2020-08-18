@@ -12,11 +12,6 @@ export class ProfilePostComponent implements OnInit {
   constructor(public postService: PostService) { }
 
   ngOnInit() {
-    if (this.post.photo == null){
-      this.spacePhoto = false;
-    } else {
-      this.spacePhoto = true;
-    }
   }
 
 }

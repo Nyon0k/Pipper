@@ -37,8 +37,8 @@ export class UserService {
     return this.http.put(this.apiUrl + 'followUser/' + followed_id, null, this.httpHeaders);
   }
 
-  //public userUnFollowing(user_id, followed_id): Observable<any>{
-    //this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('token');
-    //return this.http.put(this.apiUrl + 'unfollowUser/' + user_id + '/' + followed_id, this.httpHeaders)
-  //}
+  public followCheck(follower_id, followed_id): Observable<any>{
+    return this.http.get(this.apiUrl + 'isFollowing/' + follower_id + '/' + followed_id)
+  }
+
 }

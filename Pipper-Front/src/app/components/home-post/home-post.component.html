@@ -1,4 +1,4 @@
-<ion-card (click)="postClick(post.id)">
+<ion-card>
   <ion-card-content>
     <div class="userPhotoAndFollow"> <!--row-->
       <div class="photoAndUser">
@@ -63,8 +63,8 @@
     <div class="hr"></div>
     <div class="buttons"> <!--row-->
       <ion-button mode="md" size="small" class="button"><ion-icon name="thumbs-up-outline" ></ion-icon><h6>{{post.like}}</h6></ion-button>
-      <ion-button mode="md" size="small" class="button"><ion-icon name="chatbubble-outline"></ion-icon><h6>43</h6></ion-button>
-      <ion-button mode="md" size="small" class="button"><ion-icon name="star-outline" class="star"></ion-icon><h6>{{post.rating}}</h6></ion-button>
+      <ion-button mode="md" size="small" class="button"><ion-icon name="chatbubble-outline"></ion-icon><h6>{{post.count_comments}}</h6></ion-button>
+      <ion-button mode="md" size="small" class="button"><ion-icon name="star-outline" class="star"></ion-icon><h6>{{post.general_rating}}</h6></ion-button>
     </div>
 
   </ion-card-content>

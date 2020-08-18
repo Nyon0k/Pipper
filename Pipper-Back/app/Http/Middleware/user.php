@@ -23,7 +23,6 @@ class user{
         $post = Post::with('user')->where('id', $request->id)->where('user_id', $user->id)->first(); //Verifica se o usuário é o dono do post
         //Verifica se o usuário é moderador
         if($user->type == 1){
-            echo 'entrou no keyModerator';
             return $next($request);
         }
         if($comment){
@@ -31,7 +30,6 @@ class user{
             return $next($request);
         }
         if($post){
-            echo 'entrou no post';
             return $next($request);
         }
         else{

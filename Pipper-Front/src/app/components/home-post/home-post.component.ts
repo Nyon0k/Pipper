@@ -11,15 +11,12 @@ class Button {
   styleUrls: ['./home-post.component.scss'],
 })
 export class HomePostComponent implements OnInit {
-  spacePhoto;
   optionSlide = {
     loop: true,
     direction: 'horizontal',
 }; //slide da tag
   
   @Input() post: any;
-  @Output() postClicked = new EventEmitter<number>();
-
   followButton: Button;
   
   constructor() { }
@@ -28,21 +25,9 @@ export class HomePostComponent implements OnInit {
     this.followButton = {
       follow: "Seguir"
     }
-    console.log(this.post.photo)
-    if (this.post.photo == null){
-      this.spacePhoto = false;
-    } else {
-      this.spacePhoto = true;
+    if (this.post.user.photo == null){
+      this.post.user.photo = '../../assets/chamaBG.png';
     }
-
-      if (this.post.user.photo == null){
-        this.post.user.photo = '../../assets/chamaBG.png';
-      }
-    
-  }
-
-  postClick(id){
-    this.postClicked.emit(id);
   }
 
 }

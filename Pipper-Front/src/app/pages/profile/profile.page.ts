@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user/user.service';
-import { async } from 'rxjs/internal/scheduler/async';
-import { ThrowStmt } from '@angular/compiler';
+import { CommentService } from '../../services/comment/comment.service';
 
 class Button {
   follow: string;
@@ -27,7 +26,7 @@ export class ProfilePage implements OnInit {
   followButton: Button;
   postCount;
 
-  constructor(public router: Router, public userService: UserService, private route: ActivatedRoute) { 
+  constructor(public router: Router, public userService: UserService, private route: ActivatedRoute, public commentService: CommentService) { 
   }
     
 
@@ -39,6 +38,7 @@ export class ProfilePage implements OnInit {
     this.listPostUser();
     this.showUserInfo();
     this.check();
+    this.followCheck();
   }
 
   changeFollow() {
@@ -72,11 +72,32 @@ export class ProfilePage implements OnInit {
     await this.route.params.subscribe((params) => (this.user_id = params.userId));
     this.userService.listPostUser(this.user_id).subscribe((res)=>{
       this.posts = res;
-      //this.post_id = res.id;
+      //this.user = res[0].user
       console.log(this.posts);
+      console.log(this.user);
       this.postCount = res.length
     })
   }
+
+  async followCheck(){
+    await this.route.params.subscribe((params) => (this.user_id = params.userId));
+    this.userService.listPostUser(this.user_id).subscribe((res)=>{
+      console.log(res)
+      this.userService.followCheck(this.user_id_check, this.user_id).subscribe((res) =>{
+        console.log(res)
+        if (res == 1){
+          console.log('seguindo');
+          this.followButton.chance = true;
+          this.followButton.follow = "Seguindo";
+        } else{
+          console.log('nao seguindo');
+          this.followButton.chance = false;
+          this.followButton.follow = "Seguir";
+        }
+      })
+    })
+  }
+
 
   redirectPost(post_id){
     this.router.navigate(['/post', {'postId': post_id}]);
@@ -95,13 +116,6 @@ export class ProfilePage implements OnInit {
       console.log('Seguindo!');
     })
   }
-
-  /*unFollow(){
-    this.userService.userUnFollowing(this.user_id_check, this.user_id).subscribe((res) =>{
-      console.log(res)
-      console.log('Deixei de Seguir!');
-    })
-  }*/
 
   doRefresh(event) {
     console.log('Begin async operation');

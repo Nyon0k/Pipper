@@ -50,7 +50,7 @@
         </div>
 
         <div class="followAndTagPart"> <!--row-->
-          <ion-button [ngClass]="{'following':followButton.chance}" size="small" class="buttonFollow" strong="true" mode="md" (click)="changeFollow()"><span style="text-transform:none!important;">{{followButton.follow}}</span></ion-button>
+          <ion-button [ngClass]="{'following':followButton.chance}" size="small" class="buttonFollow" strong="true" mode="md" (click)="changeFollow()" *ngIf="botaoSeguir"><span style="text-transform:none!important;">{{followButton.follow}}</span></ion-button>
         </div>
       </div>
       <!-- Display das informações do post -->
@@ -94,8 +94,8 @@
         <div class="allButtons">
           <div class="leftSideButtons">
             <ion-button class="interactionButton" size="small" mode="md" (click)="likePost()"><ion-icon name="thumbs-up-outline"></ion-icon>{{post.like}}</ion-button>
-            <ion-button class="interactionButton" size="small" mode="md" (click)="listComments()"><ion-icon name="chatbubble-outline"></ion-icon></ion-button>
-            <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="star-outline"></ion-icon>{{post.rating}}</ion-button>
+            <ion-button class="interactionButton" size="small" mode="md" (click)="listComments()"><ion-icon name="chatbubble-outline"></ion-icon>{{post.count_comments}}</ion-button>
+            <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="star-outline"></ion-icon>{{post.creator_rating}}</ion-button>
           </div>
           <div class="postTag">
             <ion-button size="small" class="buttonTag" strong="true" mode="md"><span style="text-transform:none!important;">Tags</span></ion-button>
@@ -126,13 +126,11 @@
         <app-comment
         *ngFor="let comment of comments"
         [comments]="comment"
-
+        
 
         ></app-comment>
       </ion-card-content>
     </ion-card>
   </div>
-
-</ion-content>
 
 <!--*ngIf="showComment" in commentPart--> 

@@ -46,6 +46,7 @@
         <ion-card-content>
           <app-user-component
           [user]="user"
+          (click)="redirectId(user.id)"
           ></app-user-component>
         </ion-card-content>
       </ion-card>

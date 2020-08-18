@@ -41,7 +41,8 @@ class PostRequest extends FormRequest
                 'title' => 'string',
                 'text' => 'string',
                 'like' => 'integer',
-                'rating' => 'numeric',
+                'creator_rating' => 'numeric',
+                'general_rating' => 'numeric',
                 'tags' => 'string',
             ];
         }

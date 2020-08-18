@@ -2,7 +2,9 @@ import { Component, OnInit ,Input } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { TagsComponent } from '../../components/tags/tags.component';
 import { SearchService } from '../../services/search/search.service';
+import { PostService } from '../../services/post/post.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -20,6 +22,9 @@ export class SearchPage implements OnInit {
   alimentacao;
   utilidades_domesticas;
   infantis;
+  followCheck;
+  followPost;
+  userId = localStorage.getItem('id_user')
   
   searchPost = false;
   searchUser= true;
@@ -34,7 +39,7 @@ export class SearchPage implements OnInit {
   ];
   
 
-  constructor(public popoverController: PopoverController, public searchService: SearchService, public formbuilder: FormBuilder) {
+  constructor(public popoverController: PopoverController, public searchService: SearchService, public formbuilder: FormBuilder, public postService: PostService, public router: Router) {
     this.searchForm = this.formbuilder.group({
       name: [null]
     });
@@ -177,6 +182,11 @@ export class SearchPage implements OnInit {
     event.target.complete();
     this.searchPage();
   }, 2000);
+}
+
+
+public redirectId(id){
+  this.router.navigate(['/profile', {'userId': id}]);
 }
 
 }

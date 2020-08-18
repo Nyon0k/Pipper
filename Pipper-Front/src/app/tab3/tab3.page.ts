@@ -15,7 +15,7 @@ export class Tab3Page {
   photo: SafeResourceUrl;
   postForm: FormGroup;
 
-  rating;
+  creator_rating;
   starColor1 = false;
   starColor2 = false;
   starColor3 = false;
@@ -35,7 +35,7 @@ export class Tab3Page {
  star(n){
    switch(n){
      case(1):
-      this.rating=1;
+      this.creator_rating=1;
       this.starColor1 = true;
       this.starColor2 = false;
       this.starColor3 = false;
@@ -43,7 +43,7 @@ export class Tab3Page {
       this.starColor5 = false;
       break
      case(2):
-      this.rating=2;
+      this.creator_rating=2;
       this.starColor1 = true;
       this.starColor2 = true;
       this.starColor3 = false;
@@ -51,7 +51,7 @@ export class Tab3Page {
       this.starColor5 = false;
       break
      case(3):
-      this.rating=3;
+      this.creator_rating=3;
       this.starColor1 = true;
       this.starColor2 = true;
       this.starColor3 = true;
@@ -59,7 +59,7 @@ export class Tab3Page {
       this.starColor5 = false;
       break
      case(4):
-      this.rating=4;
+      this.creator_rating=4;
         this.starColor1 = true;
         this.starColor2 = true;
         this.starColor3 = true;
@@ -67,7 +67,7 @@ export class Tab3Page {
         this.starColor5 = false;
       break
      case(5):
-      this.rating=5;
+      this.creator_rating=5;
         this.starColor1 = true;
         this.starColor2 = true;
         this.starColor3 = true;
@@ -92,7 +92,7 @@ export class Tab3Page {
   }
 
   submitForm(postForm){
-    postForm.value.rating = this.rating;
+    postForm.value.creator_rating = this.creator_rating;
     if(this.photo)
     postForm.value.photo = this.photo['changingThisBreaksApplicationSecurity'];
     console.log(postForm.value);
