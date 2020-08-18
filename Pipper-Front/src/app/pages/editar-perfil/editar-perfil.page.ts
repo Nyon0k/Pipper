@@ -75,6 +75,9 @@ export class EditarPerfilPage implements OnInit {
     });
   }
 
+  back() {
+    this.router.navigate(['/profile', {'userId': this.user_id}]);
+  }
 
 
 }

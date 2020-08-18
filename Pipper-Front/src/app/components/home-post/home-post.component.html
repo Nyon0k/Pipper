@@ -22,10 +22,10 @@
       </div>-->
     </div>
     <div class="homePost">
-      <div class="imgAndTags"> <!--collumn-->
+      <div class="imgAndTags" *ngIf="post.photo"> <!--collumn-->
           <div class="imgPost">
             <img [src]='post.photo'>
-        </div>
+          </div>
       </div>
 
       <div class="textUserAndButtons"> <!--collumn-->

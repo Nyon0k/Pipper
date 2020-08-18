@@ -11,9 +11,10 @@
 .userProfilePic img {
     display: inline-block;
     margin: 0 auto;
-    height: 100%;
+    height: auto;
     width: auto;
-    background-size: cover;
+    object-fit: cover;
+    object-position: center;
 }
 
 .imgPlace {

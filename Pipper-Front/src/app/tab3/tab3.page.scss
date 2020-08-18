@@ -43,8 +43,9 @@ ion-card{
     display: inline-block;
     margin: 0 auto;
     height: 100%;
-    width: auto;
-    background-size: cover;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .imgPlace {
@@ -54,8 +55,9 @@ ion-card{
     width: 20%;
 }
 
-.usuario{
+.Tags{
     display: flex;
+    justify-content: flex-end;
 
 }
 h4{
@@ -103,4 +105,37 @@ img.foto-perfil{
 
 .label {
     color: #50D890;
+}
+
+.ratingCard {
+    box-shadow: none;
+}
+
+.ratings {
+    display: flex;
+
+}
+
+.starButton {
+    --background: #272727;
+    --box-shadow: none;
+}
+
+.star {
+    color: #50D890;
+}
+
+.ratingText {
+    display: flex;
+    width: 100%;
+    margin-left: 5%;
+}
+
+
+.rating {
+    width: auto;
+}
+
+.click {
+    color: #C4FB6D;
 }

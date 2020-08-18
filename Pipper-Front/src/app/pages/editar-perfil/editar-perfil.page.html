@@ -1,17 +1,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
 <ion-header>
   <div class="headerDec">
-    <ion-icon routerLink=".." class="backIcon" name="chevron-back-circle-outline" size="large"></ion-icon>
+    <ion-icon (click)="back()" class="backIcon" name="chevron-back-circle-outline" size="large"></ion-icon>
     <h1>Pipper</h1>
   </div>
   
 </ion-header>
-
-<ion-card>
-  <div class="ionTitle">
-    <h2>Edite seu perfil</h2>
-  </div>
-</ion-card>
+<div class="cardBG">
+  <ion-card>
+    <div class="ionTitle">
+      <h2>Edite seu perfil</h2>
+    </div>
+  </ion-card>
+</div>
   <ion-content>
   <ion-card>
     <ion-card-header>

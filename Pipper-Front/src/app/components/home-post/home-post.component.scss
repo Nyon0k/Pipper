@@ -39,8 +39,9 @@
     display: inline-block;
     margin: 0 auto;
     height: 100%;
-    width: auto;
-    background-size: cover;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .tagsPost {
@@ -75,9 +76,6 @@
     position: relative;
     overflow: hidden;
     border-radius: 50%;
-    background-image: url("../../../assets/chamaBG.png");
-    background-repeat: repeat;
-    background-size: contain;
     object-fit: cover;
 }
 
@@ -85,8 +83,9 @@
     display: inline-block;
     margin: 0 auto;
     height: 100%;
-    width: auto;
-    background-size: cover;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .imgPlace {
@@ -144,6 +143,7 @@ ion-icon {
 }
 
 .username {
+    margin-top: 0px;
     font-size: 90%;
 }
 

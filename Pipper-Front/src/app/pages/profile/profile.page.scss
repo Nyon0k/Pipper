@@ -69,8 +69,9 @@ ion-icon {
     display: inline-block;
     margin: 0 auto;
     height: 100%;
-    width: auto;
-    background-size: cover;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .imgPlace {
@@ -86,7 +87,7 @@ ion-icon {
 
 h2 {
     color: #FFE9E9;
-    margin-left: 2%;
+    margin-left: 3%;
 }
 
 .hrPost {

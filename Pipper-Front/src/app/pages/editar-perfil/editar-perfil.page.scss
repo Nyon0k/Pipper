@@ -16,6 +16,10 @@ ion-header {
     margin-top: 2%;
 }
 
+.cardBG {
+    background-color: #006A71;
+}
+
 ion-header::after {
     background-image: none;
 }
@@ -105,8 +109,9 @@ ion-card {
     display: inline-block;
     margin: 0 auto;
     height: 100%;
-    width: auto;
-    background-size: cover;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 
 }
 

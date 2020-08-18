@@ -251,7 +251,6 @@ export class PostPage implements OnInit {
       console.log('Async operation has ended');
       event.target.complete();
       this.showPost();
-      this.likePost();
       this.listComments();
     }, 2000);
   }
