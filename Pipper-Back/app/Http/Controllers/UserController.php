@@ -92,7 +92,9 @@ class UserController extends Controller
     }
 
     public function listFollowerPosts($id){
-        return response()->json(Post::whereIn('user_id',User::find($id)->followUserFollower()->pluck('users.id'))->with('user')->get());
+        $followerPosts = Post::whereIn('user_id',User::find($id)->followUserFollower()->pluck('users.id'))->with('user')->get();
+        $followerPosts->loadCount('comments as count_comments');
+        return response()->json($followerPosts);
     }
 
     public function search(Request $request){

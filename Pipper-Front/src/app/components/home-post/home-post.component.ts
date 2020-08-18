@@ -15,9 +15,8 @@ export class HomePostComponent implements OnInit {
     direction: 'horizontal',
 }; //slide da tag
   
+  spacePhoto;
   @Input() post: any;
-  @Output() postClicked = new EventEmitter<number>();
-
   followButton: Button;
   
   constructor() { }
@@ -26,13 +25,17 @@ export class HomePostComponent implements OnInit {
     this.followButton = {
       follow: "Seguir"
     }
-
     if (this.post.user.photo == null){
       this.post.user.photo = '../../assets/chamaBG.png';
     }
+
+    if (this.post.photo == null){
+      this.spacePhoto = false;
+    } else{
+      this.spacePhoto = true;
+    }
+
   }
 
-  postClick(id){
-    this.postClicked.emit(id);
-  }
+
 }

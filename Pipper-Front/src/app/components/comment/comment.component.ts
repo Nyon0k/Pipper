@@ -20,9 +20,11 @@ export class CommentComponent implements OnInit {
     if (this.comments.user.photo == null){
       this.comments.user.photo = '../../assets/chamaBG.png';
     }
+
   }
 
   deleteCommentMod(){
+    console.log(this.comments.id);
     this.commentService.deleteComment(this.comments.id).subscribe((res) =>{
       console.log('Comentário Apagado');
       window.location.reload();

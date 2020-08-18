@@ -6,7 +6,6 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 import { HttpClientModule, HttpClient} from '@angular/common/http';
 import { ProfilePage } from './profile.page';
 import { UserService } from '../../services/user/user.service';
-
 import { ProfilePostComponent } from '../../components/profile-post/profile-post.component';
 
 @NgModule({
@@ -19,6 +18,6 @@ import { ProfilePostComponent } from '../../components/profile-post/profile-post
     HttpClientModule
   ],
   declarations: [ProfilePage, ProfilePostComponent],
-  providers: [ UserService]
+  providers: [UserService]
 })
 export class ProfilePageModule {}

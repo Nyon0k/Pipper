@@ -11,6 +11,7 @@ export class ProfilePostComponent implements OnInit {
   @Input() post;
   constructor(public postService: PostService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }

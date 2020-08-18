@@ -23,7 +23,8 @@ class PostController extends Controller
     }
 
     public function showPost($id){
-        $post = Post::findOrFail($id);
+        $post = Post::with('user','comments')->where('id', $id)->first();
+        $post->loadCount('comments as count_comments');
         return response()->json($post);
     }
 
@@ -64,16 +65,19 @@ class PostController extends Controller
 
     public function listPostsByLike(){
         $like = Post::with('user')->orderBy('like','desc')->get();
+        $like->loadCount('comments as count_comments');
         return response()->json($like);
     }
     
     public function listPostsByRating(){
         $rating = Post::with('user')->orderBy('rating','desc')->get();
+        $rating->loadCount('comments as count_comments');
         return response()->json($rating);
     }
 
     public function listPostsByCreationDate(){
         $creationDate = Post::with('user')->orderBy('created_at','desc')->get();
+        $creationDate->loadCount('comments as count_comments');
         return response()->json($creationDate);
     }
 
@@ -117,7 +121,7 @@ class PostController extends Controller
     }
 
     public function listPostsByAUser($id){
-        $userPosts = Post::with('user')->where('user_id', $id)->get();
+        $userPosts = Post::with('user','comments')->where('user_id', $id)->get();
         return response()->json($userPosts);    
     }
 }

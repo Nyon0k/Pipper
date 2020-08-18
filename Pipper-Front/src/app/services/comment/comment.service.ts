@@ -28,7 +28,7 @@ export class CommentService {
 
   deleteComment(commentId): Observable<any>{
     this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
-    return this.http.delete(this.apiUrl + 'deleteComment/' + commentId, this.httpHeaders); 
+    return this.http.delete(this.apiUrl + 'deleteComment/' + commentId, this.httpHeaders);
     
   }
 }

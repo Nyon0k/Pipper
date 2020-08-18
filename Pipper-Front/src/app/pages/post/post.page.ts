@@ -3,7 +3,7 @@ import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { ToastController, AlertController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService} from '../../services/auth/auth.service';
-import { CommentService} from '../../services/comment/comment.service'
+import { CommentService } from '../../services/comment/comment.service';
 import { UserService } from '../../services/user/user.service';
 import { PostService } from '../../services/post/post.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -49,6 +49,7 @@ export class PostPage implements OnInit {
   editModeOff = true;
   editButton = false;
   deleteButton = false;
+  commentCount;
   
   constructor(
       public toastController: ToastController, 
@@ -165,31 +166,26 @@ export class PostPage implements OnInit {
       console.log(this.post);
       console.log(res.user_id);
       //Usuário Dono do post
-      this.userService.showUser(res.user_id).subscribe((res)=>
-        {
-          console.log(res);
-          this.user = res.name;
-          this.user_id = res.id;
-          this.photo = res.photo;
-          if (this.photo == null){
-            this.photo = '../../assets/chamaBG.png';
-          }
-          //Usuário Visitante do post
-          this.userService.showUser(this.user_id_check).subscribe((res)=>{
-            this.userType = res.type;
-            console.log(res);
-            console.log(this.userType)
-            if (this.user_id == this.user_id_check || this.userType == 1){
-              this.deleteButton = true
-            }
-        
-            if (this.user_id_check == this.user_id){
-              this.editButton = true
-            }
-        })
-
-        })
-
+      this.user = res.user.name;
+      this.user_id = res.user.id;
+      this.photo = res.user.photo;
+      if (this.photo == null){
+        this.photo = '../../assets/chamaBG.png';
+      }
+      //Usuário Visitante do post
+      this.userService.showUser(this.user_id_check).subscribe((res)=>{
+        this.userType = res.type;
+        console.log(res);
+        console.log(this.userType)
+        if (this.user_id == this.user_id_check || this.userType == 1){
+          this.deleteButton = true
+        }
+    
+        if (this.user_id_check == this.user_id){
+          this.editButton = true
+        }
+    })
+      
 
     }
     )
