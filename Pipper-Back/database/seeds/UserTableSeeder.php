@@ -18,11 +18,21 @@ class UserTableSeeder extends Seeder
             });
             $user->posts()->saveMany($posts);        
         });
+
+        $posts = App\Post::all();
+        foreach($posts as $post){
+            foreach($users as $user){
+                $post->raterUsers()->attach($user,['individual_rating' => rand(0,10)/10]);
+            }
+        }
+
         $comments = App\Comment::all();
         foreach($comments as $comment){
             App\User::find(rand(1,10))->comments()->save($comment);
         }
 
+     
+       
         for($i=0;$i<10;$i++){
             for($j=0;$j<10;$j++){
                 if($i!=$j){

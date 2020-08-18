@@ -10,7 +10,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'title' => $faker->title,
         'text' => $faker->asciify('********************'),
         'like' => rand(0,1000),
-        'rating' => rand(0,50)/10, // password
+        'creator_rating' => rand(0,50)/10, // password
         "tags" => $faker->asciify('********************')
     ];
 });

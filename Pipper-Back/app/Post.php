@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Auth;
 
 class Post extends Model
 {
@@ -13,7 +14,7 @@ class Post extends Model
         $this->title = $request->title;
         $this->text = $request->text;
         $this->like = $request->like;
-        $this->rating = $request->rating;
+        $this->creator_rating = $request->creator_rating;
         $this->tags = $request->tags;
         $this->user_id = $id;
         $this->photo = $request->photo;
@@ -30,6 +31,7 @@ class Post extends Model
         // }
 
         $this->count_people = 0;
+        $this->creator_rating = $request->creator_rating;
         $this->save();
     }
 
@@ -68,14 +70,20 @@ class Post extends Model
         return $this->belongsToMany('App\Post', 'likes', 'user_liker', 'post_liked');
     }
 
+    public function raterUsers(){
+        return $this->belongsToMany('App\User','user_rates_post','post_id','user_id')->withPivot(['individual_rating']);
+    }
+
     public function setUser($user_id) {
         $this->user_id = $user_id;
         $this->save();
     }
 
     public function rating($rate){
+        $user = Auth::user();
+        $this->raterUsers()->attach($user,['individual_rating' => $rate]);
         $this->count_people = $this->count_people + 1;
-        $this->rating = ($this->rating + $rate)/$count;
+        $this->general_rating = ($this->general_rating + $rate)/$this->count_people;
         $this->save();
     }
 

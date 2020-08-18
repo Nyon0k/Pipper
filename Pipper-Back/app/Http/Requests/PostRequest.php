@@ -32,7 +32,7 @@ class PostRequest extends FormRequest
                 'title' => 'required|string',
                 'text' => 'required|string',
                 'like' => 'integer',
-                'rating' => 'numeric',
+                'creator_rating' => 'numeric',
                 'tags' => 'string',
             ];
         }

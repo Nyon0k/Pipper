@@ -68,7 +68,7 @@ class PostController extends Controller
     }
     
     public function listPostsByRating(){
-        $rating = Post::with('user')->orderBy('rating','desc')->get();
+        $rating = Post::with('user')->orderBy('general_rating','desc')->get();
         return response()->json($rating);
     }
 
@@ -77,11 +77,10 @@ class PostController extends Controller
         return response()->json($creationDate);
     }
 
-    public function rating(Request $request, $post_id){
-        $user = Auth::user();
+    public function rating($rate, $post_id){
         $post = Post::findOrFail($post_id);
-        $post->rating($request);
-        return response()->json('Avaliado com sucesso');
+        $post->rating($rate);
+        return response()->json(['Avaliado com sucesso', $post]);
     }
 
     public function like($post_liked){
@@ -107,9 +106,11 @@ class PostController extends Controller
 
     //fazer metodo do post integrado entre user,post,comment.user (post) (conferir)
     public function showPostUserComment($id){
-        $data = Comment::with('user')->where('post_id', $id)->get();
+        $data = Comment::with(['user.ratedPosts' => function($query){$query->select('individual_rating')->where('post_id',$id);}])->where('post_id',$id)->get();
         return response()->json($data);
     }   
+
+   
     
     public function postUserComment($id){
         $data = Post::with('user', 'comments.user')->where('id', $id)->get();

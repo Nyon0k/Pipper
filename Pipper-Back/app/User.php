@@ -107,16 +107,15 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User', 'likes', 'user_liker', 'post_liked');
     }
 
+    public function ratedPosts(){
+        return $this->belongsToMany('App\Post','user_rates_post','user_id','post_id');
+    }
+
     public function posts(){
         return $this->hasMany('App\Post');
     }
 
     public function comments(){
         return $this->hasMany('App\Comment');
-    }
-
-    public function search(){
-
-    }
-    
+    }    
 }

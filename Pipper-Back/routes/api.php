@@ -48,7 +48,7 @@ Route::POST('register', 'API\PassportController@register');
 Route::POST('login', 'API\PassportController@login');
 
 
-
+Route::GET('isFollowing/{user_id1}/{user_id2}', 'UserController@isFollowing');
 
 Route::group(['middleware'=>'auth:api'], function(){
     //Rotas de User autenticado
@@ -71,7 +71,7 @@ Route::group(['middleware'=>'auth:api'], function(){
     Route::DELETE('deleteComment/{id}', 'CommentController@deleteComment')->middleware('user');
     Route::GET('logout', 'API\PassportController@logout');
     
-
+    Route::PUT('rating/{rate}/{post_id}','PostController@rating');
     //Rotas de Tag
     Route::put('tag/{tag_id}/{post_id}','TagController@tag'); 
     Route::GET('getDetails', 'API\PassportController@getDetails');
