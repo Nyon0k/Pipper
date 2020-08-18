@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->integer('count_people')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger("user_id")->nullable();
-            $table->string('photo')->nullable();
+            $table->mediumText('photo')->nullable();
             $table->foreign("user_id")->references('id')->on('users')->onDelete('cascade');
         });
     }

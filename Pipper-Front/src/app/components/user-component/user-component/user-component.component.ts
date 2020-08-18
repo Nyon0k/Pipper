@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { UserService } from '../../../services/user/user.service';
 
 class Button {
   follow: string;
@@ -15,24 +16,38 @@ export class UserComponentComponent implements OnInit {
   followButton: Button;
   showComment = false;
 
-  constructor() { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
     this.followButton = {
       follow: "Seguir",
       chance: false
     }
+
+    if (this.user.photo == null){
+      this.user.photo = '../../assets/chamaBG.png';
+    }
+
   }
 
   changeFollow() {
     this.followButton.chance = !this.followButton.chance;
     if (!this.followButton.chance) {
       this.followButton.follow = "Seguir";
+      this.follow();
     }
     else if (this.followButton.chance) {
       this.followButton.follow = "Seguindo";
+      this.follow();
     }
     console.log(this.followButton.chance)
+  }
+
+  follow(){
+    this.userService.userFollowing(this.user.id).subscribe((res) =>{
+      console.log(res)
+      console.log('Usuário Seguido')
+    })
   }
 
 }

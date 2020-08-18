@@ -2,8 +2,8 @@
   <ion-card-content>
     <div class="profilePost">
       <div class="profileContent">
-        <div class = "imgPlace">
-          <div class="profileImg">
+        <div class = "imgPlace" *ngIf="post.photo">
+          <div class="profileImg" >
             <img [src]="post.photo">
           </div>
         </div>

@@ -38,6 +38,7 @@ export class ProfilePage implements OnInit {
     this.listPostUser();
     this.showUserInfo();
     this.check();
+    this.followCheck();
   }
 
   changeFollow() {
@@ -75,6 +76,25 @@ export class ProfilePage implements OnInit {
       console.log(this.posts);
       console.log(this.user);
       this.postCount = res.length
+    })
+  }
+
+  async followCheck(){
+    await this.route.params.subscribe((params) => (this.user_id = params.userId));
+    this.userService.listPostUser(this.user_id).subscribe((res)=>{
+      console.log(res)
+      this.userService.followCheck(this.user_id_check, this.user_id).subscribe((res) =>{
+        console.log(res)
+        if (res == 1){
+          console.log('seguindo');
+          this.followButton.chance = true;
+          this.followButton.follow = "Seguindo";
+        } else{
+          console.log('nao seguindo');
+          this.followButton.chance = false;
+          this.followButton.follow = "Seguir";
+        }
+      })
     })
   }
 

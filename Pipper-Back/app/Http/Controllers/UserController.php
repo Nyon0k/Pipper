@@ -143,4 +143,14 @@ class UserController extends Controller
         $data = User::select("name")->where("name", "LIKE", "%{$request->input(key:'name')}%")->get();
         return response()->json($data);
     }*/
+
+    public function isFollowing($user_id1,$user_id2){
+        $user1 = User::findOrFail($user_id1);
+        $user2 = User::findOrFail($user_id2);
+        if($user1->followUserFollower()->get()->contains($user2)){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 }

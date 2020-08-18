@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from '../../services/comment/comment.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-comment',
@@ -9,18 +10,30 @@ import { CommentService } from '../../services/comment/comment.service';
 export class CommentComponent implements OnInit {
   @Input() comments: any;
   deleteButton = false;
+  userId = localStorage.getItem('id_user');
+  user;
 
-  constructor(public commentService: CommentService) { }
+  constructor(public commentService: CommentService, public userService: UserService) { }
 
   ngOnInit() {
-    console.log(this.comments.user.type)
-    if(this.comments.user.type == 1){
-      this.deleteButton = true;
-    }
+    this.showUser();
     if (this.comments.user.photo == null){
       this.comments.user.photo = '../../assets/chamaBG.png';
     }
 
+  }
+
+  async showUser(){
+    this.userService.showUser(this.userId).subscribe((res) =>{
+      this.user = res
+      console.log(this.user);
+      console.log(this.user.type)
+      if(this.user.type == 1){
+        this.deleteButton = true;
+      } else{
+        this.deleteButton = false;
+      }
+    })
   }
 
   deleteCommentMod(){

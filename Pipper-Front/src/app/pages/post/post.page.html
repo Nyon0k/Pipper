@@ -49,7 +49,7 @@
         </div>
 
         <div class="followAndTagPart"> <!--row-->
-          <ion-button [ngClass]="{'following':followButton.chance}" size="small" class="buttonFollow" strong="true" mode="md" (click)="changeFollow()"><span style="text-transform:none!important;">{{followButton.follow}}</span></ion-button>
+          <ion-button [ngClass]="{'following':followButton.chance}" size="small" class="buttonFollow" strong="true" mode="md" (click)="changeFollow()" *ngIf="botaoSeguir"><span style="text-transform:none!important;">{{followButton.follow}}</span></ion-button>
         </div>
       </div>
       <!-- Display das informações do post -->
@@ -125,7 +125,7 @@
         <app-comment
         *ngFor="let comment of comments"
         [comments]="comment"
-
+        
 
         ></app-comment>
       </ion-card-content>

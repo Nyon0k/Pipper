@@ -25,6 +25,7 @@ Route::GET('listUsers', 'UserController@listUsers');
 Route::GET('listFollowerUsers/{id}', 'UserController@listFollowerUsers');
 Route::GET('listFollowerPosts/{id}', 'UserController@listFollowerPosts');
 Route::PUT('search', 'UserController@search');
+Route::GET('isFollowing/{user_id1}/{user_id2}', 'UserController@isFollowing');
 
 
 //Rotas de Post

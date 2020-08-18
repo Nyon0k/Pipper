@@ -50,6 +50,7 @@ export class PostPage implements OnInit {
   editButton = false;
   deleteButton = false;
   commentCount;
+  botaoSeguir = true;
   
   constructor(
       public toastController: ToastController, 
@@ -106,8 +107,9 @@ export class PostPage implements OnInit {
       follow: "Seguir",
       chance: false
     }
-
+    this.followCheck();
     this.showPost();
+
   }
 
   async takePicture(){
@@ -127,9 +129,11 @@ export class PostPage implements OnInit {
     this.followButton.chance = !this.followButton.chance;
     if (!this.followButton.chance) {
       this.followButton.follow = "Seguir";
+      this.follow();
     }
     else if (this.followButton.chance) {
       this.followButton.follow = "Seguindo";
+      this.follow();
     }
     console.log(this.followButton.chance)
   }
@@ -169,6 +173,9 @@ export class PostPage implements OnInit {
       this.user = res.user.name;
       this.user_id = res.user.id;
       this.photo = res.user.photo;
+      if(this.user_id == this.user_id_check){
+        this.botaoSeguir = false;
+      }
       if (this.photo == null){
         this.photo = '../../assets/chamaBG.png';
       }
@@ -186,9 +193,39 @@ export class PostPage implements OnInit {
         }
     })
       
-
+    
     }
     )
+  }
+
+  async follow(){
+    await this.route.params.subscribe((params) => (this.post_id = params.postId));
+    this.commentService.listPostInfo(this.post_id).subscribe((res) =>{
+      console.log(res)
+      this.userService.userFollowing(res.user.id).subscribe((res) =>{
+        console.log(res)
+        console.log('seguindo')
+      })
+    })
+  }
+
+  async followCheck(){
+    await this.route.params.subscribe((params) => (this.post_id = params.postId));
+    this.commentService.listPostInfo(this.post_id).subscribe((res) =>{
+      console.log(res)
+      this.userService.followCheck(this.user_id_check, res.user.id).subscribe((res) =>{
+        console.log(res)
+        if (res == 1){
+          console.log('seguindo');
+          this.followButton.chance = true;
+          this.followButton.follow = "Seguindo";
+        } else{
+          console.log('nao seguindo');
+          this.followButton.chance = false;
+          this.followButton.follow = "Seguir";
+        }
+      })
+    })
   }
 
   redirectUser(){
@@ -251,4 +288,5 @@ export class PostPage implements OnInit {
       this.listComments();
     }, 2000);
   }
+
 }
