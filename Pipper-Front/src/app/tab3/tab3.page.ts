@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AuthService } from '../services/auth/auth.service';
 import { Router, Routes, RouterModule } from '@angular/router';
+import { start } from 'repl';
 const { Camera, Filesystem } = Plugins;
 
 @Component({
@@ -15,6 +16,13 @@ export class Tab3Page {
   photo: SafeResourceUrl;
   postForm: FormGroup;
 
+  rating;
+  starColor1 = false;
+  starColor2 = false;
+  starColor3 = false;
+  starColor4 = false;
+  starColor5 = false;
+
 
   constructor(private sanitizer: DomSanitizer, public formbuilder: FormBuilder, public authservice: AuthService, public router: Router) {
 
@@ -25,35 +33,51 @@ export class Tab3Page {
   });
  }
 
-//  async takePhoto() {
-//   const options = {
-//     resultType: CameraResultType.Uri
+ star(n){
+   switch(n){
+     case(1):
+      this.rating=1;
+      this.starColor1 = true;
+      this.starColor2 = false;
+      this.starColor3 = false;
+      this.starColor4 = false;
+      this.starColor5 = false;
+      break
+     case(2):
+      this.rating=2;
+      this.starColor1 = true;
+      this.starColor2 = true;
+      this.starColor3 = false;
+      this.starColor4 = false;
+      this.starColor5 = false;
+      break
+     case(3):
+      this.rating=3;
+      this.starColor1 = true;
+      this.starColor2 = true;
+      this.starColor3 = true;
+      this.starColor4 = false;
+      this.starColor5 = false;
+      break
+     case(4):
+      this.rating=4;
+        this.starColor1 = true;
+        this.starColor2 = true;
+        this.starColor3 = true;
+        this.starColor4 = true;
+        this.starColor5 = false;
+      break
+     case(5):
+      this.rating=5;
+        this.starColor1 = true;
+        this.starColor2 = true;
+        this.starColor3 = true;
+        this.starColor4 = true;
+        this.starColor5 = true;
+      break
+   }
 
-//   };
-//   console.log('entrou');
-//   const originalPhoto = await Camera.getPhoto(options);
-//   console.log(originalPhoto)
-//   const photoInTempStorage = await Filesystem.readFile({ path: originalPhoto.path });
-//   console.log(photoInTempStorage)
-//   let date = new Date(),
-//     time = date.getTime(),
-//     fileName = time + ".jpeg";
-//     console.log(date);
-
-//   await Filesystem.writeFile({
-//     data: photoInTempStorage.data,
-//     path: fileName,
-//     directory: FilesystemDirectory.Data
-//   });
-//   console.log(FilesystemDirectory);
-//   const finalPhotoUri = await Filesystem.getUri({
-//     directory: FilesystemDirectory.Data,
-//     path: fileName
-//   });
-//   console.log(finalPhotoUri);
-//   let photoPath = Capacitor.convertFileSrc(finalPhotoUri.uri);
-//   console.log(photoPath);
-// }
+ }
 
   async takePhoto(){
     const image = await Plugins.Camera.getPhoto({
@@ -69,6 +93,7 @@ export class Tab3Page {
   }
 
   submitForm(postForm){
+    postForm.value.rating = this.rating;
     if(this.photo)
     postForm.value.photo = this.photo['changingThisBreaksApplicationSecurity'];
     console.log(postForm.value);

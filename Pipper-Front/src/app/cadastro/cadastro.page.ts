@@ -30,6 +30,7 @@ export class CadastroPage implements OnInit {
 
   submitForm(form){
     form.value.type = 0;
+    console.log(form)
     this.router.navigate(['cadastro-imagem'], form.value)
     // console.log("Usuário Cadastrado");
     // this.authservice.register(form.value).subscribe(

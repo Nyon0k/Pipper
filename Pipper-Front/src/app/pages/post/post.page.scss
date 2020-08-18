@@ -55,8 +55,9 @@ h1 {
     display: inline-block;
     margin: 0 auto;
     height: 100%;
-    width: auto;
-    background-size: cover;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .imgPlace2 {
@@ -229,21 +230,6 @@ ion-icon {
 .interactionButton:hover {
     border: 1px solid #C4FB6D;
     border-radius: 20px;
-}
-
-.iconMask {
-    width: 40%;
-    display: inline-block;
-    height: 100%;
-    border-radius: 50px;
-    overflow: hidden;
-}
-
-.iconMask img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    background-size: cover;
 }
 
 .imgAndText {

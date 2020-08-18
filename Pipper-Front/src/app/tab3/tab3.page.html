@@ -37,18 +37,34 @@
   </div>
     <ion-list>
       <ion-item>
+        <ion-card class="ratingCard">
+          <ion-card-content>
+            <div class="ratings">
+              <ion-button class="starButton" (click)="star(1)"><ion-icon name="star" class="star" [ngClass]="{'click':starColor1}"></ion-icon></ion-button>
+              <ion-button class="starButton" (click)="star(2)"><ion-icon name="star" class="star" [ngClass]="{'click':starColor2}"></ion-icon></ion-button>
+              <ion-button class="starButton" (click)="star(3)"><ion-icon name="star" class="star" [ngClass]="{'click':starColor3}"></ion-icon></ion-button>
+              <ion-button class="starButton" (click)="star(4)"><ion-icon name="star" class="star" [ngClass]="{'click':starColor4}"></ion-icon></ion-button>
+              <ion-button class="starButton" (click)="star(5)"><ion-icon name="star" class="star" [ngClass]="{'click':starColor5}"></ion-icon></ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+      <div class="ratingText">
+        <h5 class="chosenRating">Sua avaliação foi: {{rating}}</h5>
+      </div>
+      <ion-item>
         <ion-label position="floating" class="label">Título</ion-label>
-        <ion-input type="title" formControlName="title" maxLength="50"></ion-input>
+        <ion-input type="text" formControlName="title" maxLength="50"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating" class="label">Descrição</ion-label>
-        <ion-textarea auto-grow="true" type="text" formControlName="text" type="text" maxLength="256"></ion-textarea>
+        <ion-textarea auto-grow="true" formControlName="text" type="text" maxLength="256"></ion-textarea>
       </ion-item>
     </ion-list>
     <div class="button">
       <ion-button class="botao" mode="md" expand="block" size="Secondary" type="submit" shape="round" [disabled]="postForm.invalid" color ="success">Continuar</ion-button>
     </div>
+  </ion-card-content>
   </form>
-</ion-card-content>
 </ion-card>
 </ion-content>
