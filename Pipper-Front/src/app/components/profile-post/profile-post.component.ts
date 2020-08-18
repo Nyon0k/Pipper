@@ -7,10 +7,16 @@ import { PostService } from '../../services/post/post.service';
   styleUrls: ['./profile-post.component.scss'],
 })
 export class ProfilePostComponent implements OnInit {
-
+  spacePhoto;
   @Input() post;
   constructor(public postService: PostService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.post.photo == null){
+      this.spacePhoto = false;
+    } else {
+      this.spacePhoto = true;
+    }
+  }
 
 }

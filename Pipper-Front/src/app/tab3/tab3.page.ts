@@ -4,7 +4,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AuthService } from '../services/auth/auth.service';
 import { Router, Routes, RouterModule } from '@angular/router';
-import { start } from 'repl';
 const { Camera, Filesystem } = Plugins;
 
 @Component({

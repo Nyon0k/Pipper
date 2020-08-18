@@ -35,8 +35,8 @@ h3{
 }
 .botao{
     padding: 1%;
-    width: 75%;
-    height: 35%;
+    width: 90%;
+    height: 45%;
     color: #000000;
     font-size: 1.0em;
     -webkit-text-stroke: 0.5px (black);
@@ -62,7 +62,9 @@ h3{
     position: relative;
     overflow: hidden;
     border-radius: 50%;
-    background-color: #272727;
+    background-image: url("../../assets/chamaBG.png");
+    background-repeat: repeat;
+    background-size: contain;
     object-fit: cover;
 }
 .foto-perfil img{

@@ -2,12 +2,12 @@
   <ion-card-content>
     <div class="profilePost">
       <div class="profileContent">
-        <div class = "imgPlace">
+        <div class = "imgPlace" *ngIf="post.photo">
           <div class="profileImg">
             <img [src]="post.photo">
           </div>
         </div>
-        <div class="timeHrTitle">
+        <div class="timeHrTitle" [ngClass]="{'noMargin':post.photo==null}">
           <h4>Hoje às 15h10</h4>
           <div class="hr2"></div>
           <h2>{{post.title}}</h2>
