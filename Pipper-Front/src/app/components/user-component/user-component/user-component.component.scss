@@ -1,0 +1,75 @@
+.userProfilePic {
+    width: 12vw;
+    height: 12vw;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #272727;
+    object-fit: cover;
+}
+
+.userProfilePic img {
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+    background-size: cover;
+}
+
+.imgPlace {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 15%;
+}
+
+.userComponent {
+    display: flex;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 2%;
+}
+
+.follow {
+    width: 55%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.name {
+    display: flex;
+}
+h1 {
+    color: #FFE9E9;
+    font-size: 100%;
+    word-break: break-word;
+}
+
+h3 {
+    font-style: italic;
+    margin-top: 0%;
+}
+
+.leaf {
+    color: #C4FB6D;
+    width: 15%;
+    height: 70%;
+}
+
+ion-button {
+    --border-radius: 40px;
+    --background: #C4FB6D;
+    --color: black;
+}
+
+.following {
+    --background: #272727;
+    color: #C4FB6D;
+    border: 1px solid #C4FB6D;
+    border-radius: 20px;
+    font-style: italic;
+}

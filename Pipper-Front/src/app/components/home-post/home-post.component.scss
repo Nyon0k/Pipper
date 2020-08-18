@@ -1,16 +1,16 @@
-
-
 .homePost {
     display: flex;
-    justify-content: space-around;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .imgAndTags {
-    width: 40%;
+    max-width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin-top: 1%;
+    margin-left: 2%;
 }
 
 .imgAndTags img {
@@ -26,31 +26,39 @@
 }
 
 .imgPost {
-    width: 100%;
-    display: flex;
-    display: inline-block;
-    height: auto;
-    border-radius: 10px;
+    width: 30vw;
+    height: 30vw;
+    position: relative;
     overflow: hidden;
+    border-radius: 10%;
+    background-color: #272727;
+    object-fit: cover;
 }
 
-.imgMask img {
-    height: auto;
-    object-fit: cover;
-    width: 100%;
+.imgPost img {
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
     background-size: cover;
-    
 }
 
 .tagsPost {
     display: flex;
     overflow-x: scroll;
     border-radius: 50px;
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
+.hr {
+    background-color: #C4FB6D;
+    height: 0.1px;
+    margin-top: 5%;
+}
 .textUserAndButtons {
-    width: 55%;
+    width: 60%;
+    margin-left: 3%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -58,14 +66,34 @@
 
 .photoAndUser {
     display: flex;
+    width: 100%;
 }
 
-.photoAndUser img {
-    width: 100%;
+.mask {
+    width: 10vw;
+    height: 10vw;
+    position: relative;
+    overflow: hidden;
     border-radius: 50%;
-    height: auto;
+    background-image: url("../../../assets/chamaBG.png");
+    background-repeat: repeat;
+    background-size: contain;
     object-fit: cover;
+}
+
+.mask img {
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
     background-size: cover;
+}
+
+.imgPlace {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 15%;
 }
 
 .userPhotoAndFollow {
@@ -75,22 +103,31 @@
 
 ion-button {
     --border-radius: 30px;
+    margin-left: 0px;
 }
 
 .buttons {
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .button {
     width: 100%;
     --background: #C4FB6D;
     color: black;
+    margin-left: 2%;
 }
 
+ion-card-content {
+    padding-bottom: 1%;
+}
 div.buttons ion-button.button {
-    width: 50%;
-    height: 100%;
+    width: 100%;
+    --border-radius: 0px;
+    --background: #272727;
+    color: #C4FB6D;
+    --box-shadow: none;
 }
 
 ion-icon {
@@ -100,10 +137,14 @@ ion-icon {
 .name {
     color: #FFE9E9;
     width: auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 0px;
 }
 
 .username {
-    font-size: 80%;
+    font-size: 90%;
 }
 
 .nameAndTime {
@@ -119,7 +160,7 @@ ion-icon {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 100%;
+    width: 95%;
     margin-left: 2%;
 }
 
@@ -156,17 +197,9 @@ ion-card {
     border-radius: 10px;
 }
 
-.mask {
-    width: 20%;
-    display: inline-block;
-    height: auto;
-    border-radius: 50px;
-    overflow: hidden;
-}
-
 .follow {
     display: flex;
-    width: 50%;
+    width: 40%;
 }
 
 .tags {
@@ -174,6 +207,8 @@ ion-card {
     font-family: 'Poiret One', cursive;
     --background: #404040;
     color: #FFE9E9;
+    margin-top: 0px;
+    margin-bottom: 0px;
     
 }
 
@@ -189,8 +224,12 @@ ion-card {
     .imgAndTags {
         width: 100%;
         margin-right: 0%;
+        align-items: center;
+        margin-bottom: 5%;
+    
     }
     .tagsPost {
         margin-bottom: 5%;
     }
 }
+

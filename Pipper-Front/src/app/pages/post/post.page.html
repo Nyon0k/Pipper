@@ -7,8 +7,15 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="10" pullMax="100" mode="md">
+    <ion-refresher-content
+    refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-card *ngIf="user">
     <ion-card-header *ngIf="editModeOff">
+  <ion-card>
+    <ion-card-header>
       <div class="cardPhoto">
         <img [src]="photoPost">
       </div>
@@ -30,8 +37,10 @@
       <div class="upperContentPart"> <!--row-->
 
         <div class="userPart"> <!--row-->
-          <div class="userMask">
-            <img [src]="photo" (click)="redirectUser()">
+          <div class = "imgPlace2">
+            <div class="userMask">
+              <img [src]="photo" (click)="redirectUser()">
+            </div>
           </div>
           <div class="nameAndTime"> <!--collumn-->
             <div class="userNameAndNickname">
@@ -43,7 +52,6 @@
 
         <div class="followAndTagPart"> <!--row-->
           <ion-button [ngClass]="{'following':followButton.chance}" size="small" class="buttonFollow" strong="true" mode="md" (click)="changeFollow()"><span style="text-transform:none!important;">{{followButton.follow}}</span></ion-button>
-          <ion-button size="small" class="buttonTag" strong="true" mode="md"><span style="text-transform:none!important;">Tags</span></ion-button>
         </div>
       </div>
       <!-- Display das informações do post -->
@@ -66,13 +74,13 @@
       <form [formGroup]="postForm" (ngSubmit)="editPost(postForm)">
 
       <div class="postTitle">
-        <ion-input position="floating" placeholder="Título" class="inputTitle" mode="md" type="title" formControlName="title"></ion-input>
+        <ion-input position="floating" placeholder="{{post.title}}" class="inputTitle" mode="md" type="title" formControlName="title" maxlength="50"></ion-input>
       </div>
       <div class="leftRight">
         <div class="quoteLeft">
           <img src="../assets/quote.png">
         </div>
-        <ion-input position="floating" placeholder="Comentário" class="inputText" mode="md" type="text" formControlName="text"></ion-input>
+        <ion-input position="floating" placeholder="{{post.text}}" class="inputText" mode="md" type="text" formControlName="text" maxlength="256"></ion-input>
         <div class="quoteRight">
          <img src="../assets/quote2.png">
         </div>
@@ -85,9 +93,14 @@
       <!-- Botões que desaparecem quando enquanto a edição do post nao estiver finalizada -->
       <div class="interactionButtons" *ngIf= "editModeOff">
         <div class="allButtons">
-          <ion-button class="interactionButton" size="small" mode="md" (click)="likePost()"><ion-icon name="thumbs-up-outline"></ion-icon>{{post.like}}</ion-button>
-          <ion-button class="interactionButton" size="small" mode="md" (click)="listComments()"><ion-icon name="chatbubble-outline"></ion-icon></ion-button>
-          <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="star-outline"></ion-icon>{{post.rating}}</ion-button>
+          <div class="leftSideButtons">
+            <ion-button class="interactionButton" size="small" mode="md" (click)="likePost()"><ion-icon name="thumbs-up-outline"></ion-icon>{{post.like}}</ion-button>
+            <ion-button class="interactionButton" size="small" mode="md" (click)="listComments()"><ion-icon name="chatbubble-outline"></ion-icon></ion-button>
+            <ion-button class="interactionButton" size="small" mode="md"><ion-icon name="star-outline"></ion-icon>{{post.rating}}</ion-button>
+          </div>
+          <div class="postTag">
+            <ion-button size="small" class="buttonTag" strong="true" mode="md"><span style="text-transform:none!important;">Tags</span></ion-button>
+          </div>
         </div>
         <div class="trash">
           <ion-button class="interactionButton" size="small" mode="md" (click)="edit()" *ngIf="editButton"><ion-icon name="create-outline"></ion-icon><span style="text-transform:none!important;">Editar</span></ion-button>
@@ -100,7 +113,7 @@
   <ion-card><ion-card-content>
     <form [formGroup]="commentForm" (ngSubmit)="sendComment()">
     <div class="inputAndSubmit">
-      <ion-input position="floating" placeholder="Deixe sua mensagem" class="input" mode="md" type="text" formControlName="text"></ion-input>
+      <ion-input position="floating" placeholder="Deixe sua mensagem" class="input" mode="md" type="text" formControlName="text" maxlength="248"></ion-input>
       <ion-button class="submitButton" mode="ios" type="submit">
         <ion-icon name="paper-plane-outline" size="large" class="submitIcon"></ion-icon>
       </ion-button>

@@ -42,28 +42,39 @@ h1 {
 }
 
 .userMask {
-    width: 30%;
-    display: inline-block;
-    height: 100%;
-    border-radius: 50px;
+    width: 12vw;
+    height: 12vw;
+    position: relative;
     overflow: hidden;
+    border-radius: 50%;
+    background-color: #272727;
+    object-fit: cover;
 }
 
 .userMask img {
-    width: 100%;
-    border-radius: 50%;
-    height: auto;
-    object-fit: cover;
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
     background-size: cover;
 }
 
-.userPart {
+.imgPlace2 {
     display: flex;
-    margin-right: 2%;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 20%;
+}
+
+.userPart {
+    width: 65%;
+    display: flex;
+    justify-content: flex-start;
 }
 
 h3 {
     color: #FFE9E9;
+    margin-top: 0px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -75,23 +86,28 @@ h4 {
 
 .allButtons {
     display: flex;
+    justify-content: space-between;
+}
+
+.leftSideButtons {
+    display: flex;
 }
 
 .upperContentPart {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .followAndTagPart {
     display: flex;
-    width: 100%;
+    width: 30%;
     justify-content: space-between;
 }
 
 .nameAndTime {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 80%;
     margin-left: 5%;
 }
 
@@ -193,7 +209,9 @@ ion-icon {
 }
 
 .trash {
+    display: flex;
     margin-top: 2%;
+    justify-content: center;
 }
 
 .interactionButtons {
@@ -277,6 +295,7 @@ ion-icon {
     margin-bottom: 5%;
     ::placeholder {
         margin-left: 30%;
+
     }
 }
 

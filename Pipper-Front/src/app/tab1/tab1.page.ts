@@ -31,7 +31,6 @@ export class Tab1Page implements OnInit {
     this.getlistPostFollow();
   }
   
-
   getlistPostNovo(){
     this.postService.listPostsNovo().subscribe ((res) =>{
       this.posts1 = res;

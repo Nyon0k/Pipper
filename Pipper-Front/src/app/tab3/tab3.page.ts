@@ -74,6 +74,7 @@ export class Tab3Page {
     console.log(postForm.value);
     this.authservice.createPost(postForm.value).subscribe(
       (res)=> {
+        this.router.navigate(['/tabs/tab1'])
         console.log(res);
         console.log("Post foi criado.");
         this.router.navigate(['/tabs/tab1']);
@@ -82,7 +83,6 @@ export class Tab3Page {
         console.log(err);
       }
     );
-
 }
 
 }

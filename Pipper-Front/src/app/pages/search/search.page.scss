@@ -1,6 +1,9 @@
 ion-content{
     --ion-background-color: #006A71;
 }
+ion-card {
+    border-radius: 10px;
+}
 ion-input{
     --ion-background-color: #EFFFFB;
     color: #EFFFFB;
@@ -22,6 +25,7 @@ ion-button{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 60%;
     background-color: #272727;
     flex-direction: row;
     border-radius: 100px;
@@ -35,8 +39,8 @@ ion-button{
     flex-direction: row;
     border-radius: 100px;
     margin-top: 5%;
-    margin-bottom: 2%;
-    width: 70%;
+    margin-bottom: 5%;
+    width: 60%;
 
 }
 .tag{

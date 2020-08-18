@@ -1,20 +1,34 @@
+ion-card-content {
+    padding-bottom: 2%;
+}
+
 .profileContent {
     display: flex;
 }
 
 .profileImg {
-    width: 30%;
-    display: inline-block;
-    height: auto;
-    border-radius: 10px;
+    width: 18vw;
+    height: 18vw;
+    position: relative;
     overflow: hidden;
+    border-radius: 10%;
+    background-color: #272727;
+    object-fit: cover;
 }
 
 .profileImg img {
-    height: auto;
-    object-fit: cover;
-    width: 100%;
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
     background-size: cover;
+}
+
+.imgPlace {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 20%;
 }
 
 .timeHrTitle {
@@ -25,10 +39,10 @@
 }
 
 .hr {
-    background-color: #50D890;
+    background-color: #C4FB6D;
     height: 0.1px;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 5%;
+    margin-bottom: 2%;
 }
 
 .hr2 {
@@ -48,6 +62,10 @@ h2 {
     word-break: break-all;
 }
 
+ion-button {
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
 .profileButtons {
     display: flex;
     justify-content: space-between;
@@ -55,18 +73,24 @@ h2 {
 
 .button {
     width: 100%;
-    --background: #C4FB6D;
-    color: black;
+    --background: #272727;
+    color: #C4FB6D;
+    --box-shadow: none;
 }
 
-.star {
-    color: darkorange;
-
+.buttonTag {
+    width: 100%;
+    --background: #C4FB6D;
+    color: black;
 }
 
 .postsCard {
     margin-top: 0%;
     border-radius: 10px;
+}
+
+ion-icon {
+    margin-right: 5%;
 }
 
 @media screen and (max-width: 350px) {

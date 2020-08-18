@@ -8,12 +8,18 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="10" pullMax="100" mode="md">
+    <ion-refresher-content
+    refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-card class="profile">
     <ion-card-content *ngIf="user">
       <div class="profileContent">
-        <div class="profileMask">
-          <img [src]="user.photo">
+        <div class = "imgPlace">
+          <div class="profileMask">
+            <img [src]="user.photo">
+          </div>
         </div>
         <div class="userInfo" >
           <h2>{{user.name}}<ion-icon name="leaf-outline" class="leaf"></ion-icon></h2>
@@ -36,7 +42,7 @@
       <div class="hr"></div>
   
       <div class="followOrEdit">
-        <ion-button mode="md" class="buttonClass" (click)="changeFollow()" *ngIf="outroPerfil">{{followButton.follow}}</ion-button>
+        <ion-button mode="md" class="buttonClass" (click)="changeFollow()" *ngIf="outroPerfil" [ngClass]="{'following':followButton.chance}">{{followButton.follow}}</ion-button>
         <ion-button mode="md" class="buttonClass" *ngIf="outroPerfil">Mensagem</ion-button>
         <ion-button mode="md" class="buttonClass" (click)="editar()" *ngIf="meuPerfil">Editar perfil</ion-button>
       </div>

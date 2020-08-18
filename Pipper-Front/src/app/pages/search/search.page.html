@@ -8,7 +8,7 @@
   <div class="search2" *ngIf="searchPost">
     <ion-icon name="search-outline" type="submit" (click)="search()"></ion-icon>
     <form>
-      <ion-button class="tag" color="tertiary" (click)="presentPopover($event)">
+      <ion-button mode="md" class="tag" color="tertiary" (click)="presentPopover($event)">
         Tags
         <ion-icon class="seta" name="chevron-down-outline" ></ion-icon>
       </ion-button>
@@ -24,25 +24,31 @@
     <ion-button class="tag" color="tertiary" *ngIf="esporte" (click)="close(7)">esporte <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
     <ion-button class="tag" color="tertiary" *ngIf="alimentacao" (click)="close(8)">alimentacao <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
     <ion-button class="tag" color="tertiary" *ngIf="utilidades_domesticas" (click)="close(9)">utilidades domesticas <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
-    <ion-button class="tag" color="tertiary" *ngIf="infantis" (click)="close(10)">infantis <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
+    <ion-button class="tag" color="tertiary" *ngIf="infantis" (click)="close(10)">infantil <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
   </div>
   <div class="botao">
-    <ion-button class="botao" (click)="searchPoste()" color="light">Posts</ion-button>
-    <ion-button class="botao" (click)="searchUsuario()" color="light">Usuários</ion-button>
+    <ion-button mode="md"  class="botao" (click)="searchPoste()" color="light">Posts</ion-button>
+    <ion-button mode="md"  class="botao" (click)="searchUsuario()" color="light">Usuários</ion-button>
   </div>
 </div>
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="10" pullMax="100" mode="md">
+    <ion-refresher-content
+    refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="botaoPost">
+  <app-home-post></app-home-post>
+  </div>
 
-<div *ngIf="botaoPost">
-<app-home-post></app-home-post>
-</div>
-
-<div *ngIf="botaoUser">
-    <ion-card *ngFor="let user of users">
-      <app-user-component
-      [user]="user"
-      ></app-user-component>
-    </ion-card>
-</div>
+  <div *ngIf="botaoUser">
+      <ion-card *ngFor="let user of users">
+        <ion-card-content>
+          <app-user-component
+          [user]="user"
+          ></app-user-component>
+        </ion-card-content>
+      </ion-card>
+  </div>
 
 </ion-content>

@@ -1,17 +1,29 @@
 .iconMask {
-    width: 20%;
-    display: inline-block;
-    height: auto;
-    border-radius: 50px;
+    width: 15vw;
+    height: 15vw;
+    position: relative;
     overflow: hidden;
+    border-radius: 50%;
+    object-fit: cover;
+    background-image: url("../../../assets/chamaBG.png");
+    background-repeat: repeat;
+    background-size: contain;
 }
 
 .iconMask img {
-    width: 100%;
-    border-radius: 50%;
-    height: auto;
-    object-fit: cover;
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
     background-size: cover;
+}
+
+.imgPlace {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 20%;
+    margin-left: 2%;
 }
 
 .imgAndText {
@@ -41,6 +53,6 @@
 .hr {
     background-color: #C4FB6D;
     height: 0.1px;
-    margin-top: 5%;
+    margin-top: 3%;
     margin-bottom: 5%;
 }

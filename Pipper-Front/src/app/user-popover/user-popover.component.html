@@ -6,14 +6,16 @@
 <ion-content mode="md">
   <div class="ion-padding">
     <div class="profileContent" *ngIf="userInfo">
-      <div class="profileMask">
-        <img [src]="userInfo.photo">
+      <div class = "imgPlace">
+        <div class="profileMask">
+          <img [src]="userInfo.photo">
+        </div>
       </div>
       <div class="userInfo">
         <div class="userNames">
-          <h2>{{userInfo.name}} •</h2>
           <h2>{{userInfo.nickname}}</h2><ion-icon name="leaf-outline" class="leaf"></ion-icon>
         </div>
+
         <div class="userNumbers">
           <div class="userPosts" *ngIf="postInfo">
             <div class="number"><h3>{{postInfo.length}}</h3></div>

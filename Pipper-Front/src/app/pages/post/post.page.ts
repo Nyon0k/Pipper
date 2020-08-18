@@ -244,6 +244,15 @@ export class PostPage implements OnInit {
     this.router.navigate(['/tabs/tab1']);
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
 
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+      this.showPost();
+      this.likePost();
+      this.listComments();
+    }, 2000);
+  }
 }
-
