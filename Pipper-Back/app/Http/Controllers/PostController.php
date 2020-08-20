@@ -19,6 +19,10 @@ class PostController extends Controller
         $id = $user->id;
         $post = new Post;
         $post->createPost($request, $id);
+
+        foreach($request->tag_ids as $tag_id){
+            $post->tag($tag_id);
+        }
         return response()->json($post);
     }
 

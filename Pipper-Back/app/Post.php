@@ -18,18 +18,6 @@ class Post extends Model
         $this->tags = $request->tags;
         $this->user_id = $id;
         $this->photo = $request->photo;
-
-        // if(!Storage::exists('localPhotos/products/')){
-        //     Storage::makeDirectory('localPhotos/products/',0775,true);
-        // }
-        // if($request->photo){
-        //     $image = base64_decode($request->photo);
-        //    $filename = uniqid();
-        //    $path = 'localPhotos/products/'.$filename;
-        //    file_put_contents(storage_path('app/'.$path),$image);
-        //    $this->photo=$path; 
-        // }
-
         $this->count_people = 0;
         $this->creator_rating = $request->creator_rating;
         $this->general_rating = $request->creator_rating;
@@ -45,12 +33,6 @@ class Post extends Model
             $this->text = $request->text;
         }
         if($request->photo){
-        //     Storage::delete($this->photo);
-        //     $image = base64_decode($request->photo);
-        //    $filename = uniqid();
-        //    $path = 'localPhotos/products/'.$filename;
-        //    file_put_contents(storage_path('app/'.$path),$image);
-        //    $this->photo=$path;
             $this->photo = $request->photo;
         }
         $this->save();
@@ -97,5 +79,12 @@ class Post extends Model
     public function dislike(){
         $this->like--;
         $this->save();
+    }
+
+    public function tag($tag_id){
+        $tag = Tag::findOrFail($tag_id);
+        if(!$this->tags()->get()->contains($tag)){
+            $this->tags()->attach($tag);
+        }
     }
 }

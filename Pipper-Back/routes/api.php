@@ -43,7 +43,7 @@ Route::GET('listComments', 'CommentController@listComment');
 Route::GET('getUserId/{id}', 'CommentController@getUserId');
 Route::GET('getPostId/{id}', 'CommentController@getPostId');
 //Rotas de Tags
-Route::GET('listTags/{post_id}/{tag_id}', 'TagController@listTags');
+Route::GET('listTagsPost/{post_id}', 'TagController@listTagsPost');
 
 //Rotas de Passport
 Route::POST('register', 'API\PassportController@register');
