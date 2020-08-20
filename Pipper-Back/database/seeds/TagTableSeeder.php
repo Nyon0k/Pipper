@@ -13,8 +13,8 @@ class TagTableSeeder extends Seeder
     {
         $tag = new Tag;
         $tag->title = 'Serviço';
-        $tag->save();       
-        
+        $tag->save();
+
         $tag = new Tag;
         $tag->title = 'Produto';
         $tag->save();
@@ -44,7 +44,7 @@ class TagTableSeeder extends Seeder
         $tag->save();
 
         $tag = new Tag;
-        $tag->title = 'Uitlidades Domésticas';
+        $tag->title = 'Utilidades Domésticas';
         $tag->save();
 
         $tag = new Tag;

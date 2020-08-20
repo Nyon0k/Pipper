@@ -8,8 +8,7 @@ use App\Post;
 
 class TagController extends Controller
 {
-    public function createTag(Request $request, $id){
-        $tag = Tag::findOrFail($id);
+    public function createTag(Request $request){
         $tag->createTag($request);
         $this->save();
     }
@@ -33,7 +32,7 @@ class TagController extends Controller
         return response()->json("Tag deletada!");
     }
 
-    public function tag($post_id,$tag_id){
+    public function tag($post_id, $tag_id){
         $post = Post::findOrFail($post_id);
         $tag = Tag::findOrFail($tag_id);
         $post->tags()->attach($tag);

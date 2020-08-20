@@ -37,6 +37,7 @@ Route::GET('listPostUser', 'PostController@listPostUser');
 Route::GET('postUserComment/{id}', 'PostController@postUserComment');
 Route::GET('listPostsByAUser/{id}', 'PostController@listPostsByAUser');
 Route::GET('showPostUserComment/{id}', 'PostController@showPostUserComment');
+
 //Rotas de Comment
 Route::GET('showComment/{id}', 'CommentController@showComment');
 Route::GET('listComments', 'CommentController@listComment');
@@ -47,6 +48,8 @@ Route::GET('getPostId/{id}', 'CommentController@getPostId');
 Route::POST('register', 'API\PassportController@register');
 Route::POST('login', 'API\PassportController@login');
 
+//Rotas de Tags
+Route::GET('listTags/{post_id}/{tag_id}', 'TagController@listTags');
 
 
 

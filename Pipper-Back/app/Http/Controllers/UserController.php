@@ -132,13 +132,4 @@ class UserController extends Controller
         }
         return response()->json('Não existe!');
     }
-    //fazer metodo de busca de usuario, post
-
-    /*public function tryhardSearch(Request $request){
-        $data = Item::select("name")
-                ->where("name","LIKE","%{$request->input('query')}%")
-                ->get();
-        $data = User::select("name")->where("name", "LIKE", "%{$request->input(key:'name')}%")->get();
-        return response()->json($data);
-    }*/
 }
