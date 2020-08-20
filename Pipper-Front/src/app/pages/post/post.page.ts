@@ -34,7 +34,7 @@ export class PostPage implements OnInit {
     ​
     text: "text",
     ​
-    creator_rating: 0,
+    individual_rating: 0,
     ​
     tags: "text",
     ​
@@ -45,13 +45,21 @@ export class PostPage implements OnInit {
   followButton: Button;
   showComment = false;
   postForm: FormGroup;
+  rateForm;
   editMode = false;
   editModeOff = true;
   editButton = false;
   deleteButton = false;
   commentCount;
-  botaoSeguir = true;
-  
+  botaoSeguir = false;
+  rateMode = false;
+  individual_rating;
+  starColor1 = false;
+  starColor2 = false;
+  starColor3 = false;
+  starColor4 = false;
+  starColor5 = false;
+  rating;
   constructor(
       public toastController: ToastController, 
       public formbuilder: FormBuilder, 
@@ -101,6 +109,42 @@ export class PostPage implements OnInit {
     toast.present();
   }
 
+  async presentToast2() {
+    const toast = await this.toastController.create({
+      message: 'Você não está logado!.',
+      duration: 2000,
+      position: "top"
+    });
+    toast.present();
+  }
+
+  async presentToast3() {
+    const toast = await this.toastController.create({
+      message: 'Sua publicação foi deletada.',
+      duration: 2000,
+      position: "top"
+    });
+    toast.present();
+  }
+
+  async presentToas4() {
+    const toast = await this.toastController.create({
+      message: 'Sua publicação foi editada.',
+      duration: 2000,
+      position: "top"
+    });
+    toast.present();
+  }
+
+  async presentToas5() {
+    const toast = await this.toastController.create({
+      message: 'Sua avaliação foi enviada.',
+      duration: 2000,
+      position: "top"
+    });
+    toast.present();
+  }
+
   ngOnInit() {
 
     this.followButton = {
@@ -111,6 +155,7 @@ export class PostPage implements OnInit {
     this.showPost();
 
   }
+
 
   async takePicture(){
     const image = await Plugins.Camera.getPhoto({
@@ -149,6 +194,9 @@ export class PostPage implements OnInit {
       console.log('Comentário Enviado')
       this.presentToast();
     })
+    // if(Error){
+    //   this.presentToast2();
+    // }
 
   }
 
@@ -173,8 +221,8 @@ export class PostPage implements OnInit {
       this.user = res.user.name;
       this.user_id = res.user.id;
       this.photo = res.user.photo;
-      if(this.user_id == this.user_id_check){
-        this.botaoSeguir = false;
+      if(this.user_id != this.user_id_check && this.user_id_check){
+        this.botaoSeguir = true;
       }
       if (this.photo == null){
         this.photo = '../../assets/chamaBG.png';
@@ -239,6 +287,7 @@ export class PostPage implements OnInit {
       console.log(res);
       console.log('Post Apagado!');
       this.router.navigate(['/tabs/tab1']);
+      this.presentToast3();
     })
     } else{
       console.log('Voce nao pode apagar este post!')
@@ -256,7 +305,7 @@ export class PostPage implements OnInit {
       this.editModeOff = true;
       this.post = res;
       console.log(res)
-      console.log('Post Editado!');
+      this.presentToas4();
     })
   }
   
@@ -271,6 +320,9 @@ export class PostPage implements OnInit {
     this.postService.likePost(this.post_id).subscribe((res) =>{
       console.log('Post liked!')
     })
+    // if(Error){
+    //   this.presentToast2();
+    // }
   }
 
   voltar(){
@@ -286,6 +338,75 @@ export class PostPage implements OnInit {
       this.showPost();
       this.listComments();
     }, 2000);
+  }
+
+  async ratePost(){
+    console.log(this.individual_rating)
+    this.rating = JSON.parse(this.individual_rating);
+    await this.route.params.subscribe((params) => (this.post_id = params.postId));
+    this.postService.ratePost(this.post.id, this.individual_rating).subscribe((res) =>{
+      this.presentToas5();
+      console.log(res);
+      this.rateMode = !this.rateMode;
+      this.editModeOff = !this.editModeOff;
+    })
+  }
+
+
+  rate(){
+    if (this.user_id != this.user_id_check && this.user_id_check){
+      this.rateMode = !this.rateMode;
+      this.editModeOff = !this.editModeOff;
+    }
+    else{
+        this.presentToast2();
+    }
+  }
+
+  star(n){
+    switch(n){
+      case(1):
+       this.individual_rating=1;
+       this.starColor1 = true;
+       this.starColor2 = false;
+       this.starColor3 = false;
+       this.starColor4 = false;
+       this.starColor5 = false;
+       break
+      case(2):
+       this.individual_rating=2;
+       this.starColor1 = true;
+       this.starColor2 = true;
+       this.starColor3 = false;
+       this.starColor4 = false;
+       this.starColor5 = false;
+       break
+      case(3):
+       this.individual_rating=3;
+       this.starColor1 = true;
+       this.starColor2 = true;
+       this.starColor3 = true;
+       this.starColor4 = false;
+       this.starColor5 = false;
+       break
+      case(4):
+       this.individual_rating=4;
+         this.starColor1 = true;
+         this.starColor2 = true;
+         this.starColor3 = true;
+         this.starColor4 = true;
+         this.starColor5 = false;
+       break
+      case(5):
+       this.individual_rating=5;
+         this.starColor1 = true;
+         this.starColor2 = true;
+         this.starColor3 = true;
+         this.starColor4 = true;
+         this.starColor5 = true;
+       break
+    }
+ 
   }
 
 }

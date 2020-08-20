@@ -85,10 +85,10 @@ class PostController extends Controller
         return response()->json($creationDate);
     }
 
-    public function rating(Request $request, $post_id){
-        $post = Post::findOrFail($post_id);
+    public function rating($post_id, $rate){
         $user = Auth::user();
-        $post->rating($user->id,$request->rate);
+        $post = Post::findOrFail($post_id);
+        $post->rating($user->id, $rate);
         return response()->json(['Avaliado com sucesso', $post]);
     }
 
@@ -115,7 +115,8 @@ class PostController extends Controller
 
     //fazer metodo do post integrado entre user,post,comment.user (post) (conferir)
     public function showPostUserComment($id){
-        $data = Comment::with(['user.ratedPosts' => function($query){$query->select('individual_rating')->where('post_id',$id);}])->where('post_id',$id)->get();
+        //$data = Comment::with(['user.ratedPosts' => function($query){$query->select('individual_rating')->where('post_id',$id);}])->where('post_id',$id)->get();
+        $data = Comment::with('user')->where('post_id', $id)->get();
         return response()->json($data);
     }   
 
