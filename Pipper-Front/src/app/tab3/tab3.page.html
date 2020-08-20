@@ -46,20 +46,22 @@
   </div>
     <ion-list>
       <ion-item>
-        <ion-card class="ratingCard">
-          <ion-card-content>
-            <div class="ratings">
-              <ion-button class="starButton" (click)="star(1)"><ion-icon name="star" class="star" [ngClass]="{'click':starColor1}"></ion-icon></ion-button>
-              <ion-button class="starButton" (click)="star(2)"><ion-icon name="star" class="star" [ngClass]="{'click':starColor2}"></ion-icon></ion-button>
-              <ion-button class="starButton" (click)="star(3)"><ion-icon name="star" class="star" [ngClass]="{'click':starColor3}"></ion-icon></ion-button>
-              <ion-button class="starButton" (click)="star(4)"><ion-icon name="star" class="star" [ngClass]="{'click':starColor4}"></ion-icon></ion-button>
-              <ion-button class="starButton" (click)="star(5)"><ion-icon name="star" class="star" [ngClass]="{'click':starColor5}"></ion-icon></ion-button>
-            </div>
-          </ion-card-content>
-        </ion-card>
+        <div class="ratingDiv">
+          <ion-card class="ratingCard">
+            <ion-card-content class="paddingCard">
+              <div class="ratings">
+                <ion-button class="starButton" (click)="star(1)"><span class="buttonInner"><ion-icon name="star" class="star" [ngClass]="{'click':starColor1}"></ion-icon></span></ion-button>
+                <ion-button class="starButton" (click)="star(2)"><span class="buttonInner"><ion-icon name="star" class="star" [ngClass]="{'click':starColor2}"></ion-icon></span></ion-button>
+                <ion-button class="starButton" (click)="star(3)"><span class="buttonInner"><ion-icon name="star" class="star" [ngClass]="{'click':starColor3}"></ion-icon></span></ion-button>
+                <ion-button class="starButton" (click)="star(4)"><span class="buttonInner"><ion-icon name="star" class="star" [ngClass]="{'click':starColor4}"></ion-icon></span></ion-button>
+                <ion-button class="starButton" (click)="star(5)"><span class="buttonInner"><ion-icon name="star" class="star" [ngClass]="{'click':starColor5}"></ion-icon></span></ion-button>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
       </ion-item>
       <div class="ratingText">
-        <h5 class="chosenRating">Sua avaliação: {{creator_rating}} <ion-icon name="star" class="star"></ion-icon></h5>
+        <h5 class="chosenRating">Sua avaliação: {{creator_rating}} <ion-icon name="star" class="star2"></ion-icon></h5>
       </div>
       <ion-item>
         <ion-label position="floating" class="label">Título</ion-label>

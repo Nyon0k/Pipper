@@ -117,16 +117,37 @@ img.foto-perfil{
 
 .ratings {
     display: flex;
-
 }
 
 .starButton {
     --background: #272727;
     --box-shadow: none;
+    width: 18%;
 }
 
 .star {
     color: gray;
+    font-size: 150%;
+}
+
+.star2 {
+    color: gray;
+}
+
+.buttonInner {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.ratingDiv {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.paddingCard {
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 ion-button.tag {
@@ -147,3 +168,4 @@ ion-button.tag {
 .click {
     color: #C4FB6D;
 }
+
