@@ -13,13 +13,7 @@ class Button {
 })
 export class HomePostComponent implements OnInit {
   tags = [];
-  post_id;
   tag_id;
-  
-  optionSlide = {
-    loop: true,
-    direction: 'horizontal',
-}; //slide da tag
   
   @Input() post: any;
   followButton: Button;
@@ -27,6 +21,7 @@ export class HomePostComponent implements OnInit {
   constructor(public postService: PostService,  ) { }
 
   ngOnInit() {
+    this.listTags();
     this.followButton = {
       follow: "Seguir"
     }
@@ -37,7 +32,7 @@ export class HomePostComponent implements OnInit {
   }
 
   listTags(){
-    this.postService.listTags(this.post_id, this.tag_id).subscribe((res) =>
+    this.postService.listTags(this.post.id).subscribe((res) =>
     {
       this.tags = res;
       console.log(res);

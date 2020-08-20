@@ -38,25 +38,12 @@
     </div>
   
     <div class="tagsPost">
-      <ion-button mode="md" class="tags"><!--ngForaqui-->
-        <span style="text-transform:none!important;">
-          Produto
-        </span>
-      </ion-button>
-      <ion-button mode="md" class="tags"><!--ngForaqui-->
-        <span style="text-transform:none!important;">
-          Físico
-        </span>
-      </ion-button>
-      <ion-button mode="md" class="tags"><!--ngForaqui-->
-        <span style="text-transform:none!important;">
-          Esporte
-        </span>
-      </ion-button>
-      <ion-button mode="md" class="tags"><!--ngForaqui-->
-        <span style="text-transform:none!important;">
-          Saúde
-        </span>
+      <ion-button mode="md" class="tags" 
+      *ngFor="let tag of tags"
+      >
+      <span style="text-transform:none!important;">
+        {{tag.title}}
+      </span>
       </ion-button>
     </div>
 

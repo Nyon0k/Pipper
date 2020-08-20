@@ -47,8 +47,8 @@ export class PostService {
   }
 
   //tags
-  listTags(post_id, tag_id): Observable<any> {
-    return this.http.get(this.apiUrl + 'listTags' + post_id + tag_id)
+  listTags(post_id): Observable<any> {
+    return this.http.get(this.apiUrl + 'listTagsPost/' + post_id)
   }
 
 }
