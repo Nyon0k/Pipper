@@ -31,6 +31,11 @@ ion-card-header img {
     border-radius: 10px;
 }
 
+.fabButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
 h1 {
     font-family: 'Poiret One', cursive;
     margin-top: 0px;
@@ -197,8 +202,8 @@ ion-card-subtitle {
     word-break: break-word;
 }
 
-ion-icon {
-    margin-right: 5%;
+.camera {
+    color: #272727;
 }
 
 .userNameAndNickname {
@@ -298,13 +303,15 @@ form {
 
 .submitButton {
     --background: #C4FB6D;
-    width: 18%;
+    width: 14%;
     margin-left: 3%;
     height: 42px;
 }
 
 .submitIcon {
     color: #272727;
+    padding-top: 20%;
+
 }
 
 @media screen and (max-width: 350px) {

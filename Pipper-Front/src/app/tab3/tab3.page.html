@@ -26,8 +26,23 @@
 </div>
 
 <ion-card-content>
-  <div class="Tags">
-    <div class="tag"><ion-button color="tertiary" mode="md"><ion-icon name="chevron-back-outline"></ion-icon>tags</ion-button></div>
+  <div class="tags">
+    <div class="tagButton">
+      <ion-button size="small" color="tertiary" mode="md" (click)="presentPopover($event)">
+      tags<ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+    </div>
+    <div class="slideTag">
+      <ion-button class="tag" size="small" fill="outline" *ngIf="servico" (click)="close(1)">serviço <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
+      <ion-button class="tag" size="small" fill="outline" *ngIf="produto" (click)="close(2)">produto <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
+      <ion-button class="tag" size="small" fill="outline" *ngIf="fisico" (click)="close(3)">fisico <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
+      <ion-button class="tag" size="small" fill="outline" *ngIf="online" (click)="close(4)">online <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
+      <ion-button class="tag" size="small" fill="outline" *ngIf="entretenimento" (click)="close(5)">entretenimento <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
+      <ion-button class="tag" size="small" fill="outline" *ngIf="saude" (click)="close(6)">saude <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
+      <ion-button class="tag" size="small" fill="outline" *ngIf="esporte" (click)="close(7)">esporte <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
+      <ion-button class="tag" size="small" fill="outline" *ngIf="alimentacao" (click)="close(8)">alimentacao <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
+      <ion-button class="tag" size="small" fill="outline" *ngIf="utilidades_domesticas" (click)="close(9)">utilidades domesticas <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
+      <ion-button class="tag" size="small" fill="outline" *ngIf="infantis" (click)="close(10)">infantil <ion-icon name="close-circle-outline" class="close"></ion-icon></ion-button>
+    </div>
   </div>
     <ion-list>
       <ion-item>
@@ -44,7 +59,7 @@
         </ion-card>
       </ion-item>
       <div class="ratingText">
-        <h5 class="chosenRating">Sua avaliação foi: {{creator_rating}}</h5>
+        <h5 class="chosenRating">Sua avaliação: {{creator_rating}} <ion-icon name="star" class="star"></ion-icon></h5>
       </div>
       <ion-item>
         <ion-label position="floating" class="label">Título</ion-label>

@@ -6,7 +6,6 @@ ion-content{
     --ion-background-color: #006A71;
 }
 ion-button{
-    color: #000000;
     --border-radius: 20px;
 }
 ion-card{
@@ -55,9 +54,9 @@ ion-card{
     width: 20%;
 }
 
-.Tags{
+.tagButton{
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
 
 }
 h4{
@@ -70,25 +69,29 @@ h4{
     align-items: center;
     margin-top: 5%;
 }
-.tag{
-    --ion-color: #000000;
-    border-radius: 200px;
-    width: 30%;
 
+.tags {
+    display: flex;
+    flex-direction: column;
 }
-.rosto{
-    width: 30vw;
-    height: 20vw;
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
-    background-color: #272727;
-    object-fit: cover;
+
+.slideTag {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: auto;
+    right: 0;
+    border-radius: 50px;
+    margin-top: 2%;
 }
+
+
+
 .nome{
     margin-left: 5%;
     width: 50%;
 }
+
 img.foto-perfil{
     width: 40;
     border-radius: 10px;
@@ -97,7 +100,8 @@ img.foto-perfil{
 .button {
     display: flex;
     justify-content: center;
-    margin-top: 5%;
+    margin-top: 0%;
+    margin-bottom: 0%;
 }
 .botao {
     width: 50%;
@@ -122,7 +126,13 @@ img.foto-perfil{
 }
 
 .star {
+    color: gray;
+}
+
+ion-button.tag {
+    --background: #272727;
     color: #50D890;
+    --border-width: 1px;
 }
 
 .ratingText {
@@ -130,8 +140,6 @@ img.foto-perfil{
     width: 100%;
     margin-left: 5%;
 }
-
-
 .rating {
     width: auto;
 }

@@ -9,6 +9,12 @@
     <h6></h6>
     <h5>{{comments.text}}</h5>
   </div>
-  <ion-button (click)='deleteCommentMod()' *ngIf="deleteButton"><ion-icon name="trash-outline"></ion-icon></ion-button>
+  <div class="trash">
+    <ion-button class="trashButton" (click)='presentAlert()' *ngIf="deleteButton">
+     <span>
+      <ion-icon name="trash-outline" class="trashIcon"></ion-icon>
+     </span>
+    </ion-button>
+  </div>
 </div>
 <div class="hr"></div>

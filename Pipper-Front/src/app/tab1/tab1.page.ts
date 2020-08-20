@@ -25,7 +25,7 @@ export class Tab1Page implements OnInit {
     
   }
   ionViewWillEnter(){
-    console.log('IVWE');
+    console.log('this.user_id');
     this.getlistPostNovo();
     this.getlistPostRating();
     this.getlistPostFollow();

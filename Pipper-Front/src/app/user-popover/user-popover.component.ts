@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { ToastController, PopoverController } from '@ionic/angular';
 import { AuthService } from "../services/auth/auth.service";
 import { Routes, RouterModule, Router } from "@angular/router";
 import { UserService } from '../services/user/user.service';
@@ -13,7 +13,12 @@ export class UserPopoverComponent implements OnInit {
   userInfo;
   postInfo;
 
-  constructor(public popoverController: PopoverController, public authService: AuthService, public router: Router, public userService: UserService) {
+  constructor(
+    public popoverController: PopoverController, 
+    public authService: AuthService, 
+    public router: Router, 
+    public userService: UserService,
+    public toastController: ToastController) {
     this.user_id = Number(localStorage.getItem('id_user'));
 
    }
@@ -32,6 +37,7 @@ export class UserPopoverComponent implements OnInit {
       console.log('Estou Deslogado!');
       this.popoverController.dismiss();
       this.router.navigate(['/tabs/tab1']);
+      this.logoutAlertSuccess();
 
     });
   }
@@ -39,6 +45,15 @@ export class UserPopoverComponent implements OnInit {
   perfil(){
     this.router.navigate(['/profile', {'userId': this.user_id}]);
     this.popoverController.dismiss()
+  }
+
+  async logoutAlertSuccess() {
+    const toast = await this.toastController.create({
+      message: 'Você foi deslogado!',
+      duration: 2000,
+      position: "top"
+    });
+    toast.present();
   }
 
   showUserInfo(){

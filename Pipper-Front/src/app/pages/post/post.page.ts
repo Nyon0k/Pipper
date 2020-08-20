@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { ToastController, AlertController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 import { AuthService} from '../../services/auth/auth.service';
 import { CommentService } from '../../services/comment/comment.service';
 import { UserService } from '../../services/user/user.service';
 import { PostService } from '../../services/post/post.service';
+
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 
@@ -80,7 +82,7 @@ export class PostPage implements OnInit {
       mode: "ios",
       cssClass: 'deleteAlert',
       header: 'ATENÇÃO',
-      message: 'Tem certeza que deseja deletar essa publicação?',
+      message: 'Tem certeza que deseja deletar esta publicação?',
       buttons: ['Cancelar', {
           text:'Deletar',
           handler: () => {

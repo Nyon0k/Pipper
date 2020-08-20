@@ -46,4 +46,9 @@ export class PostService {
     return this.http.put(this.apiUrl+ 'like/' + post_id, null, this.httpHeaders);
   }
 
+  //tags
+  listTags(post_id, tag_id): Observable<any> {
+    return this.http.get(this.apiUrl + 'listTags' + post_id + tag_id)
+  }
+
 }

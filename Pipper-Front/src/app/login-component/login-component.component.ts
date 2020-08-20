@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { ToastController, PopoverController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Routes, RouterModule, Router } from "@angular/router";
 import { AuthService } from "../services/auth/auth.service";
@@ -12,7 +12,12 @@ import { AuthService } from "../services/auth/auth.service";
 export class LoginComponentComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(public popoverController: PopoverController, public formbuilder: FormBuilder, private router: Router, public authService: AuthService) {
+  constructor(
+    public toastController: ToastController, 
+    public popoverController: PopoverController, 
+    public formbuilder: FormBuilder, 
+    private router: Router, 
+    public authService: AuthService) {
     this.loginForm = this.formbuilder.group({
       email: [null, [Validators.required,Validators.email]],
       password: [null, [Validators.required, Validators.minLength(6)]],
@@ -21,8 +26,27 @@ export class LoginComponentComponent implements OnInit {
 
   ngOnInit() {}
 
+  async loginAlertError() {
+    const toast = await this.toastController.create({
+      message: 'E-mail ou senha incorretos.',
+      duration: 3000,
+      position: "top"
+    });
+    toast.present();
+  }
+
+  async loginAlertSuccess() {
+    const toast = await this.toastController.create({
+      message: 'Você está logado!',
+      duration: 2000,
+      position: "top"
+    });
+    toast.present();
+  }
+
   login(loginForm) {
-      this.authService.login(loginForm.value).subscribe((res) => {
+      this.authService.login(loginForm.value).subscribe(
+        (res) => {
         console.log(res);
         localStorage.setItem('token', res.success.token);
         localStorage.setItem('user_email', res.user.email);
@@ -30,7 +54,11 @@ export class LoginComponentComponent implements OnInit {
         console.log('Estou Logado!')
         this.popoverController.dismiss();
         this.router.navigate(['/tabs/tab1']);
+        this.loginAlertSuccess();
       });
+      if (Error) {
+        this.loginAlertError();
+      }
     }
 
   close(){

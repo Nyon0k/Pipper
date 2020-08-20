@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from '../../services/comment/comment.service';
 import { UserService } from '../../services/user/user.service';
+import { ToastController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-comment',
@@ -13,7 +14,27 @@ export class CommentComponent implements OnInit {
   userId = localStorage.getItem('id_user');
   user;
 
-  constructor(public commentService: CommentService, public userService: UserService) { }
+  constructor(
+    public commentService: CommentService, 
+    public userService: UserService,
+    public alertController: AlertController,) { }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      mode: "ios",
+      cssClass: 'deleteAlert',
+      header: 'ATENÇÃO',
+      message: 'Tem certeza que deseja deletar este comentário?',
+      buttons: ['Cancelar', {
+          text:'Deletar',
+          handler: () => {
+            this.deleteCommentMod()
+          },
+        }]
+    });
+
+    await alert.present();
+  }
 
   ngOnInit() {
     this.showUser();
