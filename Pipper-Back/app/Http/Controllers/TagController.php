@@ -28,6 +28,10 @@ class TagController extends Controller
         return response()->json(Tag::all());
     }
 
+    public function listTagsPost($post_id,$tag_id){
+        return response()->json(Post::findOrFail($post_id)->tags()->get());
+    }
+
     public function deleteTag(Request $request, $id){
         Tag::destroy($id);
         return response()->json("Tag deletada!");
