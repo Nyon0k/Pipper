@@ -317,3 +317,23 @@ form {
     }
 }
 
+.ratingCard {
+    box-shadow: none;
+}
+
+.ratings {
+    display: flex;
+}
+
+.starButton {
+    --background: #272727;
+    --box-shadow: none;
+}
+
+.star {
+    color: gray;
+}
+
+.click {
+    color: #C4FB6D;
+}
