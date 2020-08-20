@@ -110,7 +110,8 @@ class PostController extends Controller
 
     //fazer metodo do post integrado entre user,post,comment.user (post) (conferir)
     public function showPostUserComment($id){
-        $data = Comment::with(['user.ratedPosts' => function($query){$query->select('individual_rating')->where('post_id',$id);}])->where('post_id',$id)->get();
+        //$data = Comment::with(['user.ratedPosts' => function($query){$query->select('individual_rating')->where('post_id',$id);}])->where('post_id',$id)->get();
+        $data = Comment::with('user')->where('post_id', $id)->get();
         return response()->json($data);
     }   
 

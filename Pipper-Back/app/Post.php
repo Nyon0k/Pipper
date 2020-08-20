@@ -32,6 +32,8 @@ class Post extends Model
 
         $this->count_people = 0;
         $this->creator_rating = $request->creator_rating;
+        $this->general_rating = $request->creator_rating;
+        $this->count_people = 1;
         $this->save();
     }
 

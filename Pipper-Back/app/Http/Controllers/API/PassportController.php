@@ -17,6 +17,7 @@ class PassportController extends Controller
         $newuser = new User;
         $newuser->createUser($request);
         $success['token'] = $newuser->createToken('Pipper')->accessToken;
+        $newuser->save();
         //$newuser-> notify(new UserRegister($newuser));  
         return response()->json(['success' => $success, 'user' => $newuser], 200);
         

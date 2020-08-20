@@ -13,7 +13,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'like' => rand(0,1000),
         'creator_rating' => $initial_rating, 
         'general_rating' => $initial_rating, 
-        'count_peple' => 1, 
+        'count_people' => 1, 
         "tags" => $faker->asciify('********************')
     ];
 });
