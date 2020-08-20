@@ -44,7 +44,7 @@ class TagTableSeeder extends Seeder
         $tag->save();
 
         $tag = new Tag;
-        $tag->title = 'Uitlidades Domésticas';
+        $tag->title = 'Utilidades Domésticas';
         $tag->save();
 
         $tag = new Tag;

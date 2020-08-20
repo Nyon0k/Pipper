@@ -72,7 +72,7 @@ Route::group(['middleware'=>'auth:api'], function(){
     Route::DELETE('deleteComment/{id}', 'CommentController@deleteComment')->middleware('user');
     Route::GET('logout', 'API\PassportController@logout');
     
-    Route::PUT('rating/{rate}/{post_id}','PostController@rating');
+    Route::PUT('rating/{post_id}/{rate}','PostController@rating');
     //Rotas de Tag
     Route::put('tag/{tag_id}/{post_id}','TagController@tag'); 
     Route::GET('getDetails', 'API\PassportController@getDetails');

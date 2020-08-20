@@ -22,7 +22,7 @@ class UserTableSeeder extends Seeder
         $posts = App\Post::all();
         foreach($posts as $post){
             foreach($users as $user){
-                $post->raterUsers()->attach($user,['individual_rating' => rand(0,10)/10]);
+                $post->rating($user->id,rand(1,5));
             }
         }
 

@@ -32,6 +32,8 @@ class Post extends Model
 
         $this->count_people = 0;
         $this->creator_rating = $request->creator_rating;
+        $this->general_rating = $request->creator_rating;
+        $this->count_people = 1;
         $this->save();
     }
 
@@ -79,14 +81,6 @@ class Post extends Model
         $this->save();
     }
 
-    public function rating($rate){
-        $user = Auth::user();
-        $this->raterUsers()->attach($user,['individual_rating' => $rate]);
-        $this->count_people = $this->count_people + 1;
-        $this->general_rating = ($this->general_rating + $rate)/$this->count_people;
-        $this->save();
-    }
-
     public function like(){
         $this->like++;
         $this->save();
@@ -96,4 +90,24 @@ class Post extends Model
         $this->like--;
         $this->save();
     }
+
+    public function rating($user_id, $rate){
+        $user = User::findOrFail($user_id);
+        if($this->raterUsers()->get()->contains($user)){
+            $previousRating = $this->raterUsers()->where('user_id',$user->id)->first()->pivot->individual_rating;
+            $this->raterUsers()->updateExistingPivot($user, array('individual_rating' => $rate), true);
+            $this->general_rating = $this->general_rating*$this->count_people;
+            $this->general_rating = $this->general_rating-$previousRating;
+            $this->general_rating = $this->general_rating+$rate;
+            $this->general_rating = $this->general_rating/$this->count_people;
+        }else{
+            $this->raterUsers()->attach($user,['individual_rating' => $rate]);
+            $this->general_rating = $this->general_rating*$this->count_people;
+            $this->count_people = $this->count_people + 1;
+            $this->general_rating = $this->general_rating+$rate;
+            $this->general_rating = $this->general_rating/$this->count_people;
+        }
+        $this->save();
+    }
+
 }

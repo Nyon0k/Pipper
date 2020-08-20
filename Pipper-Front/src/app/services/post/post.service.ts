@@ -43,7 +43,12 @@ export class PostService {
 
   likePost(post_id): Observable<any>{
     this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
-    return this.http.put(this.apiUrl+ 'like/' + post_id, null, this.httpHeaders);
+    return this.http.put(this.apiUrl + 'like/' + post_id, null, this.httpHeaders);
+  }
+
+  ratePost(post_id, rate): Observable<any>{
+    this.httpHeaders.headers['Authorization'] = "Bearer " + localStorage.getItem('token');
+    return this.http.put(this.apiUrl + 'rating/'+ post_id  + '/' + rate, null, this.httpHeaders)
   }
 
 }
