@@ -27,9 +27,11 @@
         vertical="center"
         horizontal="center"
         />
-        <ion-fab-button (click)="takePicture()">
-          <ion-icon></ion-icon>
-        </ion-fab-button>
+        <div class="fabButton">
+          <ion-fab-button (click)="takePicture()">
+            <ion-icon name="camera-outline" size="large" class="camera"></ion-icon>
+          </ion-fab-button>
+        </div>
       </ion-card-header>
 
     <ion-card-content>
@@ -133,16 +135,20 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card><ion-card-content>
+  <ion-card>
+    <ion-card-content>
     <form [formGroup]="commentForm" (ngSubmit)="sendComment()">
     <div class="inputAndSubmit">
       <ion-input position="floating" placeholder="Deixe sua mensagem" class="input" mode="md" type="text" formControlName="text" maxlength="248"></ion-input>
       <ion-button class="submitButton" mode="ios" type="submit">
-        <ion-icon name="paper-plane-outline" size="large" class="submitIcon"></ion-icon>
+        <span>
+          <ion-icon name="paper-plane-outline" size="large" class="submitIcon"></ion-icon>
+        </span>
       </ion-button>
     </div>
   </form>
-  </ion-card-content></ion-card>
+  </ion-card-content>
+</ion-card>
 
   <div class="commentPart" *ngIf="showComment">
     <ion-card>

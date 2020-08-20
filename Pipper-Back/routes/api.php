@@ -27,7 +27,6 @@ Route::GET('listFollowerPosts/{id}', 'UserController@listFollowerPosts');
 Route::PUT('search', 'UserController@search');
 Route::GET('isFollowing/{user_id1}/{user_id2}', 'UserController@isFollowing');
 
-
 //Rotas de Post
 Route::GET('showPost/{id}', 'PostController@showPost');
 Route::GET('listPosts', 'PostController@listPosts');
@@ -43,6 +42,8 @@ Route::GET('showComment/{id}', 'CommentController@showComment');
 Route::GET('listComments', 'CommentController@listComment');
 Route::GET('getUserId/{id}', 'CommentController@getUserId');
 Route::GET('getPostId/{id}', 'CommentController@getPostId');
+//Rotas de Tags
+Route::GET('listTagsPost/{post_id}', 'TagController@listTagsPost');
 
 //Rotas de Passport
 Route::POST('register', 'API\PassportController@register');

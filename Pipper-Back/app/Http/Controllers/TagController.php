@@ -24,8 +24,8 @@ class TagController extends Controller
         return response()->json(Tag::findOrFail($id));
     }
 
-    public function listTags(){
-        return response()->json(Tag::all());
+    public function listTagsPost($post_id){
+        return response()->json(Post::findOrFail($post_id)->tags()->get());
     }
 
     public function listTagsPost($post_id,$tag_id){

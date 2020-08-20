@@ -18,6 +18,7 @@ class Post extends Model
         $this->tags = $request->tags;
         $this->user_id = $id;
         $this->photo = $request->photo;
+<<<<<<< HEAD
 
         // if(!Storage::exists('localPhotos/products/')){
         //     Storage::makeDirectory('localPhotos/products/',0775,true);
@@ -31,6 +32,11 @@ class Post extends Model
         // }
         $this->creator_rating = $request->creator_rating;
         $this->general_rating = $request->general_rating;
+=======
+        $this->count_people = 0;
+        $this->creator_rating = $request->creator_rating;
+        $this->general_rating = $request->creator_rating;
+>>>>>>> seth_front8
         $this->count_people = 1;
         $this->save();
     }
@@ -43,12 +49,6 @@ class Post extends Model
             $this->text = $request->text;
         }
         if($request->photo){
-        //     Storage::delete($this->photo);
-        //     $image = base64_decode($request->photo);
-        //    $filename = uniqid();
-        //    $path = 'localPhotos/products/'.$filename;
-        //    file_put_contents(storage_path('app/'.$path),$image);
-        //    $this->photo=$path;
             $this->photo = $request->photo;
         }
         $this->save();
