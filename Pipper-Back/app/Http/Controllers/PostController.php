@@ -19,6 +19,10 @@ class PostController extends Controller
         $id = $user->id;
         $post = new Post;
         $post->createPost($request, $id);
+        
+        foreach($request->tag_ids as $tag_id){
+            $post->tag($tag_id);
+        }
         return response()->json($post);
     }
 
@@ -81,9 +85,10 @@ class PostController extends Controller
         return response()->json($creationDate);
     }
 
-    public function rating($rate, $post_id){
+    public function rating(Request $request, $post_id){
         $post = Post::findOrFail($post_id);
-        $post->rating($rate);
+        $user = Auth::user();
+        $post->rating($user->id,$request->rate);
         return response()->json(['Avaliado com sucesso', $post]);
     }
 
@@ -114,8 +119,6 @@ class PostController extends Controller
         return response()->json($data);
     }   
 
-   
-    
     public function postUserComment($id){
         $data = Post::with('user', 'comments.user')->where('id', $id)->get();
         return response()->json($data);
@@ -125,4 +128,5 @@ class PostController extends Controller
         $userPosts = Post::with('user','comments')->where('user_id', $id)->get();
         return response()->json($userPosts);    
     }
+
 }

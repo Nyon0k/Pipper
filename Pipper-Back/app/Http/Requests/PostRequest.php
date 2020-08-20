@@ -32,8 +32,7 @@ class PostRequest extends FormRequest
                 'title' => 'required|string',
                 'text' => 'required|string',
                 'like' => 'integer',
-                'creator_rating' => 'numeric',
-                'tags' => 'string',
+                'creator_rating' => 'numeric'
             ];
         }
         if($this->isMethod('put')){

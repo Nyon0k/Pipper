@@ -32,10 +32,4 @@ class TagController extends Controller
         Tag::destroy($id);
         return response()->json("Tag deletada!");
     }
-
-    public function tag($post_id,$tag_id){
-        $post = Post::findOrFail($post_id);
-        $tag = Tag::findOrFail($tag_id);
-        $post->tags()->attach($tag);
-    }
 }
