@@ -18,25 +18,8 @@ class Post extends Model
         $this->tags = $request->tags;
         $this->user_id = $id;
         $this->photo = $request->photo;
-<<<<<<< HEAD
-
-        // if(!Storage::exists('localPhotos/products/')){
-        //     Storage::makeDirectory('localPhotos/products/',0775,true);
-        // }
-        // if($request->photo){
-        //     $image = base64_decode($request->photo);
-        //    $filename = uniqid();
-        //    $path = 'localPhotos/products/'.$filename;
-        //    file_put_contents(storage_path('app/'.$path),$image);
-        //    $this->photo=$path; 
-        // }
-        $this->creator_rating = $request->creator_rating;
-        $this->general_rating = $request->general_rating;
-=======
-        $this->count_people = 0;
         $this->creator_rating = $request->creator_rating;
         $this->general_rating = $request->creator_rating;
->>>>>>> seth_front8
         $this->count_people = 1;
         $this->save();
     }

@@ -18,10 +18,10 @@ export class HomePostComponent implements OnInit {
   @Input() post: any;
   followButton: Button;
   
-  constructor(public postService: PostService,  ) { }
+  constructor(public postService: PostService) { }
 
   ngOnInit() {
-    this.listTags();
+  
     this.followButton = {
       follow: "Seguir"
     }
@@ -29,15 +29,6 @@ export class HomePostComponent implements OnInit {
     if (this.post.user.photo == null){
       this.post.user.photo = '../../assets/chamaBG.png';
     }
-  }
-
-  listTags(){
-    this.postService.listTags(this.post.id).subscribe((res) =>
-    {
-      this.tags = res;
-      console.log(res);
-      console.log('Todas as Tags');
-    })
   }
 
 }

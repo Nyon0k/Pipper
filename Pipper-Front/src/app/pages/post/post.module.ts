@@ -8,6 +8,8 @@ import { PostPageRoutingModule } from './post-routing.module';
 import { PostPage } from './post.page';
 
 import { CommentComponent } from '../../components/comment/comment.component';
+import { ShowTagsComponent } from '../../components/show-tags/show-tags.component';
+
 import { CommentService } from '../../services/comment/comment.service';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -20,7 +22,7 @@ import { AuthService } from '../../services/auth/auth.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  declarations: [PostPage, CommentComponent],
+  declarations: [PostPage, CommentComponent, ShowTagsComponent],
   providers: [CommentService, AuthService]
 })
 export class PostPageModule {}

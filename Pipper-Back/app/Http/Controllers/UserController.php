@@ -77,13 +77,6 @@ class UserController extends Controller
         }
     }
 
-    /*public function unfollowUser($userFollower, $userFollowed){
-        $verified = User::where('user_follower', $userFollower)->where('user_followed', $userFollowed)->first();
-        $user1 = Auth::user();
-        $user2 = User::findOrFail($userFollowed);
-        $user1->followUserFollower()->detach($user2);
-        return response()->json("Deixou de seguir!");
-    }*/
 
     public function listFollowerUsers($id){
         $user = User::findOrFail($id);
@@ -91,7 +84,7 @@ class UserController extends Controller
     }
 
     public function listFollowerPosts($id){
-        $followerPosts = Post::whereIn('user_id',User::find($id)->followUserFollower()->pluck('users.id'))->with('user')->get();
+        $followerPosts = Post::with('tags')->whereIn('user_id',User::find($id)->followUserFollower()->pluck('users.id'))->with('user')->get();
         $followerPosts->loadCount('comments as count_comments');
         return response()->json($followerPosts);
     }
@@ -133,15 +126,21 @@ class UserController extends Controller
         }
         return response()->json('Não existe!');
     }
-    //fazer metodo de busca de usuario, post
 
-    /*public function tryhardSearch(Request $request){
-        $data = Item::select("name")
-                ->where("name","LIKE","%{$request->input('query')}%")
-                ->get();
-        $data = User::select("name")->where("name", "LIKE", "%{$request->input(key:'name')}%")->get();
-        return response()->json($data);
-    }*/
+    public function searchtag(Request $request){
+        // return response()->json($request);
+        // foreach($c=0; $c<count($request); $c++){
+        //     $tags[] = $request[$c];
+        // }
+        if($request){
+            $postTags = Post::whereHas('tags', function($q) use ($request){
+                $q->whereIn('tag_id',  $request);
+            })->with('tags', 'user')->get();
+            return response()->json($postTags);
+        }
+        return response()->json('Não existe!');
+    }
+
 
     public function isFollowing($user_id1,$user_id2){
         $user1 = User::findOrFail($user_id1);

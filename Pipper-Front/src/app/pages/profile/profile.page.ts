@@ -114,6 +114,7 @@ export class ProfilePage implements OnInit {
     this.userService.userFollowing(this.user_id).subscribe((res) =>{
       console.log(res)
       console.log('Seguindo!');
+      window.location.reload();
     })
   }
 

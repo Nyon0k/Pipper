@@ -19,7 +19,6 @@ class CreatePostsTable extends Migration
             $table->string('text');
             $table->integer('like')->nullable()->default(0);
             $table->float('general_rating')->nullable()->default(0);
-            $table->string('tags')->nullable();
             $table->integer('count_people')->nullable();
             $table->float('creator_rating')->nullable();
             $table->timestamps();

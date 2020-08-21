@@ -55,10 +55,11 @@ export class LoginComponentComponent implements OnInit {
         this.popoverController.dismiss();
         this.router.navigate(['/tabs/tab1']);
         this.loginAlertSuccess();
-      });
-      if (Error) {
+        window.location.reload();
+      }, 
+      (err) => {
         this.loginAlertError();
-      }
+      });
     }
 
   close(){

@@ -36,7 +36,8 @@ export class UserPopoverComponent implements OnInit {
       localStorage.removeItem('id_user');
       console.log('Estou Deslogado!');
       this.popoverController.dismiss();
-      this.router.navigate(['/tabs/tab1']);
+      this.router.navigate(['/tabs/tab1'])
+      window.location.reload();
       this.logoutAlertSuccess();
 
     });

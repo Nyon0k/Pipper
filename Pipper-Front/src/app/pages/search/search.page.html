@@ -6,7 +6,7 @@
     </form>
   </div>
   <div class="search2" *ngIf="searchPost">
-    <ion-icon name="search-outline" type="submit" (click)="search()"></ion-icon>
+    <ion-icon name="search-outline" type="submit" (click)="searchTag()"></ion-icon>
     <form>
       <ion-button mode="md" class="tag" color="tertiary" (click)="presentPopover($event)">
         Tags
@@ -37,8 +37,15 @@
     refreshingSpinner="crescent">
     </ion-refresher-content>
   </ion-refresher>
-  <div *ngIf="botaoPost">
-  <app-home-post></app-home-post>
+  <div>
+    <ion-card *ngFor="let post of posts">
+      <ion-card-content>
+        <app-search-post
+        [post]="post"
+        (click)="redirectPostId(post.id)"
+        ></app-search-post>
+      </ion-card-content>
+    </ion-card>
   </div>
 
   <div *ngIf="botaoUser">

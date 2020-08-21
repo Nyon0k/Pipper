@@ -29,8 +29,8 @@ class PassportController extends Controller
             $success['token'] = $user->createToken('Pipper')->accessToken;
             return response()->json(['success' => $success, 'user' => $user], 200);
         } else {
-            return response()->json(['error' => 'Usuário não cadastrado!', 'status' => 401]);
-        }
+            return error()->json(['error' => 'Usuário não cadastrado!', 'status' => 401]);
+        } 
     }
     public function getDetails(){
         $user = Auth::user();

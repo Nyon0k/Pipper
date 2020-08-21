@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
-import { ToastController, AlertController } from '@ionic/angular';
+import { ToastController, AlertController, PopoverController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { ShowTagsComponent } from '../../components/show-tags/show-tags.component';
 
 import { AuthService} from '../../services/auth/auth.service';
 import { CommentService } from '../../services/comment/comment.service';
@@ -28,8 +30,12 @@ export class PostPage implements OnInit {
   user_id;
   user_id_check;
   user;
+  nickname;
+  userType;
+
   photo;
   photoPost: SafeResourceUrl;
+
   post = {id: 0,
     ​
     like: 0,
@@ -40,28 +46,36 @@ export class PostPage implements OnInit {
     ​
     tags: "text",
     ​
-    title: "text"};
+    title: "text"
+  };
   post_id;
-  userType;
+
   commentForm: FormGroup;
-  followButton: Button;
   showComment = false;
+  commentCount;
+
+  followButton: Button;
+  botaoSeguir = false;
+
   postForm: FormGroup;
   rateForm;
+  
   editMode = false;
   editModeOff = true;
   editButton = false;
+
   deleteButton = false;
-  commentCount;
-  botaoSeguir = false;
+
   rateMode = false;
+  rating;
   individual_rating;
+
   starColor1 = false;
   starColor2 = false;
   starColor3 = false;
   starColor4 = false;
   starColor5 = false;
-  rating;
+  
   constructor(
       public toastController: ToastController, 
       public formbuilder: FormBuilder, 
@@ -72,7 +86,8 @@ export class PostPage implements OnInit {
       public router: Router, 
       public postService: PostService,  
       public alertController: AlertController,
-      private sanitizer: DomSanitizer) {
+      private sanitizer: DomSanitizer,
+      public popoverController: PopoverController) {
     this.commentForm = this.formbuilder.group({
       text: [null]
     });
@@ -84,6 +99,17 @@ export class PostPage implements OnInit {
 
     this.user_id_check = Number(localStorage.getItem('id_user'));
    }
+
+   async presentTags(ev: any) {
+    await this.route.params.subscribe((params) => (this.post_id = params.postId));
+    const popover = await this.popoverController.create({
+      component: ShowTagsComponent,
+      cssClass: 'showTagsComponent',
+      event: ev,
+      translucent: true,
+    });
+    return await popover.present();
+  };
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -113,7 +139,7 @@ export class PostPage implements OnInit {
 
   async presentToast2() {
     const toast = await this.toastController.create({
-      message: 'Você não está logado!.',
+      message: 'Você não pode fazer isso.',
       duration: 2000,
       position: "top"
     });
@@ -122,7 +148,7 @@ export class PostPage implements OnInit {
 
   async presentToast3() {
     const toast = await this.toastController.create({
-      message: 'Sua publicação foi deletada.',
+      message: 'A publicação foi deletada.',
       duration: 2000,
       position: "top"
     });
@@ -221,6 +247,7 @@ export class PostPage implements OnInit {
       console.log(res.user_id);
       //Usuário Dono do post
       this.user = res.user.name;
+      this.nickname = res.user.nickname;
       this.user_id = res.user.id;
       this.photo = res.user.photo;
       if(this.user_id != this.user_id_check && this.user_id_check){
@@ -255,6 +282,7 @@ export class PostPage implements OnInit {
       this.userService.userFollowing(res.user.id).subscribe((res) =>{
         console.log(res)
         console.log('seguindo')
+        window.location.reload();
       })
     })
   }
@@ -279,8 +307,11 @@ export class PostPage implements OnInit {
   }
 
   redirectUser(){
-    console.log('oi')
+    if(this.user_id_check){
     this.router.navigate(['/profile', {'userId': this.user_id}]);
+    } else {
+      this.presentToast2();
+    }
   }
 
   deletePost(){
@@ -321,6 +352,7 @@ export class PostPage implements OnInit {
   likePost(){
     this.postService.likePost(this.post_id).subscribe((res) =>{
       console.log('Post liked!')
+      window.location.reload();
     })
     // if(Error){
     //   this.presentToast2();

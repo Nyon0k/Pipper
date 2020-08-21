@@ -87,7 +87,7 @@ h3 {
 }
 h4 {
     font-style: italic;
-    font-size: 70%;
+    font-size: 90%;
 }
 
 .allButtons {
@@ -202,6 +202,23 @@ ion-card-subtitle {
     word-break: break-word;
 }
 
+.todasAsTags {
+    overflow-x: auto;
+    display: flex;
+    margin-top: 5%;
+}
+
+.tagsAll {
+    height: 25px;
+    width: auto;
+    font-family: 'Poiret One', cursive;
+    --background: #404040;
+    color: #FFE9E9;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-transform: none;
+}
+
 .camera {
     color: #272727;
 }
@@ -216,7 +233,6 @@ ion-card-subtitle {
 
 .trash {
     display: flex;
-    margin-top: 2%;
     justify-content: center;
 }
 
@@ -324,8 +340,19 @@ form {
     }
 }
 
+.ratingDiv {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .ratingCard {
     box-shadow: none;
+}
+
+.paddingCard {
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .ratings {
@@ -335,6 +362,7 @@ form {
 .starButton {
     --background: #272727;
     --box-shadow: none;
+    width: 18%;
 }
 
 .star {

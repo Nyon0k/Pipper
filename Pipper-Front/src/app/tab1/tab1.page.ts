@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HomePostComponent } from '../components/home-post/home-post.component';
 import { PostService } from '../services/post/post.service';
 import { Router } from '@angular/router';
+import { ToastController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -19,7 +20,7 @@ export class Tab1Page implements OnInit {
   showNovo = true;
   spinner = false;
   
-  constructor(public postService: PostService, public router: Router) {}
+  constructor(public postService: PostService, public router: Router, public toastController: ToastController) {}
   user_id = localStorage.getItem('id_user');
   ngOnInit() {
     
@@ -63,6 +64,7 @@ export class Tab1Page implements OnInit {
     this.showTopo = false;
     this.showNovo = false;
     } else{
+      this.notFollowingAlert();
       console.log('Você não está logado!')
       this.showSeguindo = false;
     }
@@ -92,6 +94,15 @@ export class Tab1Page implements OnInit {
       this.getlistPostRating();
       this.getlistPostFollow();
     }, 2000);
+  }
+
+  async notFollowingAlert() {
+    const toast = await this.toastController.create({
+      message: 'Você não segue ninguém ou não está logado.',
+      duration: 2000,
+      position: "top"
+    });
+    toast.present();
   }
 }
 

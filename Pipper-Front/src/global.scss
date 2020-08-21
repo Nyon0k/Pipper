@@ -43,6 +43,17 @@
     left: auto !important;
     top: auto !important;
 }
+
+.showTagsComponent .popover-content {
+    background-color: #272727;
+    --width: 80%;
+    border-radius: 10px;
+    position: relative !important;
+    margin: 0 auto !important;
+    left: auto !important;
+    top: auto !important;
+}
+
 .deleteAlert .alert-wrapper {
     font-family: 'Roboto', sans-serif;
 }

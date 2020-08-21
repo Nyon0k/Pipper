@@ -11,6 +11,8 @@ import { HomePostModules } from '../../components/home-post/home-post.module';
 import { UserComponentComponent } from '../../components/user-component/user-component/user-component.component';
 import { SearchService }  from '../../services/search/search.service';
 
+import { SearchPostComponent } from '../../components/search-post/search-post.component';
+
 
 @NgModule({
   imports: [
@@ -22,7 +24,7 @@ import { SearchService }  from '../../services/search/search.service';
     ReactiveFormsModule
   ],
   entryComponents: [TagsComponent, UserComponentComponent],
-  declarations: [SearchPage, TagsComponent, UserComponentComponent],
+  declarations: [SearchPage, TagsComponent, UserComponentComponent, SearchPostComponent],
   providers: [SearchService]
 })
 export class SearchPageModule {}

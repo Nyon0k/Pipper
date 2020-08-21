@@ -21,4 +21,8 @@ export class SearchService {
     return this.http.put(this.apiUrl + 'search', form);
   }
 
+  searchTag(tagId): Observable<any>{
+    return this.http.put(this.apiUrl + 'searchtag', tagId);
+  }
+
 }
