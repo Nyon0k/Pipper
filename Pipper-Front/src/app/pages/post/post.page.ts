@@ -221,11 +221,20 @@ export class PostPage implements OnInit {
       console.log(res)
       console.log('Comentário Enviado')
       this.presentToast();
-    })
-    // if(Error){
-    //   this.presentToast2();
-    // }
+    }),
+    (err) => {
+      this.wrongUserAlert();
+    }
 
+  }
+
+  async wrongUserAlert() {
+    const toast = await this.toastController.create({
+      message: 'Você não pode enviar um comentário.',
+      duration: 2000,
+      position: "top"
+    });
+    toast.present();
   }
 
   listComments(){
@@ -257,6 +266,7 @@ export class PostPage implements OnInit {
         this.photo = '../../assets/chamaBG.png';
       }
       //Usuário Visitante do post
+      if (this.user_id_check) {
       this.userService.showUser(this.user_id_check).subscribe((res)=>{
         this.userType = res.type;
         console.log(res);
@@ -269,7 +279,7 @@ export class PostPage implements OnInit {
           this.editButton = true
         }
     })
-      
+  } 
     
     }
     )

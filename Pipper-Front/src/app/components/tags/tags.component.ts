@@ -22,6 +22,7 @@ export class TagsComponent implements OnInit {
 
   ngOnInit() {}
 
+  //Checagem para colocar a tag na página
   ativarTag(num) {
     switch(num){
       case 1:

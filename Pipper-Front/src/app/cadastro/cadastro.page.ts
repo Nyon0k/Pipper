@@ -41,17 +41,9 @@ export class CadastroPage implements OnInit {
     form.value.type = 0;
     console.log(form)
     this.router.navigate(['cadastro-imagem'], form.value)
-    // console.log("Usuário Cadastrado");
-    // this.authservice.register(form.value).subscribe(
-    //   (res)=> {
-    //     console.log(res);
-
-    //   },
-    //   (err) => {
-    //     console.log(err);
-    //   }
-    // );
   }
+
+  //Overlay para login
 
   async presentPopover(event){
     const popover = await this.popoverController.create({
