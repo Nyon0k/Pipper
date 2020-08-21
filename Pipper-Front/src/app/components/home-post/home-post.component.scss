@@ -60,9 +60,19 @@
     width: 60%;
     margin-left: 3%;
     max-width: 100%;
+    margin-bottom: 2%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.spread {
+    width: 95%;
+    margin-top: 2%;
+}
+
+.noMargin {
+    margin-top: 0px;
 }
 
 .photoAndUser {
@@ -180,6 +190,7 @@ h6 {
 }
 
 .text {
+    width: 100%;
     display: flex;
     flex-direction: column;
 }

@@ -27,7 +27,7 @@
           </div>
       </div>
 
-      <div class="textUserAndButtons"> <!--collumn-->
+      <div class="textUserAndButtons" [ngClass]="{'spread':post.photo==null}"> <!--collumn-->
 
         <div class="text"> <!--collumn-->
           <h2>{{post.title}}</h2>
@@ -36,7 +36,7 @@
       </div>
     </div>
   
-    <div class="tagsPost">
+    <div class="tagsPost" [ngClass]="{'noMargin':post.photo==null}">
       <ion-button mode="md" class="tags" 
       *ngFor="let tags of post.tags"
       >
