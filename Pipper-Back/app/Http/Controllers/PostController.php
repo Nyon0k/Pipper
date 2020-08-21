@@ -25,18 +25,20 @@ class PostController extends Controller
         }
         return response()->json($post);
     }
-
+    //Dado o id, busca o post que contém tal id, e o mostra juntamente com todos os seus comentários, tags e número total de comentários.
     public function showPost($id){
         $post = Post::with('user','comments','tags')->where('id', $id)->first();
         $post->loadCount('comments as count_comments');
         return response()->json($post);
     }
 
+    //Lista todos os posts com suas respectivas tags.
     public function listPosts(){
         $post = Post::with('tags');
         return response()->json($post);
     }
 
+    // Busca um post por id e altera suas informações, ou retorna uma mensagem de não autorização se o usuário não for o dono do post
     public function updatePost(Request $request, $id){
         $user = Auth::user();
         $post = Post::findOrFail($id);
@@ -67,6 +69,7 @@ class PostController extends Controller
         return response()->json($comment);
     }
 
+    //Listas de posts, com suas respectivas tags e usuários donos, por quantidade de likes, rating e data de criação
     public function listPostsByLike(){
         $like = Post::with('user')->orderBy('like','desc')->get();
         $like->loadCount('comments as count_comments');
@@ -85,6 +88,7 @@ class PostController extends Controller
         return response()->json($creationDate);
     }
 
+    //Dado o id de um post e uma nota 'rate', associa a nota ao post
     public function rating($post_id, $rate){
         $user = Auth::user();
         $post = Post::findOrFail($post_id);
@@ -92,6 +96,7 @@ class PostController extends Controller
         return response()->json(['Avaliado com sucesso', $post]);
     }
 
+    //incrementa ou descrementa (caso o botão de like já tenha sido clicado)  a quantidade de likes de um post
     public function like($post_liked){
         $user = Auth::user();
         $post = Post::findOrFail($post_liked);
@@ -120,11 +125,13 @@ class PostController extends Controller
         return response()->json($data);
     }   
 
+    //Lista posts com seus respectivos comentários e os donos desses comentários
     public function postUserComment($id){
         $data = Post::with('user', 'comments.user')->where('id', $id)->get();
         return response()->json($data);
     }
-
+    
+    //Lista posts com seus respectivos usuários 
     public function listPostsByAUser($id){
         $userPosts = Post::with('user','comments')->where('user_id', $id)->get();
         return response()->json($userPosts);    

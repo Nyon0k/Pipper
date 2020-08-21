@@ -30,6 +30,7 @@ class CommentController extends Controller
         return response()->json($comment);
     }
 
+    //Atualiza informações de um comentário ou retorna uma mensagem de não autorização caso o usuário não seja o dono do comentário
     public function updateComment(Request $request, $id){
         $user = Auth::user();
         $comment = Post::findOrFail($id);
@@ -45,6 +46,7 @@ class CommentController extends Controller
         return response()->json(['Comentário deletado!']);
     }
 
+    
     public function getUserId($id){
         $comment = App\Comment::findOrfail($id);
         return response()->json($comment->user_id);

@@ -25,6 +25,7 @@ class UserController extends Controller
 
     public function showUser($id){
         $user = User::findOrFail($id);
+        //Carrega  quantidade de seguidores e seguidos na instância do servidor
         $user->loadCount('followUserFollower as followed','followUserFollowed as followers');
         return response()->json($user);
     }
@@ -64,6 +65,8 @@ class UserController extends Controller
         return response()->json($comment);
     }
 
+
+    //Associa (ou desassocia, se já estiver associado) um usuário a outro como seguidor
     public function followUser($userFollowed){
         $user1 = Auth::user();
         $user2 = User::findOrFail($userFollowed);
@@ -83,12 +86,14 @@ class UserController extends Controller
         return response()->json($user->followUserFollower()->get());
     }
 
+    //Dado o id de um usuário, lista os posts dos usuários que ele segue
     public function listFollowerPosts($id){
         $followerPosts = Post::with('tags')->whereIn('user_id',User::find($id)->followUserFollower()->pluck('users.id'))->with('user')->get();
         $followerPosts->loadCount('comments as count_comments');
         return response()->json($followerPosts);
     }
 
+    //Faz uma busca de usuários ou posts por nome de usuário, nickname de usuário ou título de post.
     public function search(Request $request){
         $nameUser = $request->name;
         $idName = $request->name;
@@ -127,6 +132,7 @@ class UserController extends Controller
         return response()->json('Não existe!');
     }
 
+    //Faz uma busca de posts por suas tags
     public function searchtag(Request $request){
         // return response()->json($request);
         // foreach($c=0; $c<count($request); $c++){
@@ -141,7 +147,7 @@ class UserController extends Controller
         return response()->json('Não existe!');
     }
 
-
+    
     public function isFollowing($user_id1,$user_id2){
         $user1 = User::findOrFail($user_id1);
         $user2 = User::findOrFail($user_id2);

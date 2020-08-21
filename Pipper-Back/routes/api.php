@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//Rotas sem Autenticação
 //Rotas de User
 Route::POST('createUser', 'UserController@createUser');
 Route::GET('showUser/{id}', 'UserController@showUser');
@@ -52,26 +52,27 @@ Route::POST('login', 'API\PassportController@login');
 Route::GET('isFollowing/{user_id1}/{user_id2}', 'UserController@isFollowing');
 
 Route::group(['middleware'=>'auth:api'], function(){
-    //Rotas de User autenticado
+    //Rotas com autenticação de usuário
+    //Rotas de usuário
     Route::PUT('updateUser', 'UserController@updateUser');   
     Route::DELETE('deleteUser/{id}', 'UserController@deleteUser');
     Route::POST('makePost/{user_id}/{post_id}', 'UserController@makePost');
     Route::POST('makeComment/{user_id}/{post_id}', 'UserController@makeComment');
     Route::PUT('followUser/{id}', 'UserController@followUser');
-    //Route::PUT('unfollowUser/{user_id1}/{user_id2}', 'UserController@unfollowUser');
-    //Rotas de Post autenticado
+    Route::GET('logout', 'API\PassportController@logout');
+    //Rotas de Post
     Route::POST('createPost', 'PostController@createPost');
     Route::PUT('updatePost/{id}', 'PostController@updatePost');
     Route::DELETE('deletePost/{id}', 'PostController@deletePost')->middleware('user');
     Route::PUT('like/{id}', 'PostController@like');
-    //Route::PUT('dislike/{id}', 'PostController@dislike');
+
+    //Rotas de Comentário
     Route::PUT('attachComment/{post_id}/{comment_id}', 'PostController@attachComment');
-    //Rotas de Comment autenticado
     Route::POST('createComment/{post_id}', 'CommentController@createComment');
     Route::PUT('updateComment/{id}', 'CommentController@updateComment');
     Route::DELETE('deleteComment/{id}', 'CommentController@deleteComment')->middleware('user');
-    Route::GET('logout', 'API\PassportController@logout');
     
+    //Rotas de rating
     Route::PUT('rating/{post_id}/{rate}','PostController@rating');
     //Rotas de Tag
     Route::put('tag/{tag_id}/{post_id}','TagController@tag'); 

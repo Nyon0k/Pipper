@@ -24,10 +24,11 @@ class TagController extends Controller
         return response()->json(Tag::findOrFail($id));
     }
 
+    //Busca um post por id e lista suas tags
     public function listTagsPost($post_id){
         return response()->json(Post::findOrFail($post_id)->tags()->get());
     }
-
+    
     public function deleteTag(Request $request, $id){
         Tag::destroy($id);
         return response()->json("Tag deletada!");

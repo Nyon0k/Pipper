@@ -52,7 +52,7 @@ class Post extends Model
     public function likes(){
         return $this->belongsToMany('App\Post', 'likes', 'user_liker', 'post_liked');
     }
-
+    
     public function raterUsers(){
         return $this->belongsToMany('App\User','user_rates_post','post_id','user_id')->withPivot(['individual_rating']);
     }
@@ -62,6 +62,7 @@ class Post extends Model
         $this->save();
     }
 
+    //Adiciona uma nova nota de um usuário a um post
     public function rating($user_id, $rate){
         $user = User::findOrFail($user_id);
         if($this->raterUsers()->get()->contains($user)){
@@ -92,6 +93,7 @@ class Post extends Model
         $this->save();
     }
 
+    //Associa uma tag a um post   
     public function tag($tag_id){
         $tag = Tag::findOrFail($tag_id);
         if(!$this->tags()->get()->contains($tag)){
