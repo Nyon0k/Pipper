@@ -57,10 +57,6 @@ export class EditarPerfilPage implements OnInit {
   ngOnInit() {
   }
 
-  ionViewWillEnter(){
-    console.log('IVWE');
-  }
-
   editarPerfil(){
     if(this.photo){
       this.registerForm.value.photo = this.photo['changingThisBreaksApplicationSecurity'];

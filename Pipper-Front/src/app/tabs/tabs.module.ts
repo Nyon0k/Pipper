@@ -7,8 +7,8 @@ import { AuthService } from '../services/auth/auth.service';
 import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
-import { LoginComponentComponent } from '../login-component/login-component.component';
-import { UserPopoverComponent } from '../user-popover/user-popover.component';
+import { LoginComponentComponent } from '../components/login-component/login-component.component';
+import { UserPopoverComponent } from '../components/user-popover/user-popover.component';
 
 @NgModule({
   imports: [

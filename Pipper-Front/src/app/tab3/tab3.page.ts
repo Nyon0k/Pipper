@@ -15,6 +15,7 @@ import { ToastController, AlertController } from '@ionic/angular';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page implements OnInit {
+  //Variáveis controle
   tag = [];
   servico;
   produto;
@@ -66,6 +67,7 @@ export class Tab3Page implements OnInit {
     translucent: true
   });
   
+  //Coloca os IDs das tags em um array
   await popover.present();
   const { data } = await popover.onDidDismiss();
   if (data.servico){
@@ -132,6 +134,7 @@ export class Tab3Page implements OnInit {
 
 }
 
+//Retira os IDs das tags do array
 close(num){
   let index;
   switch(num){
@@ -188,6 +191,7 @@ close(num){
   }
 }
 
+//Muda a cor das estrelas na avaliação
  star(n){
    switch(n){
      case(1):

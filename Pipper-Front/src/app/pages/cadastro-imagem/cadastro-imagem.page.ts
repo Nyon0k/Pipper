@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Routes, RouterModule, Router } from "@angular/router";
-import { AuthService} from '../services/auth/auth.service';
+import { AuthService} from '../../services/auth/auth.service';
 import { ToastController } from '@ionic/angular';
 
 

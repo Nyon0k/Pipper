@@ -14,6 +14,7 @@ class Button {
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  //Variáveis controle
   user: {name: 'text',
          nickname: 'text'
         photo: '../../assets/chamaBG.png'};
@@ -41,6 +42,7 @@ export class ProfilePage implements OnInit {
     this.followCheck();
   }
 
+  //Função para trocar como o botão seguir aparece
   changeFollow() {
     this.followButton.chance = !this.followButton.chance;
     if (!this.followButton.chance) {

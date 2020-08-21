@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage implements OnInit {
+  //Variáveis controle
   tag = [];
   posts;
   servico;
@@ -52,6 +53,7 @@ export class SearchPage implements OnInit {
         translucent: true
       });
       
+      //Função para adicionar as IDs das tags no array
       await popover.present();
       const { data } = await popover.onDidDismiss();
       if (data.servico){
@@ -158,6 +160,8 @@ export class SearchPage implements OnInit {
       this.botaoUser = false;
     }
  }
+
+ //Função para retirar as IDs das tags no array
  close(num){
   let index;
   switch(num){

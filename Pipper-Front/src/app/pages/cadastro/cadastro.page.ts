@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Routes, RouterModule, Router } from "@angular/router";
 import { PopoverController } from '@ionic/angular';
-import { LoginComponentComponent } from '../login-component/login-component.component';
-import { AuthService } from "../services/auth/auth.service";
+import { LoginComponentComponent } from '../../components/login-component/login-component.component';
+import { AuthService } from "../../services/auth/auth.service";
 
 @Component({
   selector: 'app-cadastro',

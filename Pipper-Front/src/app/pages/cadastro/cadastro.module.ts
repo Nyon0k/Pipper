@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { CadastroPageRoutingModule } from './cadastro-routing.module';
 
 import { CadastroPage } from './cadastro.page';
-import { LoginComponentComponent } from '../login-component/login-component.component';
-import { AuthService } from '../services/auth/auth.service';
+import { LoginComponentComponent } from '../../components/login-component/login-component.component';
+import { AuthService } from '../../services/auth/auth.service';
 
 @NgModule({
   imports: [

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastController, PopoverController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Routes, RouterModule, Router } from "@angular/router";
-import { AuthService } from "../services/auth/auth.service";
+import { AuthService } from "../../services/auth/auth.service";
 
 @Component({
   selector: 'app-login-component',

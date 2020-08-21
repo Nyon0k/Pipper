@@ -16,11 +16,11 @@ const routes: Routes = [
   },
   {
     path: 'cadastro',
-    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
+    loadChildren: () => import('./pages/cadastro/cadastro.module').then( m => m.CadastroPageModule)
   },
   {
     path: 'cadastro-imagem',
-    loadChildren: () => import('./cadastro-imagem/cadastro-imagem.module').then( m => m.CadastroImagemPageModule)
+    loadChildren: () => import('./pages/cadastro-imagem/cadastro-imagem.module').then( m => m.CadastroImagemPageModule)
   },
   {
     path: 'editar-perfil',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController, PopoverController } from '@ionic/angular';
-import { AuthService } from "../services/auth/auth.service";
+import { AuthService } from "../../services/auth/auth.service";
 import { Routes, RouterModule, Router } from "@angular/router";
-import { UserService } from '../services/user/user.service';
+import { UserService } from '../../services/user/user.service';
 @Component({
   selector: 'app-user-popover',
   templateUrl: './user-popover.component.html',

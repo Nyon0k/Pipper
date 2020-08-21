@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PopoverController, iosTransitionAnimation } from '@ionic/angular';
-import { LoginComponentComponent } from '../login-component/login-component.component';
-import { UserPopoverComponent } from '../user-popover/user-popover.component';
+import { LoginComponentComponent } from '../components/login-component/login-component.component';
+import { UserPopoverComponent } from '../components/user-popover/user-popover.component';
 import { Router } from '@angular/router';
 
 

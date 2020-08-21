@@ -26,6 +26,7 @@ class Button {
 })
 
 export class PostPage implements OnInit {
+  //Variáveis controle
   public comments = [];
   user_id;
   user_id_check;
@@ -198,6 +199,7 @@ export class PostPage implements OnInit {
 
   }
 
+  //Função para mudar como o botão aparece
   changeFollow() {
     this.followButton.chance = !this.followButton.chance;
     if (!this.followButton.chance) {
@@ -218,23 +220,11 @@ export class PostPage implements OnInit {
   sendComment(){
     this.authService.createComment(this.commentForm.value, this.post_id).subscribe((res) =>
     {
-      console.log(res)
-      console.log('Comentário Enviado')
+      console.log(res);
+      console.log('Comentário Enviado');
       this.presentToast();
-    }),
-    (err) => {
-      this.wrongUserAlert();
-    }
-
-  }
-
-  async wrongUserAlert() {
-    const toast = await this.toastController.create({
-      message: 'Você não pode enviar um comentário.',
-      duration: 2000,
-      position: "top"
     });
-    toast.present();
+
   }
 
   listComments(){
@@ -361,12 +351,9 @@ export class PostPage implements OnInit {
 
   likePost(){
     this.postService.likePost(this.post_id).subscribe((res) =>{
-      console.log('Post liked!')
+      console.log('Post liked!');
       window.location.reload();
     })
-    // if(Error){
-    //   this.presentToast2();
-    // }
   }
 
   voltar(){
@@ -407,6 +394,7 @@ export class PostPage implements OnInit {
     }
   }
 
+  //Função que troca a cor das estrelas na avaliação
   star(n){
     switch(n){
       case(1):
